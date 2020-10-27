@@ -25,4 +25,8 @@ public class Figurka {
     void setPoziceFigurky(int posun){
         throw new UnsupportedOperationException("Not implemented yet.");
     }
+
+    public static void main(String[] args) {
+        System.out.println("mozem jebat");
+    }
 }
