@@ -33,5 +33,7 @@ public class Figurka {
         System.out.println("Pojebany rybicka");
         System.out.println("skuska 1.comitu");
         System.out.println("skuska 2.comitu");
+        System.out.println("zkurvený COVID");
+        
     }
 }
