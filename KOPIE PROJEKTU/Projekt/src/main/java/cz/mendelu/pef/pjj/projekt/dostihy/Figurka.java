@@ -27,6 +27,8 @@ public class Figurka {
     }
 
     public static void main(String[] args) {
+
         System.out.println("mozem jebat");
+        System.out.println("Tak snad to teď neposerem :D");
     }
 }
