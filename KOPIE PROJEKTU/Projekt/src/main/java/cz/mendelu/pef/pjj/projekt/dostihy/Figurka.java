@@ -31,5 +31,6 @@ public class Figurka {
         System.out.println("mozem jebat");
         System.out.println("Tak snad to teď neposerem :D");
         System.out.println("Pojebany rybicka");
+        System.out.println("skuska 1.comitu");
     }
 }
