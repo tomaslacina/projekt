@@ -1,0 +1,6 @@
+cz/mendelu/pef/pjj/projekt/dostihy/KunTest.java
+ cz.mendelu.pef.pjj.projekt.dostihy.KunTest
+cz/mendelu/pef/pjj/projekt/dostihy/HerniPlanTest.java
+ cz.mendelu.pef.pjj.projekt.dostihy.HerniPlanTest
+cz/mendelu/pef/pjj/projekt/dostihy/HracTest.java
+ cz.mendelu.pef.pjj.projekt.dostihy.HracTest
