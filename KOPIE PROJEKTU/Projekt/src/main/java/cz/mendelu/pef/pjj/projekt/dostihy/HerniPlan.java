@@ -41,4 +41,8 @@ public class HerniPlan {
     public void prodejMajetek(int cisloPolicka, int cena){
         throw new UnsupportedOperationException("Not implemented yet.");
     }
+
+    public static void main(String[] args) {
+        System.out.println("herni plan");
+    }
 }
