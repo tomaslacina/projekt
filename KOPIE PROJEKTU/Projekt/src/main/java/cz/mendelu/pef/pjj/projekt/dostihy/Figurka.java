@@ -22,7 +22,7 @@ public class Figurka {
      * @version etapa-1
      */
     int getPoziceFigurky(){
-        throw new UnsupportedOperationException("Not implemented yet.");
+        return pozice;
     }
 
     /**
@@ -49,14 +49,5 @@ public class Figurka {
         System.out.println("Pozice figurky je:"+this.pozice);
     }
 
-    public static void main(String[] args) {
 
-        System.out.println("mozem jebat");
-        System.out.println("Tak snad to teď neposerem :D");
-        System.out.println("Pojebany rybicka");
-        System.out.println("skuska 1.comitu");
-        System.out.println("skuska 2.comitu");
-        System.out.println("zkurvený COVID");
-
-    }
 }

@@ -37,7 +37,7 @@ public class Kun {
 
 
     public void zmenPocetZetonu(int mnozstvi){
-        throw new UnsupportedOperationException("Not implemented yet.");
+        pocetZetonu += mnozstvi;
     }
 
     /**
@@ -47,7 +47,7 @@ public class Kun {
      * @version etapa-1
      */
     public int getPocetZetonu(){
-        throw new UnsupportedOperationException("Not implemented yet.");
+        return pocetZetonu;
     }
 
 
