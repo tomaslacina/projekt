@@ -2,8 +2,17 @@ package cz.mendelu.pef.pjj.projekt.dostihy;
 
 public class Figurka {
 
+    private int pozice;
+    private final int pocetPolicek=40;
+
+    /**
+     * Konstruktor figurky
+     * @param pozice - defaultně bude nastaveno 0; pro testování je zatím konstruktor parametrický
+     * @author xlacina5
+     * @version etapa-3 - 27.10.2020
+     */
     Figurka(int pozice){
-        throw new UnsupportedOperationException("Not implemented yet.");
+        this.pozice=pozice;
     }
 
     /**
@@ -23,7 +32,21 @@ public class Figurka {
      * @version etapa-1
      */
     void setPoziceFigurky(int posun){
-        throw new UnsupportedOperationException("Not implemented yet.");
+
+        int aktualniPozice=this.pozice;
+        int novaPozice=aktualniPozice+posun;
+        int rozdil;
+
+        this.pozice+=posun;
+
+        if(novaPozice>pocetPolicek){
+            rozdil=novaPozice-pocetPolicek;
+            this.pozice=rozdil;
+        }
+        else{
+            this.pozice=novaPozice;
+        }
+        System.out.println("Pozice figurky je:"+this.pozice);
     }
 
     public static void main(String[] args) {
