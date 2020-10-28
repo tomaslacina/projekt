@@ -2,6 +2,8 @@ package cz.mendelu.pef.pjj.projekt.dostihy;
 
 public class HerniPlan {
 
+
+
     public HerniPlan (){
         throw new UnsupportedOperationException("Not implemented yet.");
     }
