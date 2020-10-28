@@ -19,6 +19,11 @@ public class Hrac {
 
     }
 
+    /**
+     * @version - etapa-3
+     * @author - xlacina5
+     */
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -27,10 +32,20 @@ public class Hrac {
         return meno.equals(hrac.meno);
     }
 
+    /**
+     * @version - etapa-3
+     * @author - xlacina5
+     */
+
     @Override
     public int hashCode() {
         return Objects.hash(meno);
     }
+
+    /**
+     * @version - etapa-3
+     * @author - xlacina5
+     */
 
     @Override
     public String toString() {
