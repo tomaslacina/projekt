@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="cz.mendelu.pef.pjj.projekt.dostihy.HracTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2020-10-28T09:41:55" hostname="DESKTOP-BLL9030" time="0.043">
+<testsuite name="cz.mendelu.pef.pjj.projekt.dostihy.HracTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2020-10-28T09:47:33" hostname="DESKTOP-TUQTFP9" time="0.006">
   <properties/>
-  <testcase name="testPridejKone" classname="cz.mendelu.pef.pjj.projekt.dostihy.HracTest" time="0.004"/>
-  <testcase name="testPridejTrenera_duplicita" classname="cz.mendelu.pef.pjj.projekt.dostihy.HracTest" time="0.006"/>
-  <testcase name="testTransakce_duplicita" classname="cz.mendelu.pef.pjj.projekt.dostihy.HracTest" time="0.007"/>
-  <testcase name="testPridejTrenera" classname="cz.mendelu.pef.pjj.projekt.dostihy.HracTest" time="0.003"/>
-  <testcase name="testTransakce" classname="cz.mendelu.pef.pjj.projekt.dostihy.HracTest" time="0.002"/>
+  <testcase name="testPridejKone" classname="cz.mendelu.pef.pjj.projekt.dostihy.HracTest" time="0.001"/>
+  <testcase name="testPridejTrenera_duplicita" classname="cz.mendelu.pef.pjj.projekt.dostihy.HracTest" time="0.001"/>
+  <testcase name="testTransakce_duplicita" classname="cz.mendelu.pef.pjj.projekt.dostihy.HracTest" time="0.001"/>
+  <testcase name="testPridejTrenera" classname="cz.mendelu.pef.pjj.projekt.dostihy.HracTest" time="0.0"/>
+  <testcase name="testTransakce" classname="cz.mendelu.pef.pjj.projekt.dostihy.HracTest" time="0.0"/>
   <testcase name="testPridejKone_duplicita" classname="cz.mendelu.pef.pjj.projekt.dostihy.HracTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

@@ -2,6 +2,7 @@ package cz.mendelu.pef.pjj.projekt.dostihy;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Hrac {
 
@@ -18,7 +19,28 @@ public class Hrac {
 
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Hrac hrac = (Hrac) o;
+        return meno.equals(hrac.meno);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(meno);
+    }
+
+    @Override
+    public String toString() {
+        return "Hrac{" +
+                "seznamTreneru=" + seznamTreneru +
+                ", seznamKoni=" + seznamKoni +
+                ", stavKonta=" + stavKonta +
+                ", meno='" + meno + '\'' +
+                '}';
+    }
 
     /**
      * Metoda pripočíta alebo odpocíta určitú sumu z hračovho konta.
@@ -83,6 +105,16 @@ public class Hrac {
         //return Collections.unmodifiableCollection(seznamTreneru);
         return seznamTreneru; //upravit na to unmodifiableCollection - viz cviko
         //throw new UnsupportedOperationException("Not implemented yet.");
+    }
+
+    public static void main(String[] args) {
+        Hrac hrac = new Hrac("Ivan",1000);
+        Hrac hrac1 = new Hrac("Ivan",1000);
+
+        System.out.println(hrac.toString());
+        System.out.println(hrac.hashCode());
+        System.out.println(hrac1.hashCode());
+        System.out.println(hrac.equals(hrac1));
     }
 
 }
