@@ -6,16 +6,20 @@ import java.util.List;
 public class Hrac {
 
     private List<Trener> seznamTreneru = new ArrayList<>();
+    private List<Kun> seznamKoni = new ArrayList<>();
+    private int stavKonta;
+    private String meno;
 
 
 
-    Hrac (int konto){
-        throw new UnsupportedOperationException("Not implemented yet.");
+    Hrac (String meno, int konto){
+        this.meno=meno;
+        this.stavKonta=konto;
+        this.seznamTreneru=null;
+        this.seznamKoni=null;
     }
 
-    Hrac (){
-        throw new UnsupportedOperationException("Not implemented yet.");
-    }
+    
 
     /**
      * Metoda pripočíta alebo odpocíta určitú sumu z hračovho konta.
@@ -25,7 +29,7 @@ public class Hrac {
      */
 
     public void transakce(int suma){
-        throw new UnsupportedOperationException("Not implemented yet.");
+        stavKonta += suma;
 
     }
 
@@ -38,7 +42,7 @@ public class Hrac {
      */
 
     public int getKonto(){
-        throw new UnsupportedOperationException("Not implemented yet.");
+        return stavKonta;
     }
 
     /**
@@ -49,7 +53,7 @@ public class Hrac {
      */
 
     public void pridejKone(Kun kun){
-        throw new UnsupportedOperationException("Not implemented yet.");
+        seznamKoni.add(kun);
     }
 
 
@@ -59,8 +63,8 @@ public class Hrac {
      * @author xrepka
      * @version etapa-1
      */
-    public Kun[] getKone(){
-        throw new UnsupportedOperationException("Not implemented yet.");
+    public List<Kun> getKone(){
+        return seznamKoni;
     }
 
     public void pridejTrenera(Trener trener){

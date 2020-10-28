@@ -12,7 +12,7 @@ public class HracTest extends TestCase {
      */
     public void testTransakce() {
         //setup
-        Hrac stano = new Hrac(100);
+        Hrac stano = new Hrac("Stano",100);
         //when
         stano.transakce(200);
         //then
@@ -26,7 +26,7 @@ public class HracTest extends TestCase {
      */
     public void testTransakce_duplicita() {
         //setup
-        Hrac stano = new Hrac(500);
+        Hrac stano = new Hrac("Stano",500);
         //when
         stano.transakce(-200);
         //then
@@ -42,7 +42,7 @@ public class HracTest extends TestCase {
 
     public void testPridejKone() {
         //setup
-        Hrac stano = new Hrac();
+        Hrac stano = new Hrac("Stano",500);
         Kun pepik = new Kun();
         //when
         stano.pridejKone(pepik);
@@ -60,7 +60,7 @@ public class HracTest extends TestCase {
 
     public void testPridejKone_duplicita() {
         //setup
-        Hrac stano = new Hrac();
+        Hrac stano = new Hrac("Stano", 500);
         Kun pepik = new Kun();
         Kun tom = new Kun();
         //when
@@ -68,7 +68,7 @@ public class HracTest extends TestCase {
         stano.pridejKone(tom);
         //then
 
-        assertEquals(stano.getKone().length,2);
+        assertEquals(stano.getKone().size(),2);
     }
 
     /**
@@ -79,7 +79,7 @@ public class HracTest extends TestCase {
     @Test
     public void testPridejTrenera(){
         //setup
-        Hrac tomas = new Hrac();
+        Hrac tomas = new Hrac("Tomas",500);
         Trener trenerVana = new Trener();
         //when
         tomas.pridejTrenera(trenerVana);
@@ -94,7 +94,7 @@ public class HracTest extends TestCase {
     @Test
     public void testPridejTrenera_duplicita(){
         //setup
-        Hrac tomas = new Hrac();
+        Hrac tomas = new Hrac("Tomas",500);
         Trener trenerVana=new Trener();
         Trener trenerPepa=new Trener();
 

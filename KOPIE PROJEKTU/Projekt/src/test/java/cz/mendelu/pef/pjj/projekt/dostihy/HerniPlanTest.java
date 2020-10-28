@@ -80,7 +80,7 @@ public class HerniPlanTest extends TestCase {
     @Test
     public void testprodejMajetek(){
         //setup
-        Hrac tomas = new Hrac();
+        Hrac tomas = new Hrac("Tomas",500);
         HerniPlan plan = new HerniPlan();
         Policko policko = new Policko();
         int cisloPolicka=10;
