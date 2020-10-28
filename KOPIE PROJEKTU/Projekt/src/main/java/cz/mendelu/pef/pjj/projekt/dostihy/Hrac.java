@@ -1,7 +1,11 @@
 package cz.mendelu.pef.pjj.projekt.dostihy;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Hrac {
 
+    private List<Trener> seznamTreneru = new ArrayList<>();
 
 
 
@@ -59,15 +63,10 @@ public class Hrac {
         throw new UnsupportedOperationException("Not implemented yet.");
     }
 
-    /**
-     * Metoda, která při koupení trenéra přiřadí hráči trenéra do jeho vlastnictví
-     * @param trener - trenér, který se přidá do vlastněných trenérů
-     * @author xlacina5
-     * @version etapa-1
-     */
-
     public void pridejTrenera(Trener trener){
-        throw new UnsupportedOperationException("Not impleneted yet.");
+        seznamTreneru.add(trener);
+
+        //throw new UnsupportedOperationException("Not impleneted yet.");
     }
 
     /**
@@ -77,8 +76,10 @@ public class Hrac {
      * @version etapa-1
      */
 
-    public Trener[] getTreneri(){
-        throw new UnsupportedOperationException("Not implemented yet.");
+    public List<Trener> getTreneri(){
+        //return Collections.unmodifiableCollection(seznamTreneru);
+        return seznamTreneru; //upravit na to unmodifiableCollection - viz cviko
+        //throw new UnsupportedOperationException("Not implemented yet.");
     }
 
 }

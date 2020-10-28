@@ -102,7 +102,7 @@ public class HracTest extends TestCase {
         tomas.pridejTrenera(trenerVana);
         tomas.pridejTrenera(trenerPepa);
         //then
-        assertEquals(tomas.getTreneri().length,2);
+        assertEquals(tomas.getTreneri().size(),2);
     }
 
 
