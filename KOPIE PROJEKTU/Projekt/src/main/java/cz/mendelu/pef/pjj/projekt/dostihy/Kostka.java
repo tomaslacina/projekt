@@ -1,9 +1,7 @@
 package cz.mendelu.pef.pjj.projekt.dostihy;
 
 public class Kostka {
-    Kostka(){
-        throw new UnsupportedOperationException("Not implemented yet.");
-    }
+    Kostka(){}
 
     /**
      * Vrati hodnotu hodu.
@@ -12,7 +10,7 @@ public class Kostka {
      * @version etapa-1
      */
     int getHodnotaHodu(){
-        throw new UnsupportedOperationException("Not implemented yet.");
+        return (int) Math.floor(Math.random() * Math.floor(6));
     }
 
 

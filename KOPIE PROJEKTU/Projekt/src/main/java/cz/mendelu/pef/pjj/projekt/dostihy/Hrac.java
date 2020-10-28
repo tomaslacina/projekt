@@ -19,7 +19,7 @@ public class Hrac {
         this.seznamKoni=null;
     }
 
-    
+
 
     /**
      * Metoda pripočíta alebo odpocíta určitú sumu z hračovho konta.
