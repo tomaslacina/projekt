@@ -15,8 +15,7 @@ public class Hrac {
     Hrac (String meno, int konto){
         this.meno=meno;
         this.stavKonta=konto;
-        this.seznamTreneru=null;
-        this.seznamKoni=null;
+
     }
 
 
