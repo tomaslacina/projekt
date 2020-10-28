@@ -12,7 +12,7 @@ public class KunTest extends TestCase {
 
     public void testZmenPocetZetonu() {
         //setup
-        var pepik = new Kun();
+        var pepik = new Kun(1,1000,"hnědá",0);
         //when
         pepik.zmenPocetZetonu(1);
         //then
@@ -26,7 +26,7 @@ public class KunTest extends TestCase {
      */
     public void testGetPocetZetonu() {
         //when
-        Kun pepik = new Kun();
+        Kun pepik = new Kun(1,1000,"hnědá",0);
         //then
         assertEquals(0,pepik.getPocetZetonu());
 

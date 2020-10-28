@@ -43,7 +43,7 @@ public class HracTest extends TestCase {
     public void testPridejKone() {
         //setup
         Hrac stano = new Hrac("Stano",500);
-        Kun pepik = new Kun();
+        Kun pepik = new Kun(1,1000,"hnědá",0);
         //when
         stano.pridejKone(pepik);
         //then
@@ -61,8 +61,8 @@ public class HracTest extends TestCase {
     public void testPridejKone_duplicita() {
         //setup
         Hrac stano = new Hrac("Stano", 500);
-        Kun pepik = new Kun();
-        Kun tom = new Kun();
+        Kun pepik = new Kun(1,1000,"hnědá",0);
+        Kun tom = new Kun(1,1000,"hnědá",0);
         //when
         stano.pridejKone(pepik);
         stano.pridejKone(tom);
@@ -80,7 +80,7 @@ public class HracTest extends TestCase {
     public void testPridejTrenera(){
         //setup
         Hrac tomas = new Hrac("Tomas",500);
-        Trener trenerVana = new Trener();
+        Trener trenerVana = new Trener(5,"Trener Váňa");
         //when
         tomas.pridejTrenera(trenerVana);
         //then
@@ -95,8 +95,8 @@ public class HracTest extends TestCase {
     public void testPridejTrenera_duplicita(){
         //setup
         Hrac tomas = new Hrac("Tomas",500);
-        Trener trenerVana=new Trener();
-        Trener trenerPepa=new Trener();
+        Trener trenerVana=new Trener(5,"Trener Váňa");
+        Trener trenerPepa=new Trener(8,"Trener Pepa");
 
         //when
         tomas.pridejTrenera(trenerVana);
