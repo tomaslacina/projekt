@@ -12,11 +12,11 @@ public class HerniPlanTest extends TestCase {
      */
     public void testPosunPoPlane() {
         //setup
-        HerniPlan plan = new HerniPlan();
+        Kostka kostka = new Kostka();
+        HerniPlan plan = new HerniPlan(kostka);
         var figurka = new Figurka(0);
-        var kostka = new Kostka();
         //when
-        plan.posunPoPlane(figurka.getPoziceFigurky(),kostka.getHodnotaHodu());
+        plan.posunPoPlane(figurka);
         //then
         assertNotNull(figurka.getPoziceFigurky());
 
@@ -34,14 +34,13 @@ public class HerniPlanTest extends TestCase {
     @Test
     public void testPosunPoPlane_prekroceniStartu(){
         //setup
-        HerniPlan plan = new HerniPlan();
-        Figurka figurka = new Figurka(40);
         Kostka kostka = new Kostka();
-        int hodnotaHodu = 5; //normálně by se to vygenerovalo automatick ale pro jednoduší příklad jsem zvolil konstatní hodnotu
+        HerniPlan plan = new HerniPlan(kostka);
+        Figurka figurka = new Figurka(40);
+
         //when
-        plan.posunPoPlane(figurka.getPoziceFigurky(),hodnotaHodu);
+        plan.posunPoPlane(figurka);
         //then
-        figurka.setPoziceFigurky(hodnotaHodu);
         assertEquals(5,figurka.getPoziceFigurky());
 
     }
@@ -64,7 +63,7 @@ public class HerniPlanTest extends TestCase {
         int staraPozice=figurka.getPoziceFigurky();
 
         //when
-        plan.posunPoPlane(figurka.getPoziceFigurky(),hodnotaHodu);
+        plan.posunPoPlane(figurka);
         figurka.setPoziceFigurky(hodnotaHodu);
         //then
         assertEquals(staraPozice+hodnotaHodu,figurka.getPoziceFigurky());

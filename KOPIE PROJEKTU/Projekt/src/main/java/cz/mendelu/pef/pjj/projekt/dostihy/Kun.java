@@ -28,7 +28,7 @@ public class Kun {
 
     /**
      * @author xrepka
-     * @version-3
+     * @version etapa-3
      */
 
     @Override
@@ -49,7 +49,7 @@ public class Kun {
 
     /**
      * @author xrepka
-     * @version-3
+     * @version etapa-3
      */
 
     @Override
