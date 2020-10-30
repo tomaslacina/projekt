@@ -1,8 +1,27 @@
 package cz.mendelu.pef.pjj.projekt.dostihy;
 
+
 public class Policko {
 
-    public Policko(){throw new UnsupportedOperationException("Not implemented yet");}
+
+    private TypPolicka typPolicka;
+    private int cisloPolicka;
+    private String informacePolicko;
+
+
+    //TODO
+    /*public Policko(TypPolicka typPolicka, int cisloPolicka, String informacePolicko) {
+        this.typPolicka = typPolicka;
+        this.cisloPolicka = cisloPolicka;
+        this.informacePolicko = informacePolicko;
+    }
+
+    public Policko nactiPolicko(int cisloPolicka){
+        Policko policko = new Policko(TypPolicka.getRandomPolicko(),cisloPolicka,"testovaciVerze");
+        return policko;
+    }*/
+
+
 
     /**
      * Zobrazí informace o daném políčku. Tyto informace budou čerpány ze souboru a podle čísla políčka se zobrazí tyto informace
@@ -13,6 +32,9 @@ public class Policko {
      */
 
     public void zobrazInformace(int cisloPolicka){
+
+
+
         throw new UnsupportedOperationException("Not implemented yet");
     }
 

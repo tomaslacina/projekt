@@ -148,7 +148,10 @@ public class Hrac {
         Hrac hrac = new Hrac("Ivan",1000);
         Hrac hrac1 = new Hrac("Ivan",1000);
 
-        Trener trener = new Trener(1,"prvni trener");
+
+
+
+        /*Trener trener = new Trener(1,"prvni trener");
         Trener trener1 = new Trener(2,"prvni1 trener");
         Trener trener2 = new Trener(3,"prvni2 trener");
         hrac.vypisTrenery();
@@ -162,7 +165,7 @@ public class Hrac {
         System.out.println(hrac.toString());
         System.out.println(hrac.hashCode());
         System.out.println(hrac1.hashCode());
-        System.out.println(hrac.equals(hrac1));
+        System.out.println(hrac.equals(hrac1));*/
     }
 
 }

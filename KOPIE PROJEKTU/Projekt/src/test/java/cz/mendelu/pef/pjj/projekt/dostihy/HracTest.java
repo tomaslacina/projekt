@@ -80,7 +80,7 @@ public class HracTest extends TestCase {
     public void testPridejTrenera(){
         //setup
         Hrac tomas = new Hrac("Tomas",500);
-        Trener trenerVana = new Trener(5,"Trener Váňa");
+        Trener trenerVana = new Trener(5,"Trener Vana");
         //when
         tomas.pridejTrenera(trenerVana);
         //then
@@ -95,7 +95,7 @@ public class HracTest extends TestCase {
     public void testPridejTrenera_duplicita(){
         //setup
         Hrac tomas = new Hrac("Tomas",500);
-        Trener trenerVana=new Trener(5,"Trener Váňa");
+        Trener trenerVana=new Trener(5,"Trener Vana");
         Trener trenerPepa=new Trener(8,"Trener Pepa");
 
         //when

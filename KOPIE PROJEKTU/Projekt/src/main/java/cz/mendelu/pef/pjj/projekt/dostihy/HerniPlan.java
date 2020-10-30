@@ -5,10 +5,37 @@ import java.util.*;
 public class HerniPlan {
     private Set<Hrac> hraci = new HashSet<>();
     private Kostka kostka;
+    private Policko policko;
     private Set<Nahoda> nahody = new HashSet<>();
 
-    private Map<String, Integer> mapaPolicek = new HashMap<>();
+    private Map<Integer, Policko> mapaPolicek = new HashMap<>(); //asi to pak dat cele final
+    private final int pocetPolicek=40;
 
+
+    //TODO
+   /* public void nactiPolicka(){
+
+        for (int i=0;i<pocetPolicek;i++){
+            mapaPolicek.put(i,policko.nactiPolicko(i));
+        }
+
+        for (int i=0;i<pocetPolicek;i++){
+            System.out.println("Cislo policka:"+i+" typPolicka"+mapaPolicek.get(i));
+        }
+
+
+    }*/
+
+    /**
+     * Metoda vrati celkovy pocet policek na hernim planu
+     * @return pocetPolicek
+     * @author xlacina5
+     *
+     */
+
+    public int getPocetPolicek(){
+        return pocetPolicek;
+    }
 
     public HerniPlan(Kostka kostka) {
         this.kostka = kostka;
