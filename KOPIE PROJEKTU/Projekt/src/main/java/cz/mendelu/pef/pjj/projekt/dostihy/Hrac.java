@@ -20,6 +20,7 @@ public class Hrac {
     }
 
     /**
+     * predpokladejme ze kazdy hrac bude mit unikatni herni username nebo nick
      * @version - etapa-3
      * @author - xlacina5
      */
@@ -105,7 +106,6 @@ public class Hrac {
 
     public void pridejTrenera(Trener trener){
         seznamTreneru.add(trener);
-
         //throw new UnsupportedOperationException("Not impleneted yet.");
     }
 
@@ -122,9 +122,42 @@ public class Hrac {
         //throw new UnsupportedOperationException("Not implemented yet.");
     }
 
+    /**
+     * Metoda vypise vsechny trenery
+     * @author xlacina5
+     * @version etapa-3
+     */
+
+    public void vypisTrenery(){
+        int pocetTreneru=seznamTreneru.size();
+        System.out.println(pocetTreneru);
+
+        if(pocetTreneru>0){
+            System.out.println("Vlastnis:"+pocetTreneru+" treneru");
+            for (int i=0;i<pocetTreneru;i++){
+                System.out.println(seznamTreneru.get(i).toString());
+            }
+        }
+        else{
+            System.out.println("Nevlastnis zadne trenery");
+        }
+        
+   }
+
     public static void main(String[] args) {
         Hrac hrac = new Hrac("Ivan",1000);
         Hrac hrac1 = new Hrac("Ivan",1000);
+
+        Trener trener = new Trener(1,"prvni trener");
+        Trener trener1 = new Trener(2,"prvni1 trener");
+        Trener trener2 = new Trener(3,"prvni2 trener");
+        hrac.vypisTrenery();
+        hrac.pridejTrenera(trener);
+        hrac.pridejTrenera(trener1);
+        hrac.pridejTrenera(trener2);
+        hrac.vypisTrenery();
+
+
 
         System.out.println(hrac.toString());
         System.out.println(hrac.hashCode());

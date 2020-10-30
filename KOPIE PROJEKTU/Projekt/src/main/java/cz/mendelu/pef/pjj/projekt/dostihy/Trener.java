@@ -9,4 +9,12 @@ public class Trener {
         this.cisloPolicka=cisloPolicka;
         this.text=text;
     }
+
+    @Override
+    public String toString() {
+        return "Trener{" +
+                "cisloPolicka=" + cisloPolicka +
+                ", text='" + text + '\'' +
+                '}';
+    }
 }
