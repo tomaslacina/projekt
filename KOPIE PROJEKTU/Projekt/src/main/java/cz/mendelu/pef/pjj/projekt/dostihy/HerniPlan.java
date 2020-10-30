@@ -1,13 +1,13 @@
 package cz.mendelu.pef.pjj.projekt.dostihy;
 
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class HerniPlan {
     private Set<Hrac> hraci = new HashSet<>();
     private Kostka kostka;
     private Set<Nahoda> nahody = new HashSet<>();
+
+    private Map<String, Integer> mapaPolicek = new HashMap<>();
 
 
     public HerniPlan(Kostka kostka) {

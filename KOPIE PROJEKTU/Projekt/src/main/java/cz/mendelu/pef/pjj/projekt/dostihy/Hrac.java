@@ -141,7 +141,7 @@ public class Hrac {
         else{
             System.out.println("Nevlastnis zadne trenery");
         }
-        
+
    }
 
     public static void main(String[] args) {
