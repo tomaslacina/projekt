@@ -5,26 +5,47 @@ import java.util.*;
 public class HerniPlan {
     private Set<Hrac> hraci = new HashSet<>();
     private Kostka kostka;
-    private Policko policko;
+
     private Set<Nahoda> nahody = new HashSet<>();
 
     private Map<Integer, Policko> mapaPolicek = new HashMap<>(); //asi to pak dat cele final
     private final int pocetPolicek=40;
 
-
-    //TODO
-   /* public void nactiPolicka(){
-
-        for (int i=0;i<pocetPolicek;i++){
-            mapaPolicek.put(i,policko.nactiPolicko(i));
-        }
-
-        for (int i=0;i<pocetPolicek;i++){
-            System.out.println("Cislo policka:"+i+" typPolicka"+mapaPolicek.get(i));
-        }
+    private Set<Kun> koni = new HashSet<>();
 
 
-    }*/
+    public HerniPlan(Kostka kostka) {
+        this.kostka = kostka;
+    }
+
+
+    public HerniPlan() {
+
+    }
+
+    public void pridejKone(Kun kun){
+        koni.add(kun);
+    }
+    public void vypisKone(){
+       Iterator<Kun> iterator = koni.iterator();
+       while(iterator.hasNext()){
+           System.out.println(iterator.next().toString());
+       }
+    }
+
+
+   public void nactiPolicka(){
+       String informacePolicko="Testovaci Policko";
+
+       for (int i=0;i<pocetPolicek;i++){
+           Policko policko = new Policko(TypPolicka.getRandomPolicko(),i,informacePolicko);
+           mapaPolicek.put(i,policko);
+       }
+    }
+
+    public void zobrazInformaceOPolicku(int cisloPolicka){
+       mapaPolicek.get(cisloPolicka).zobrazInformace();
+    }
 
     /**
      * Metoda vrati celkovy pocet policek na hernim planu
@@ -37,14 +58,7 @@ public class HerniPlan {
         return pocetPolicek;
     }
 
-    public HerniPlan(Kostka kostka) {
-        this.kostka = kostka;
-    }
 
-
-    public HerniPlan() {
-
-    }
 
     /**
      * Posunie figurku po plane.

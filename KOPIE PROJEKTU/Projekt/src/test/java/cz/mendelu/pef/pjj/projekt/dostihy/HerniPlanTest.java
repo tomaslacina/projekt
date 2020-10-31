@@ -56,7 +56,7 @@ public class HerniPlanTest extends TestCase {
         //setup
         HerniPlan plan = new HerniPlan();
         Figurka figurka = new Figurka(15);
-        Policko policko = new Policko();
+        Policko policko = new Policko(TypPolicka.NAHODA,2,"Policko Nahoda");
         Kostka kostka = new Kostka();
 
         int hodnotaHodu=kostka.getHodnotaHodu();
@@ -67,7 +67,7 @@ public class HerniPlanTest extends TestCase {
         figurka.setPoziceFigurky(hodnotaHodu);
         //then
         assertEquals(staraPozice+hodnotaHodu,figurka.getPoziceFigurky());
-        policko.zobrazInformace(figurka.getPoziceFigurky());
+        policko.zobrazInformace();
 
     }
 
@@ -81,15 +81,15 @@ public class HerniPlanTest extends TestCase {
         //setup
         Hrac tomas = new Hrac("Tomas",500);
         HerniPlan plan = new HerniPlan();
-        Policko policko = new Policko();
+        Policko policko = new Policko(TypPolicka.FINANCE,1,"Policko finance");
         int cisloPolicka=10;
         int staryZustatek = tomas.getKonto();
 
         //when
-        plan.prodejMajetek(cisloPolicka,policko.getCena(cisloPolicka));
+        plan.prodejMajetek(cisloPolicka,policko.getCena());
         //then
-        tomas.transakce(policko.getCena(cisloPolicka));
-        assertEquals(staryZustatek+policko.getCena(cisloPolicka),tomas.getKonto());
+        tomas.transakce(policko.getCena());
+        assertEquals(staryZustatek+policko.getCena(),tomas.getKonto());
 
     }
 
