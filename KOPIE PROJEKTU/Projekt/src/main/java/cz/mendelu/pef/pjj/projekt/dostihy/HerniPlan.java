@@ -23,9 +23,20 @@ public class HerniPlan {
 
     }
 
+    /**
+     * Přidá hráčovi koně
+     * @param kun
+     * @author xlacina5
+     */
     public void pridejKone(Kun kun){
         koni.add(kun);
     }
+
+    /**
+     * Metoda vypise hracovi kone, ktere vlastni
+     * @author xlacina5
+     * @version etapa-3 (implementace Set a práce s ní)
+     */
     public void vypisKone(){
        Iterator<Kun> iterator = koni.iterator();
        while(iterator.hasNext()){
@@ -34,6 +45,12 @@ public class HerniPlan {
     }
 
 
+    /**
+     * Metoda pro nacteni vsech policke na herni plan
+     * Prozatim pracuje s testovacimi daty, pozdeji naimplementujeme nacitani dat ze souboru
+     * @author xlacina5
+     * @version etapa-3 (implementace Map, pridani, vypis)
+     */
    public void nactiPolicka(){
        String informacePolicko="Testovaci Policko";
 
@@ -43,6 +60,12 @@ public class HerniPlan {
        }
     }
 
+    /**
+     * Na zaklade klice - cislo policka, vypise jeho inforamce
+     * @param cisloPolicka - cislo policka, o kterem chci vypsat informace
+     * @author xlacina5
+     */
+
     public void zobrazInformaceOPolicku(int cisloPolicka){
        mapaPolicek.get(cisloPolicka).zobrazInformace();
     }
@@ -51,7 +74,6 @@ public class HerniPlan {
      * Metoda vrati celkovy pocet policek na hernim planu
      * @return pocetPolicek
      * @author xlacina5
-     *
      */
 
     public int getPocetPolicek(){
@@ -69,7 +91,6 @@ public class HerniPlan {
      */
     public void posunPoPlane(Figurka figurka) {
         figurka.setPoziceFigurky(kostka.getHodnotaHodu());
-
     }
 
     /**

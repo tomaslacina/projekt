@@ -62,9 +62,7 @@ public class Kun {
                 '}';
     }
 
-    /*public Kun(){
-        throw new UnsupportedOperationException("Not implemented yet.");
-    }*/
+
 
     /**
      * Metoda ktora zmeni pocet zetonov, teda zvacsi vybavu kona.

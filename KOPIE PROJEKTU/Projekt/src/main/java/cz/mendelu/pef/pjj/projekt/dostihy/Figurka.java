@@ -9,7 +9,7 @@ public class Figurka {
      * Konstruktor figurky
      * @param pozice - defaultně bude nastaveno 0; pro testování je zatím konstruktor parametrický
      * @author xlacina5
-     * @version etapa-3 - 27.10.2020
+     *
      */
     Figurka(int pozice){
         this.pozice=pozice;
@@ -30,6 +30,7 @@ public class Figurka {
      * @param posun - převezme hod z kostky (1-6) , nebo z akční karty (libovolné číslo)
      * @author xlacina5
      * @version etapa-1
+     * @version etapa-3 - implemetnace
      */
     void setPoziceFigurky(int posun){
 

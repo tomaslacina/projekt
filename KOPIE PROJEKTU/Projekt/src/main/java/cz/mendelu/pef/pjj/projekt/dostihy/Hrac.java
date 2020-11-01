@@ -20,7 +20,6 @@ public class Hrac {
     }
 
     /**
-     * predpokladejme ze kazdy hrac bude mit unikatni herni username nebo nick
      * @version - etapa-3
      * @author - xlacina5
      */
@@ -30,17 +29,19 @@ public class Hrac {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Hrac hrac = (Hrac) o;
-        return meno.equals(hrac.meno);
+        return stavKonta == hrac.stavKonta &&
+                Objects.equals(seznamTreneru, hrac.seznamTreneru) &&
+                Objects.equals(seznamKoni, hrac.seznamKoni) &&
+                meno.equals(hrac.meno);
     }
 
     /**
      * @version - etapa-3
      * @author - xlacina5
      */
-
     @Override
     public int hashCode() {
-        return Objects.hash(meno);
+        return Objects.hash(seznamTreneru, seznamKoni, stavKonta, meno);
     }
 
     /**
@@ -116,10 +117,10 @@ public class Hrac {
      * @version etapa-1
      */
 
+    //TODO Upravit na unmodifiableCollection
     public List<Trener> getTreneri(){
         //return Collections.unmodifiableCollection(seznamTreneru);
         return seznamTreneru; //upravit na to unmodifiableCollection - viz cviko
-        //throw new UnsupportedOperationException("Not implemented yet.");
     }
 
     /**
@@ -144,10 +145,13 @@ public class Hrac {
 
    }
 
+
+    // Main pouze pro testovani :)
+
     public static void main(String[] args) {
-        Hrac hrac = new Hrac("Ivan",1000);
+        /*Hrac hrac = new Hrac("Ivan",1000);
         Hrac hrac1 = new Hrac("Ivan",1000);
-        HerniPlan herniPlan = new HerniPlan();
+        HerniPlan herniPlan = new HerniPlan();*/
 
 
         //testovani policek

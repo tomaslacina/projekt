@@ -21,7 +21,7 @@ public class Policko {
      * Zobrazí informace o daném políčku. Tyto informace budou čerpány ze souboru a podle čísla políčka se zobrazí tyto informace
      * hráči
      * @author xlacina5
-     * @version etapa-1
+     * @version etapa-1, etapa-3 implementace (propojeno s vypisem policka v hernim planu a Map - policka)
      */
 
     public void zobrazInformace(){
@@ -42,9 +42,9 @@ public class Policko {
         return informacePolicko;
     }
 
-    public int getCena(){
+    /*public int getCena(){
         throw new UnsupportedOperationException("Not implemented yet");
-    }
+    }*/
 
 
     /**
@@ -75,7 +75,20 @@ public class Policko {
         return Objects.hash(typPolicka, cisloPolicka, informacePolicko);
     }
 
-
+    /**
+     * toString - policko - vypis informaci o policku
+     * @return
+     * @author xlacina5
+     * @version - etapa3
+     */
+    @Override
+    public String toString() {
+        return "Policko{" +
+                "typPolicka=" + typPolicka +
+                ", cisloPolicka=" + cisloPolicka +
+                ", informacePolicko='" + informacePolicko + '\'' +
+                '}';
+    }
 
     //testovani
 
