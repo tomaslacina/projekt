@@ -12,6 +12,8 @@ public class Policko {
     private TypPolicka typPolicka;
     private int cisloPolicka;
     private String informacePolicko;
+    private int poziceX;
+    private int poziceY;
 
     public Policko(TypPolicka typPolicka, int cisloPolicka, String informacePolicko) {
         this.typPolicka = typPolicka;
@@ -20,6 +22,23 @@ public class Policko {
     }
 
    
+    /**
+     * Konstruktor pro cteni ze souboru - pokus :)
+     * @param cisloPolicka
+     * @param typPolicka
+     * @param informacePolicko
+     * @param poziceX
+     * @param poziceY
+     * @atuhor xlacina5
+     */
+    public Policko(int cisloPolicka, TypPolicka typPolicka,String informacePolicko, int poziceX, int poziceY){
+        this.cisloPolicka=cisloPolicka;
+        this.typPolicka=typPolicka;
+        this.informacePolicko=informacePolicko;
+        this.poziceX=poziceX;
+        this.poziceY=poziceY;
+    }
+
     /**
      * Zobrazí informace o daném políčku. Tyto informace budou čerpány ze souboru a podle čísla políčka se zobrazí tyto informace
      * hráči
