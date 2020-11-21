@@ -94,7 +94,6 @@ public class HerniPlan {
      * Metoda pro nacteni vsech policke na herni plan
      * Aktualizace 21.11.2020 - nacitani dat probiha z pripraveneho csv souboru (policka.csv)
      *
-     *
      * @author xlacina5
      * @version etapa-3 (implementace Map, pridani, vypis)
      * @author xlacina5
@@ -165,7 +164,6 @@ public class HerniPlan {
 
     /**
      * Posunie figurku po plane.
-     *
      * @param figurka figurka hráča
      * @author xrepka
      * @version etapa-1
@@ -176,7 +174,6 @@ public class HerniPlan {
 
     /**
      * Prida objekt hráč do kolekcie hračov.
-     *
      * @param hrac objekt hrac.
      * @author xrepka
      * @version etapa-3
