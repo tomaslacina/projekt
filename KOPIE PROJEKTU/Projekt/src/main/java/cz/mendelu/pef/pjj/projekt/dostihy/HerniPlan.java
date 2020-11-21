@@ -56,12 +56,38 @@ public class HerniPlan {
      * @version etapa-3 (implementace Map, pridani, vypis)
      */
     public void nactiPolicka() {
-        String informacePolicko = "Testovaci Policko";
 
-        for (int i = 0; i < pocetPolicek; i++) {
-            Policko policko = new Policko(TypPolicka.getRandomPolicko(), i, informacePolicko);
-            mapaPolicek.put(i, policko);
+        int cisloPolicka;
+        TypPolicka typPolicka;
+        String informacePolicko;
+        int souradniceX;
+        int souradniceY;
+
+        mapaPolicek.clear(); //vymazu puvodni hodnoty, kdyby tam nahodou nejake byly
+
+        try (BufferedReader br = new BufferedReader(new FileReader("policka.csv"))) {
+            String radek;
+
+            //dokud je co cist
+            //Problem s parsovanim, zkusim vyresit...
+            //TODO vyresit problem s parsovanim stringu na int
+            while((radek=br.readLine())!=null){
+                String[] rozdeleneRadky = radek.split(";");
+                //cisloPolicka=Integer.parseInt(prvni);
+                //cisloPolicka= Integer.parseInt(rozdeleneRadky[0]);
+                typPolicka=TypPolicka.valueOf(rozdeleneRadky[1]);
+                informacePolicko=rozdeleneRadky[2];
+
+            }
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Soubor s policky nenalezen");
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("Soubor se nepodařilo přečíst");
+            e.printStackTrace();
         }
+
     }
 
     /**
@@ -209,7 +235,9 @@ public class HerniPlan {
     public static void main(String[] args) {
         HerniPlan hp = new HerniPlan();
         hp.prectiZeSouboruPravidla();
-        hp.zapisDoSouboru();
+       // hp.zapisDoSouboru();
+        hp.nactiPolicka();
+        
     }
 
 }
