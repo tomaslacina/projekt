@@ -1,4 +1,4 @@
-package cz.mendelu.pef.pjj.projekt.dostihy;
+package cz.mendelu.pef.pjj.projekt.greenFoot;
 
 import greenfoot.World;
 
