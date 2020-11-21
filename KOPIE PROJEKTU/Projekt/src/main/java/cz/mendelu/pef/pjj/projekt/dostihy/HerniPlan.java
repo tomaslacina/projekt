@@ -50,10 +50,14 @@ public class HerniPlan {
 
     /**
      * Metoda pro nacteni vsech policke na herni plan
-     * Prozatim pracuje s testovacimi daty, pozdeji naimplementujeme nacitani dat ze souboru
+     * Aktualizace 21.11.2020 - nacitani dat probiha z pripraveneho csv souboru (policka.csv)
+     *
      *
      * @author xlacina5
      * @version etapa-3 (implementace Map, pridani, vypis)
+     * @author xlacina5
+     * @version etapa-4 (cteni ze souboru)
+     *
      */
     public void nactiPolicka() {
 
@@ -69,14 +73,18 @@ public class HerniPlan {
             String radek;
 
             //dokud je co cist
-            //Problem s parsovanim, zkusim vyresit...
-            //TODO vyresit problem s parsovanim stringu na int
+
             while((radek=br.readLine())!=null){
                 String[] rozdeleneRadky = radek.split(";");
-                //cisloPolicka=Integer.parseInt(prvni);
-                //cisloPolicka= Integer.parseInt(rozdeleneRadky[0]);
+
+                cisloPolicka= Integer.parseInt(rozdeleneRadky[0]);
                 typPolicka=TypPolicka.valueOf(rozdeleneRadky[1]);
                 informacePolicko=rozdeleneRadky[2];
+                souradniceX=Integer.parseInt(rozdeleneRadky[3]);
+                souradniceY=Integer.parseInt(rozdeleneRadky[4]);
+                Policko policko = new Policko(cisloPolicka,typPolicka,informacePolicko,souradniceX,souradniceY);
+                mapaPolicek.put(cisloPolicka,policko);
+
 
             }
 
@@ -237,6 +245,10 @@ public class HerniPlan {
         hp.prectiZeSouboruPravidla();
        // hp.zapisDoSouboru();
         hp.nactiPolicka();
+        for (int i=1;i<=hp.getPocetPolicek();i++){
+            hp.zobrazInformaceOPolicku(i);
+        }
+
         
     }
 
