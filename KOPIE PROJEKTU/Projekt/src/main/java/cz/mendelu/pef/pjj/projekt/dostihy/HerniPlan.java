@@ -52,6 +52,7 @@ public class HerniPlan {
             //dokud je co cist
 
             while((radek=br.readLine())!=null){
+
                 String[] rozdeleneRadky = radek.split(";");
 
                 cisloPolicka=Integer.parseInt(rozdeleneRadky[0]);
@@ -87,6 +88,8 @@ public class HerniPlan {
      */
     public void vypisKone() {
         Iterator<Kun> iterator = kone.iterator();
+
+
         while (iterator.hasNext()) {
             System.out.println(iterator.next().toString());
         }
@@ -268,7 +271,6 @@ public class HerniPlan {
      */
     void zapisDoSouboru(){
         try(BufferedWriter bw = new BufferedWriter(new FileWriter("zapisDoSouboru.txt"))) {
-            System.out.println("Uspesny zapis");
             bw.write("První řádek");
             bw.newLine();
             bw.write("Tento text je na druhém řádku");
@@ -283,15 +285,16 @@ public class HerniPlan {
     }
 
     public static void main(String[] args) {
-        /*HerniPlan hp = new HerniPlan();
-        hp.prectiZeSouboruPravidla();
+        HerniPlan hp = new HerniPlan();
+        /*hp.prectiZeSouboruPravidla();
        // hp.zapisDoSouboru();
         hp.nactiPolicka();
         for (int i=1;i<=hp.getPocetPolicek();i++){
             hp.zobrazInformaceOPolicku(i);
-        }
+        }*/
 
-        */
+        hp.nactiKone();
+        hp.vypisKone();
 
 
 
