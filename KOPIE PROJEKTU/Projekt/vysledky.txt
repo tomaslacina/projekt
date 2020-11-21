@@ -1,0 +1,3 @@
+Hrac{seznamTreneru=[], seznamKoni=[], stavKonta=500, meno='Stano'}
+Hrac{seznamTreneru=[], seznamKoni=[], stavKonta=1000, meno='Tomáš'}
+

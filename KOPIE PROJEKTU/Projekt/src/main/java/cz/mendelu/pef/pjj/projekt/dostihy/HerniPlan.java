@@ -284,8 +284,38 @@ public class HerniPlan {
         }
     }
 
+
+
+    /**
+     * Zapíše do súboru vysledky.txt stav hráčov.
+     * @author xrepka
+     * @version etapa-4
+     */
+
+    void zapisVysledky(){
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter("vysledky.txt"))) {
+
+            Iterator<Hrac> i = hraci.iterator();
+            while(i.hasNext()) {
+                bw.write(i.next().toString());
+                bw.newLine();
+            }
+            bw.newLine();
+            bw.flush();
+        } catch (IOException e) {
+            System.out.println("Do souboru se nepodařilo zapsat");
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         HerniPlan hp = new HerniPlan();
+        Hrac stano = new Hrac("Stano",500);
+        Hrac tomas = new Hrac ("Tomáš", 1000);
+        hp.pridajHraca(stano);
+        hp.pridajHraca(tomas);
+        hp.pridajHraca(tomas);
+        hp.zapisVysledky();
         /*hp.prectiZeSouboruPravidla();
        // hp.zapisDoSouboru();
         hp.nactiPolicka();
@@ -293,8 +323,7 @@ public class HerniPlan {
             hp.zobrazInformaceOPolicku(i);
         }*/
 
-        hp.nactiKone();
-        hp.vypisKone();
+
 
 
 
