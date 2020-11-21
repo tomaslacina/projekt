@@ -1,5 +1,6 @@
 package cz.mendelu.pef.pjj.projekt.dostihy;
 
+import java.awt.image.Kernel;
 import java.io.*;
 import java.util.*;
 
@@ -12,7 +13,7 @@ public class HerniPlan {
     private Map<Integer, Policko> mapaPolicek = new HashMap<>(); //asi to pak dat cele final
     private final int pocetPolicek = 40;
 
-    private Set<Kun> koni = new HashSet<>();
+    private Set<Kun> kone = new HashSet<>();
 
 
     public HerniPlan(Kostka kostka) {
@@ -24,14 +25,58 @@ public class HerniPlan {
 
     }
 
+
     /**
-     * Přidá hráčovi koně
+     * Načíta kone zo súboru
      *
-     * @param kun
-     * @author xlacina5
+     *
+     * @author xrepka
      */
-    public void pridejKone(Kun kun) {
-        koni.add(kun);
+    public void nactiKone() {
+        int cisloPolicka;
+        String meno;
+        String barva;
+        int kupniCena;
+        int prohlidkaStaje;
+        int cenaDostih1;
+        int cenaDostih2;
+        int cenaDostih3;
+        int cenaDostih4;
+        int cenaHlavniDostih;
+        int cenaZaPrepravu;
+
+        kone.clear();
+        try (BufferedReader br = new BufferedReader(new FileReader("kone.csv"))) {
+            String radek;
+
+            //dokud je co cist
+
+            while((radek=br.readLine())!=null){
+                String[] rozdeleneRadky = radek.split(";");
+
+                cisloPolicka=Integer.parseInt(rozdeleneRadky[0]);
+                meno=rozdeleneRadky[1];
+                barva=rozdeleneRadky[2];
+                kupniCena=Integer.parseInt(rozdeleneRadky[3]);
+                prohlidkaStaje=Integer.parseInt(rozdeleneRadky[4]);
+                cenaDostih1=Integer.parseInt(rozdeleneRadky[5]);
+                cenaDostih2=Integer.parseInt(rozdeleneRadky[6]);
+                cenaDostih3=Integer.parseInt(rozdeleneRadky[7]);
+                cenaDostih4=Integer.parseInt(rozdeleneRadky[8]);
+                cenaHlavniDostih=Integer.parseInt(rozdeleneRadky[9]);
+                cenaZaPrepravu=Integer.parseInt(rozdeleneRadky[10]);
+                Kun kun= new Kun(cisloPolicka,meno,barva,kupniCena,prohlidkaStaje,cenaDostih1,cenaDostih2,cenaDostih3,cenaDostih4,cenaHlavniDostih,cenaZaPrepravu);
+                kone.add(kun);
+            }
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Soubor s policky nenalezen");
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("Soubor se nepodařilo přečíst");
+            e.printStackTrace();
+        }
+
     }
 
     /**
@@ -41,7 +86,7 @@ public class HerniPlan {
      * @version etapa-3 (implementace Set a práce s ní)
      */
     public void vypisKone() {
-        Iterator<Kun> iterator = koni.iterator();
+        Iterator<Kun> iterator = kone.iterator();
         while (iterator.hasNext()) {
             System.out.println(iterator.next().toString());
         }
@@ -238,7 +283,7 @@ public class HerniPlan {
     }
 
     public static void main(String[] args) {
-        HerniPlan hp = new HerniPlan();
+        /*HerniPlan hp = new HerniPlan();
         hp.prectiZeSouboruPravidla();
        // hp.zapisDoSouboru();
         hp.nactiPolicka();
@@ -246,7 +291,10 @@ public class HerniPlan {
             hp.zobrazInformaceOPolicku(i);
         }
 
-        
+        */
+
+
+
     }
 
 }
