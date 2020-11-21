@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Kun {
 
+    private int cisloPolicka;
     private String meno;
     private String barva;
     private int kupniCena;
@@ -14,32 +15,47 @@ public class Kun {
     private int cenaDostih4;
     private int cenaHlavniDostih;
     private int cenaZaPrepravu;
-    private int cisloPolicka; //????
-    private int pocetZetonu;  //?
-
-
+    private int pocetZetonu;
 
 
     /**
-     * Parametrický konstruktor
+     *
      * @param cisloPolicka
-     * @param kupniCena
+     * @param meno
      * @param barva
-     * @param pocetZetonu
-     * @author xlacina5
+     * @param kupniCena
+     * @param prohlidkaStaje
+     * @param cenaDostih1
+     * @param cenaDostih2
+     * @param cenaDostih3
+     * @param cenaDostih4
+     * @param cenaHlavniDostih
+     * @param cenaZaPrepravu
+     * @author xrepka
+     * @version etapa-4
      */
 
-    public Kun(int cisloPolicka, int kupniCena, String barva, int pocetZetonu) {
+    public Kun(int cisloPolicka, String meno, String barva, int kupniCena, int prohlidkaStaje, int cenaDostih1, int cenaDostih2, int cenaDostih3, int cenaDostih4, int cenaHlavniDostih, int cenaZaPrepravu) {
         this.cisloPolicka = cisloPolicka;
-        this.kupniCena = kupniCena;
+        this.meno = meno;
         this.barva = barva;
-        this.pocetZetonu = pocetZetonu;
+        this.kupniCena = kupniCena;
+        this.prohlidkaStaje = prohlidkaStaje;
+        this.cenaDostih1 = cenaDostih1;
+        this.cenaDostih2 = cenaDostih2;
+        this.cenaDostih3 = cenaDostih3;
+        this.cenaDostih4 = cenaDostih4;
+        this.cenaHlavniDostih = cenaHlavniDostih;
+        this.cenaZaPrepravu = cenaZaPrepravu;
+        this.pocetZetonu = 0;
     }
 
     /**
      * @author xrepka
-     * @version etapa-3
+     * @version etapa-4
+     *
      */
+
 
     @Override
     public boolean equals(Object o) {
@@ -48,13 +64,21 @@ public class Kun {
         Kun kun = (Kun) o;
         return cisloPolicka == kun.cisloPolicka &&
                 kupniCena == kun.kupniCena &&
+                prohlidkaStaje == kun.prohlidkaStaje &&
+                cenaDostih1 == kun.cenaDostih1 &&
+                cenaDostih2 == kun.cenaDostih2 &&
+                cenaDostih3 == kun.cenaDostih3 &&
+                cenaDostih4 == kun.cenaDostih4 &&
+                cenaHlavniDostih == kun.cenaHlavniDostih &&
+                cenaZaPrepravu == kun.cenaZaPrepravu &&
                 pocetZetonu == kun.pocetZetonu &&
-                barva.equals(kun.barva);
+                Objects.equals(meno, kun.meno) &&
+                Objects.equals(barva, kun.barva);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(cisloPolicka, kupniCena, barva, pocetZetonu);
+        return Objects.hash(cisloPolicka, meno, barva, kupniCena, prohlidkaStaje, cenaDostih1, cenaDostih2, cenaDostih3, cenaDostih4, cenaHlavniDostih, cenaZaPrepravu, pocetZetonu);
     }
 
     /**
@@ -66,13 +90,19 @@ public class Kun {
     public String toString() {
         return "Kun{" +
                 "cisloPolicka=" + cisloPolicka +
-                ", kupniCena=" + kupniCena +
+                ", meno='" + meno + '\'' +
                 ", barva='" + barva + '\'' +
+                ", kupniCena=" + kupniCena +
+                ", prohlidkaStaje=" + prohlidkaStaje +
+                ", cenaDostih1=" + cenaDostih1 +
+                ", cenaDostih2=" + cenaDostih2 +
+                ", cenaDostih3=" + cenaDostih3 +
+                ", cenaDostih4=" + cenaDostih4 +
+                ", cenaHlavniDostih=" + cenaHlavniDostih +
+                ", cenaZaPrepravu=" + cenaZaPrepravu +
                 ", pocetZetonu=" + pocetZetonu +
                 '}';
     }
-
-
 
     /**
      * Metoda ktora zmeni pocet zetonov, teda zvacsi vybavu kona.
