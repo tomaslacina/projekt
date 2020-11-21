@@ -1,5 +1,6 @@
 package cz.mendelu.pef.pjj.projekt.dostihy;
 
+import java.io.*;
 import java.util.*;
 
 public class HerniPlan {
@@ -9,7 +10,7 @@ public class HerniPlan {
     private Set<Nahoda> nahody = new HashSet<>();
 
     private Map<Integer, Policko> mapaPolicek = new HashMap<>(); //asi to pak dat cele final
-    private final int pocetPolicek=40;
+    private final int pocetPolicek = 40;
 
     private Set<Kun> koni = new HashSet<>();
 
@@ -25,61 +26,65 @@ public class HerniPlan {
 
     /**
      * Přidá hráčovi koně
+     *
      * @param kun
      * @author xlacina5
      */
-    public void pridejKone(Kun kun){
+    public void pridejKone(Kun kun) {
         koni.add(kun);
     }
 
     /**
      * Metoda vypise hracovi kone, ktere vlastni
+     *
      * @author xlacina5
      * @version etapa-3 (implementace Set a práce s ní)
      */
-    public void vypisKone(){
-       Iterator<Kun> iterator = koni.iterator();
-       while(iterator.hasNext()){
-           System.out.println(iterator.next().toString());
-       }
+    public void vypisKone() {
+        Iterator<Kun> iterator = koni.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next().toString());
+        }
     }
 
 
     /**
      * Metoda pro nacteni vsech policke na herni plan
      * Prozatim pracuje s testovacimi daty, pozdeji naimplementujeme nacitani dat ze souboru
+     *
      * @author xlacina5
      * @version etapa-3 (implementace Map, pridani, vypis)
      */
-   public void nactiPolicka(){
-       String informacePolicko="Testovaci Policko";
+    public void nactiPolicka() {
+        String informacePolicko = "Testovaci Policko";
 
-       for (int i=0;i<pocetPolicek;i++){
-           Policko policko = new Policko(TypPolicka.getRandomPolicko(),i,informacePolicko);
-           mapaPolicek.put(i,policko);
-       }
+        for (int i = 0; i < pocetPolicek; i++) {
+            Policko policko = new Policko(TypPolicka.getRandomPolicko(), i, informacePolicko);
+            mapaPolicek.put(i, policko);
+        }
     }
 
     /**
      * Na zaklade klice - cislo policka, vypise jeho inforamce
+     *
      * @param cisloPolicka - cislo policka, o kterem chci vypsat informace
      * @author xlacina5
      */
 
-    public void zobrazInformaceOPolicku(int cisloPolicka){
-       mapaPolicek.get(cisloPolicka).zobrazInformace();
+    public void zobrazInformaceOPolicku(int cisloPolicka) {
+        mapaPolicek.get(cisloPolicka).zobrazInformace();
     }
 
     /**
      * Metoda vrati celkovy pocet policek na hernim planu
+     *
      * @return pocetPolicek
      * @author xlacina5
      */
 
-    public int getPocetPolicek(){
+    public int getPocetPolicek() {
         return pocetPolicek;
     }
-
 
 
     /**
@@ -153,4 +158,62 @@ public class HerniPlan {
     public int hashCode() {
         return Objects.hash(hraci, kostka, nahody);
     }
+
+
+    /**
+     * Metoda slouží pro přečtení pravidel z připraveného souboru
+     * Soubor musí být uložen nejspíš hned na první stránce v tom adresáři a ne v těch resources :/
+     * @version etapa4
+     * @author:
+     */
+    void prectiZeSouboruPravidla() {
+        try (BufferedReader br = new BufferedReader(new FileReader("pravidla.txt"))) {
+            String radek;
+
+            while((radek=br.readLine())!=null){
+                System.out.println(radek);
+            }
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Soubor nenalezen");
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("Soubor se nepodařilo přečíst");
+            e.printStackTrace();
+        }
+
+
+    }
+
+    /**
+     * Metoda slouží pro zápis do souboru
+     * Je to jen demo verze jak se zapisuje :)
+     *
+     */
+    void zapisDoSouboru(){
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter("zapisDoSouboru.txt"))) {
+            System.out.println("Uspesny zapis");
+            bw.write("První řádek");
+            bw.newLine();
+            bw.write("Tento text je na druhém řádku");
+            bw.newLine();
+            bw.write("A do třetice.");
+            bw.newLine();
+            bw.flush();
+        } catch (IOException e) {
+            System.out.println("Do souboru se nepodařilo zapsat");
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        HerniPlan hp = new HerniPlan();
+        hp.prectiZeSouboruPravidla();
+        hp.zapisDoSouboru();
+    }
+
 }
+
+
+
+
