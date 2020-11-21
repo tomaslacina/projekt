@@ -7,12 +7,9 @@ import java.util.*;
 public class HerniPlan {
     private Set<Hrac> hraci = new HashSet<>();
     private Kostka kostka;
-
     private Set<Nahoda> nahody = new HashSet<>();
-
     private Map<Integer, Policko> mapaPolicek = new HashMap<>(); //asi to pak dat cele final
     private final int pocetPolicek = 40;
-
     private Set<Kun> kone = new HashSet<>();
 
 
@@ -27,10 +24,9 @@ public class HerniPlan {
 
 
     /**
-     * Načíta kone zo súboru
-     *
-     *
+     * Načíta kone zo súboru kone.csv
      * @author xrepka
+     * @version etapa-4
      */
     public void nactiKone() {
         int cisloPolicka;
@@ -46,6 +42,7 @@ public class HerniPlan {
         int cenaZaPrepravu;
 
         kone.clear();
+
         try (BufferedReader br = new BufferedReader(new FileReader("kone.csv"))) {
             String radek;
 
@@ -295,7 +292,7 @@ public class HerniPlan {
         }
 
         */
-
+        
 
 
     }
