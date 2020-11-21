@@ -7,6 +7,8 @@ import java.util.Objects;
 public class Policko {
 
 
+
+
     private TypPolicka typPolicka;
     private int cisloPolicka;
     private String informacePolicko;
@@ -17,6 +19,7 @@ public class Policko {
         this.informacePolicko = informacePolicko;
     }
 
+   
     /**
      * Zobrazí informace o daném políčku. Tyto informace budou čerpány ze souboru a podle čísla políčka se zobrazí tyto informace
      * hráči
@@ -46,34 +49,6 @@ public class Policko {
         throw new UnsupportedOperationException("Not implemented yet");
     }*/
 
-
-    /**
-     *
-     * @param o - objekt policka
-     * @return true/false
-     * @author xlacina5
-     * @version etapa3
-     */
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Policko policko = (Policko) o;
-        return cisloPolicka == policko.cisloPolicka &&
-                typPolicka == policko.typPolicka &&
-                informacePolicko.equals(policko.informacePolicko);
-    }
-
-    /**
-     *
-     * @return int
-     * @author xlacina5
-     * @version etapa3
-     */
-    @Override
-    public int hashCode() {
-        return Objects.hash(typPolicka, cisloPolicka, informacePolicko);
-    }
 
     /**
      * toString - policko - vypis informaci o policku
