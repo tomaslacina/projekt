@@ -4,11 +4,21 @@ import java.util.Objects;
 
 public class Kun {
 
-
-    private int cisloPolicka;
-    private int kupniCena;
+    private String meno;
     private String barva;
-    private int pocetZetonu;
+    private int kupniCena;
+    private int prohlidkaStaje;
+    private int cenaDostih1;
+    private int cenaDostih2;
+    private int cenaDostih3;
+    private int cenaDostih4;
+    private int cenaHlavniDostih;
+    private int cenaZaPrepravu;
+    private int cisloPolicka; //????
+    private int pocetZetonu;  //?
+
+
+
 
     /**
      * Parametrický konstruktor
