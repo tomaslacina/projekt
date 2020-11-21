@@ -113,6 +113,7 @@ public class HerniPlan {
         String informacePolicko;
         int souradniceX;
         int souradniceY;
+        boolean obsazeno;
 
         mapaPolicek.clear(); //vymazu puvodni hodnoty, kdyby tam nahodou nejake byly
 
@@ -129,7 +130,9 @@ public class HerniPlan {
                 informacePolicko=rozdeleneRadky[2];
                 souradniceX=Integer.parseInt(rozdeleneRadky[3]);
                 souradniceY=Integer.parseInt(rozdeleneRadky[4]);
-                Policko policko = new Policko(cisloPolicka,typPolicka,informacePolicko,souradniceX,souradniceY);
+                obsazeno= Boolean.parseBoolean(rozdeleneRadky[5]);
+
+                Policko policko = new Policko(cisloPolicka,typPolicka,informacePolicko,souradniceX,souradniceY,obsazeno);
                 mapaPolicek.put(cisloPolicka,policko);
 
 
@@ -265,19 +268,20 @@ public class HerniPlan {
     }
 
     /**
-     * Metoda slouží pro zápis do souboru
-     * Je to jen demo verze jak se zapisuje :)
-     *
+     * Ulozi stav policek do souboru
+     * @author xlacina5;
+     * @version etapa-4;
      */
-    void zapisDoSouboru(){
-        try(BufferedWriter bw = new BufferedWriter(new FileWriter("zapisDoSouboru.txt"))) {
-            bw.write("První řádek");
-            bw.newLine();
-            bw.write("Tento text je na druhém řádku");
-            bw.newLine();
-            bw.write("A do třetice.");
-            bw.newLine();
+    
+    void ulozStavPolicek(){
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter("stavPolicek.csv"))) {
+
+            for(int i=1;i<=pocetPolicek;i++){
+                bw.write(mapaPolicek.get(i).toStringCSV());
+                bw.newLine();
+            }
             bw.flush();
+            System.out.println("Do souboru: stavPolicek.csv se podarilo zapsat data");
         } catch (IOException e) {
             System.out.println("Do souboru se nepodařilo zapsat");
             e.printStackTrace();
@@ -316,12 +320,13 @@ public class HerniPlan {
         hp.pridajHraca(tomas);
         hp.pridajHraca(tomas);
         hp.zapisVysledky();
-        /*hp.prectiZeSouboruPravidla();
-       // hp.zapisDoSouboru();
+        hp.prectiZeSouboruPravidla();
+
         hp.nactiPolicka();
         for (int i=1;i<=hp.getPocetPolicek();i++){
             hp.zobrazInformaceOPolicku(i);
-        }*/
+        }
+        hp.ulozStavPolicek();
 
 
 

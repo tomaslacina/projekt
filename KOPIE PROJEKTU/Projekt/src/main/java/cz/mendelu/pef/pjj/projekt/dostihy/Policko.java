@@ -14,12 +14,7 @@ public class Policko {
     private String informacePolicko;
     private int poziceX;
     private int poziceY;
-
-    public Policko(TypPolicka typPolicka, int cisloPolicka, String informacePolicko) {
-        this.typPolicka = typPolicka;
-        this.cisloPolicka = cisloPolicka;
-        this.informacePolicko = informacePolicko;
-    }
+    private boolean obsazeno;
 
    
     /**
@@ -29,14 +24,16 @@ public class Policko {
      * @param informacePolicko
      * @param poziceX
      * @param poziceY
+     * @param obsazeno - zda-li je policko jiz obsazeno nejakym hracem nebo ne
      * @atuhor xlacina5
      */
-    public Policko(int cisloPolicka, TypPolicka typPolicka,String informacePolicko, int poziceX, int poziceY){
+    public Policko(int cisloPolicka, TypPolicka typPolicka,String informacePolicko, int poziceX, int poziceY,boolean obsazeno){
         this.cisloPolicka=cisloPolicka;
         this.typPolicka=typPolicka;
         this.informacePolicko=informacePolicko;
         this.poziceX=poziceX;
         this.poziceY=poziceY;
+        this.obsazeno=obsazeno;
     }
 
     /**
@@ -83,6 +80,11 @@ public class Policko {
                 ", informacePolicko='" + informacePolicko + '\'' +
                 '}';
     }
+
+    public String toStringCSV(){
+        return cisloPolicka+";"+typPolicka+";"+informacePolicko+";"+poziceX+";"+poziceY+";"+obsazeno;
+    }
+
 
     //testovani
 
