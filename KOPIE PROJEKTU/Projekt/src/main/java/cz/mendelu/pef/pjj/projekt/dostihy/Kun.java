@@ -83,7 +83,7 @@ public class Kun {
 
     /**
      * @author xrepka
-     * @version etapa-3
+     * @version etapa-4
      */
 
     @Override
