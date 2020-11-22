@@ -27,6 +27,7 @@ public class HerniPlan {
      *
      *
      * @author xrepka
+     * @version etapa4
      */
     public void nactiKone() {
         int cisloPolicka;
@@ -241,8 +242,7 @@ public class HerniPlan {
     /**
      * Metoda slouží pro přečtení pravidel z připraveného souboru
      * Soubor musí být uložen nejspíš hned na první stránce v tom adresáři a ne v těch resources :/
-     * @version etapa4
-     * @author:
+     * @author: xlacina5
      */
     void prectiZeSouboruPravidla() {
         try (BufferedReader br = new BufferedReader(new FileReader("pravidla.txt"))) {
@@ -312,6 +312,7 @@ public class HerniPlan {
         return kostka.getHodnotaHodu();
     }*/
 
+    //testovaci main
     public static void main(String[] args) {
         HerniPlan hp = new HerniPlan();
         //Kostka kostka = new Kostka();
