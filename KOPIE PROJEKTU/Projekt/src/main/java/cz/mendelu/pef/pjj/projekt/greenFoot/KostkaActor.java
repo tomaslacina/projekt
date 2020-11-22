@@ -12,6 +12,7 @@ public class KostkaActor extends Actor {
     private final HerniPlan herniPlan;
 
 
+
     public KostkaActor(HerniPlan herniPlan) {
         this.herniPlan = herniPlan;
         this.update();
@@ -19,7 +20,12 @@ public class KostkaActor extends Actor {
 
     private void update() {
         setImage("obrazky/kostka.png");
+
+
+
     }
+
+
 
 
 }

@@ -6,7 +6,7 @@ import java.util.*;
 
 public class HerniPlan {
     private Set<Hrac> hraci = new HashSet<>();
-    private Kostka kostka;
+    private Kostka kostka=new Kostka();
 
     private Set<Nahoda> nahody = new HashSet<>();
 
@@ -15,10 +15,6 @@ public class HerniPlan {
 
     private Set<Kun> kone = new HashSet<>();
 
-
-    public HerniPlan(Kostka kostka) {
-        this.kostka = kostka;
-    }
 
 
     public HerniPlan() {
@@ -312,8 +308,13 @@ public class HerniPlan {
         }
     }
 
+    /*public int getHod(){
+        return kostka.getHodnotaHodu();
+    }*/
+
     public static void main(String[] args) {
         HerniPlan hp = new HerniPlan();
+        //Kostka kostka = new Kostka();
         Hrac stano = new Hrac("Stano",500);
         Hrac tomas = new Hrac ("Tomáš", 1000);
         hp.pridajHraca(stano);
@@ -327,6 +328,7 @@ public class HerniPlan {
             hp.zobrazInformaceOPolicku(i);
         }
         hp.ulozStavPolicek();
+
 
 
 

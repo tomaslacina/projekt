@@ -1,7 +1,6 @@
 package cz.mendelu.pef.pjj.projekt.greenFoot;
 
 import cz.mendelu.pef.pjj.projekt.dostihy.HerniPlan;
-import cz.mendelu.pef.pjj.projekt.dostihy.Kostka;
 import greenfoot.World;
 
 public class HerniPlanWorld extends World {
@@ -12,6 +11,8 @@ public class HerniPlanWorld extends World {
 
 
         addObject(new KostkaActor(herniPlan),200,200);
+
+
 
     }
 }
