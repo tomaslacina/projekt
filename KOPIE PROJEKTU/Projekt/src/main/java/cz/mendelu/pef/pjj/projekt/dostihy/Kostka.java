@@ -1,7 +1,9 @@
 package cz.mendelu.pef.pjj.projekt.dostihy;
 
 public class Kostka {
-    Kostka(){}
+
+    Kostka(){
+    }
 
     /**
      * Vrati hodnotu hodu.
