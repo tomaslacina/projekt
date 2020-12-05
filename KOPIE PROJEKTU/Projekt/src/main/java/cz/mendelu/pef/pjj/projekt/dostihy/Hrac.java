@@ -197,7 +197,7 @@ public class Hrac {
 
 
     // Main pouze pro testovani :)
-
+/*
     public static void main(String[] args) {
         /*Hrac hrac = new Hrac("Ivan",1000);
         Hrac hrac1 = new Hrac("Ivan",1000);
@@ -240,7 +240,7 @@ public class Hrac {
         System.out.println(hrac.toString());
         System.out.println(hrac.hashCode());
         System.out.println(hrac1.hashCode());
-        System.out.println(hrac.equals(hrac1));*/
-    }
+        System.out.println(hrac.equals(hrac1));
+    }*/
 
 }

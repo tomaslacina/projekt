@@ -375,7 +375,7 @@ public class HerniPlan {
         return kostka.getHodnotaHodu();
     }
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         HerniPlan hp = new HerniPlan();
         //Kostka kostka = new Kostka();
         Hrac stano = new Hrac("Stano",500);
@@ -392,12 +392,7 @@ public class HerniPlan {
         }
         hp.ulozStavPolicek();
 
-
-
-
-
-
-    }
+    }*/
 
 }
 
