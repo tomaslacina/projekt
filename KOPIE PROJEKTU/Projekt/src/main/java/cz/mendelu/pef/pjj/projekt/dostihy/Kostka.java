@@ -1,6 +1,9 @@
 package cz.mendelu.pef.pjj.projekt.dostihy;
 
+import java.util.Random;
+
 public class Kostka {
+    Random rn = new Random();
 
     Kostka(){
     }
@@ -12,7 +15,12 @@ public class Kostka {
      * @version etapa-1
      */
     int getHodnotaHodu(){
-        return (int) Math.floor(Math.random() * Math.floor(6));
+        int hodnotaHodu;
+        hodnotaHodu=rn.nextInt(6);
+        if(hodnotaHodu==0){
+            hodnotaHodu=1;
+        }
+        return hodnotaHodu;
     }
 
 
