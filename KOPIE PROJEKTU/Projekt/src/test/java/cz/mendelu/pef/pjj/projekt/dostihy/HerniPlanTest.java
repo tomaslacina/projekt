@@ -10,7 +10,7 @@ public class HerniPlanTest extends TestCase {
      * @author xrepka
      * @version etapa-1
      */
-    public void testPosunPoPlane() {
+    /*public void testPosunPoPlane() {
         //setup
         Kostka kostka = new Kostka();
         HerniPlan plan = new HerniPlan(kostka);
@@ -20,7 +20,7 @@ public class HerniPlanTest extends TestCase {
         //then
         assertNotNull(figurka.getPoziceFigurky());
 
-    }
+    }*/
 
     /**
      * Komentář:
@@ -31,7 +31,7 @@ public class HerniPlanTest extends TestCase {
 
      */
 
-    @Test
+    /*@Test
     public void testPosunPoPlane_prekroceniStartu(){
         //setup
         Kostka kostka = new Kostka();
@@ -43,14 +43,14 @@ public class HerniPlanTest extends TestCase {
         //then
         assertEquals(5,figurka.getPoziceFigurky());
 
-    }
+    }*/
 
     /**
      * @author xlacina5
      * @version etapa-1
      */
 
-    @Test
+    /*@Test
     public void testakce(){
 
         //setup
@@ -69,14 +69,14 @@ public class HerniPlanTest extends TestCase {
         assertEquals(staraPozice+hodnotaHodu,figurka.getPoziceFigurky());
         policko.zobrazInformace();
 
-    }
+    }*/
 
     /**
      * @author xlacina5
      * @version etapa-1
      */
 
-    @Test
+    /*@Test
     public void testprodejMajetek(){
         //setup
         Hrac tomas = new Hrac("Tomas",500);
@@ -91,6 +91,6 @@ public class HerniPlanTest extends TestCase {
         //tomas.transakce(policko.getCena());
        // assertEquals(staryZustatek+policko.getCena(),tomas.getKonto());
 
-    }
+    }*/
 
 }
