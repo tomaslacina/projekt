@@ -10,13 +10,23 @@ public class Hrac {
     private List<Kun> seznamKoni = new ArrayList<>();
     private int stavKonta;
     private String meno;
+    private int id; //pridani id
+    private int pozice;
+    private static final int konto = 30000; //staticka promenna stav konta
+    private static final int pocetPolicek=40;
 
 
 
-    Hrac (String meno, int konto){
+
+    /*
+     * Pridani parametru id - aby to bylo identifikovatelne - kdyby byly 2 hraci se stejnym jmenem
+     * Pridani parametru pozice - zruseni figurky (asi by to bylo zbytecne)
+     * */
+    Hrac (String meno, int id){
         this.meno=meno;
         this.stavKonta=konto;
-
+        this.id=id;
+        this.pozice=1;
     }
 
     /**
@@ -51,12 +61,14 @@ public class Hrac {
 
     @Override
     public String toString() {
-        return "Hrac{" +
-                "seznamTreneru=" + seznamTreneru +
-                ", seznamKoni=" + seznamKoni +
-                ", stavKonta=" + stavKonta +
-                ", meno='" + meno + '\'' +
-                '}';
+        final StringBuffer sb = new StringBuffer("Hrac{");
+        sb.append("seznamTreneru=").append(seznamTreneru);
+        sb.append(", seznamKoni=").append(seznamKoni);
+        sb.append(", stavKonta=").append(stavKonta);
+        sb.append(", meno='").append(meno).append('\'');
+        sb.append(", id=").append(id);
+        sb.append('}');
+        return sb.toString();
     }
 
     /**
@@ -124,10 +136,48 @@ public class Hrac {
     }
 
     /**
+     * Vraci id hrace;
+     * @return id
+     */
+
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * Vraci pozici hrace
+     * @return pozice
+     */
+    public int getPozice() {
+        return pozice;
+    }
+
+    public void setPozice(int hodnotaHodu) {
+
+        int aktualniPozice=this.pozice;
+        int novaPozice=aktualniPozice+hodnotaHodu;
+        int rozdil;
+
+
+        this.pozice+=hodnotaHodu;
+
+        if(novaPozice>pocetPolicek){
+            rozdil=novaPozice-pocetPolicek;
+            this.pozice=rozdil;
+        }
+        else{
+            this.pozice=novaPozice;
+        }
+
+    }
+
+    /**
      * Metoda vypise vsechny trenery
      * @author xlacina5
      * @version etapa-3
      */
+
+
 
     public void vypisTrenery(){
         int pocetTreneru=seznamTreneru.size();
@@ -143,7 +193,7 @@ public class Hrac {
             System.out.println("Nevlastnis zadne trenery");
         }
 
-   }
+    }
 
 
     // Main pouze pro testovani :)
