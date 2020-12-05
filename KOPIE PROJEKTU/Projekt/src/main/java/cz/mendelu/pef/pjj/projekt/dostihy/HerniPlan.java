@@ -18,6 +18,8 @@ public class HerniPlan {
 
 
     public HerniPlan() {
+        nactiPolicka();
+
 
     }
 
@@ -27,7 +29,6 @@ public class HerniPlan {
      *
      *
      * @author xrepka
-     * @version etapa4
      */
     public void nactiKone() {
         int cisloPolicka;
@@ -145,15 +146,40 @@ public class HerniPlan {
 
     }
 
-    /**
-     * Na zaklade klice - cislo policka, vypise jeho inforamce
-     *
-     * @param cisloPolicka - cislo policka, o kterem chci vypsat informace
-     * @author xlacina5
-     */
 
-    public void zobrazInformaceOPolicku(int cisloPolicka) {
-        mapaPolicek.get(cisloPolicka).zobrazInformace();
+
+
+
+    /**
+     * Vrati instanci hrace z pole hracu - pro lepsi praci s Hracem
+     * Omezeni zdvojeneho kodu
+     * */
+    public Hrac vratHrace(int idHrace){
+        Hrac hrac;
+        String hracReturn="";
+        Iterator<Hrac> i = hraci.iterator();
+        while(i.hasNext()){
+            hrac=i.next();
+            if((hrac.getId())==idHrace){
+                return hrac;
+            }
+        }
+        return null;
+
+    }
+
+
+    public String zobrazInformaceOPolicku(int idHrace) {
+        int cisloPolicka;
+        String informace="";
+        Hrac hrac;
+        hrac=vratHrace(idHrace);
+        cisloPolicka=hrac.getPozice();
+        System.out.println("Hrac je na pozici:"+cisloPolicka);
+
+        //mapaPolicek.get(cisloPolicka).zobrazInformace();
+        informace+=mapaPolicek.get(cisloPolicka).toString();
+        return informace;
     }
 
     /**
@@ -169,13 +195,14 @@ public class HerniPlan {
 
 
     /**
-     * Posunie figurku po plane.
-     * @param figurka figurka hráča
-     * @author xrepka
-     * @version etapa-1
+     * Predelani cele metody
+     * @param idHrace
+     * @param hodnotaHodu
      */
-    public void posunPoPlane(Figurka figurka) {
-        figurka.setPoziceFigurky(kostka.getHodnotaHodu());
+    public void posunPoPlane(int idHrace, int hodnotaHodu) {
+        Hrac hrac;
+        hrac=vratHrace(idHrace);
+        hrac.setPozice(hodnotaHodu);
     }
 
     /**
@@ -186,6 +213,11 @@ public class HerniPlan {
      */
 
     public void pridajHraca(Hrac hrac) {
+        hraci.add(hrac);
+    }
+
+    public void vytvorAPridejHrace(String jmeno, int id){
+        Hrac hrac = new Hrac(jmeno,id);
         hraci.add(hrac);
     }
 
@@ -242,15 +274,20 @@ public class HerniPlan {
     /**
      * Metoda slouží pro přečtení pravidel z připraveného souboru
      * Soubor musí být uložen nejspíš hned na první stránce v tom adresáři a ne v těch resources :/
-     * @author: xlacina5
+     * @version etapa4
+     * @author:
      */
-    void prectiZeSouboruPravidla() {
+    public String prectiZeSouboruPravidla() {
+        String radek;
+        String pravidla="";
         try (BufferedReader br = new BufferedReader(new FileReader("pravidla.txt"))) {
-            String radek;
+
 
             while((radek=br.readLine())!=null){
                 System.out.println(radek);
+                pravidla += radek + "\n";
             }
+
 
         } catch (FileNotFoundException e) {
             System.out.println("Soubor nenalezen");
@@ -260,7 +297,7 @@ public class HerniPlan {
             e.printStackTrace();
         }
 
-
+        return pravidla;
     }
 
     /**
@@ -268,7 +305,7 @@ public class HerniPlan {
      * @author xlacina5;
      * @version etapa-4;
      */
-    
+
     void ulozStavPolicek(){
         try(BufferedWriter bw = new BufferedWriter(new FileWriter("stavPolicek.csv"))) {
 
@@ -308,11 +345,36 @@ public class HerniPlan {
         }
     }
 
-    /*public int getHod(){
-        return kostka.getHodnotaHodu();
-    }*/
+    public String vypisVsechHracu(){
+        String vypisHracu="";
+        Iterator<Hrac> i = hraci.iterator();
+        while(i.hasNext()) {
+            vypisHracu+=i.next().toString()+"\n";
+        }
+        return vypisHracu;
+    }
 
-    //testovaci main
+
+    public String vypisAktualnihoHrace(int idHrace){
+        Hrac hrac;
+        String hracReturn="";
+        Iterator<Hrac> i = hraci.iterator();
+        while(i.hasNext()){
+            hrac=i.next();
+            if((hrac.getId())==idHrace){
+                hracReturn+=hrac.toString();
+                break;
+            }
+        }
+        return hracReturn;
+    }
+
+
+
+    public int hodKostkou(){
+        return kostka.getHodnotaHodu();
+    }
+
     public static void main(String[] args) {
         HerniPlan hp = new HerniPlan();
         //Kostka kostka = new Kostka();
