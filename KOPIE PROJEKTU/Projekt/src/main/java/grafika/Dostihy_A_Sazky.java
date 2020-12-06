@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Dostihy_a_Sazky extends JFrame {
+public class Dostihy_A_Sazky extends JFrame {
     JTextArea textAreaTa;
     JScrollPane scrollPane;
     JButton pocetHracuBtn;
@@ -30,7 +30,7 @@ public class Dostihy_a_Sazky extends JFrame {
     int hodnotaHodu=0;
     int aktualniHrac=1;
 
-    public Dostihy_a_Sazky(){
+    public Dostihy_A_Sazky(){
         HerniPlan hp = new HerniPlan();
         super.setTitle("Dostihy a sazky");
         //nastaveni okna
@@ -236,6 +236,6 @@ public class Dostihy_a_Sazky extends JFrame {
     }
 
     public static void main(String[] args) {
-        new Dostihy_a_Sazky();
+        new Dostihy_A_Sazky();
     }
 }
