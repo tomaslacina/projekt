@@ -108,6 +108,12 @@ public class Dostihy_A_Sazky extends JFrame {
         jmenoTf.setBounds(100,80,100,30);
         jmenoTf.setVisible(false);
 
+        /**
+         * Vytvoøení tlaèítka pro vytvoøení nového hráèe
+         * @author: xlacina5
+         * @version: etapa-4
+         */
+
         vytvorHraceBtn=new JButton("Vytvoø hráèe");
         vytvorHraceBtn.setBounds(200,80,150,30);
         vytvorHraceBtn.setVisible(false);
@@ -151,6 +157,11 @@ public class Dostihy_A_Sazky extends JFrame {
             }
         });
 
+        /**
+         * Tlaèítko pro naètení pravidel ze souboru
+         *@author: xlacina5
+         *@version: etapa-4
+         */
         nactiPravidlaBtn = new JButton("Pravidla Hry");
         nactiPravidlaBtn.setBounds(1000,10,150,30);
         nactiPravidlaBtn.setVisible(false);
@@ -160,6 +171,12 @@ public class Dostihy_A_Sazky extends JFrame {
                 textAreaTa.setText(hp.prectiZeSouboruPravidla());
             }
         });
+
+        /**
+         * Tlaèítko pro výpis hráèù
+         * @author: xlacina5
+         * @version: etapa-4
+         */
 
         vypisHraceBtn = new JButton("Výpis Hráèù");
         vypisHraceBtn.setBounds(1000,50,150,30);
@@ -206,6 +223,11 @@ public class Dostihy_A_Sazky extends JFrame {
             }
         });
 
+        /**
+         * Tlaèítko pro pøepnutí na dalšího hráèe
+         * @version: etapa-4
+         * @author: xlacina5
+         */
 
         dalsiHracBtn = new JButton("Další Hráè");
         dalsiHracBtn.setBounds(1000,130,150,30);
@@ -223,6 +245,12 @@ public class Dostihy_A_Sazky extends JFrame {
             }
         });
 
+        /**
+         * Tlaèítko pro zobrazení aktuálního hráèe, který je na tahu
+         * @version: etapa-4
+         * @author: xlacina5
+         */
+
         zobrazAktualnihoHraceBtn = new JButton("Aktuální hráè");
         zobrazAktualnihoHraceBtn.setBounds(1000,170,150,30);
         zobrazAktualnihoHraceBtn.setVisible(false);
@@ -231,8 +259,16 @@ public class Dostihy_A_Sazky extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 textAreaTa.setText("Informace o hráèi èíslo:"+aktualniHrac+"\n");
                 textAreaTa.append(hp.vypisAktualnihoHrace(aktualniHrac)+"\n");
+                textAreaHracNaTahuTa.setText("");
+                textAreaHracNaTahuTa.append(hp.vypisAktualnihoHrace(aktualniHrac));
             }
         });
+
+        /**
+         * Zobrazí informace o políèku
+         * @author: xlacina5
+         * @version: etapa-4
+         */
 
         zobrazInformacePolickoBtn = new JButton("Informace o políèku");
         zobrazInformacePolickoBtn.setBounds(1000,210,150,30);
