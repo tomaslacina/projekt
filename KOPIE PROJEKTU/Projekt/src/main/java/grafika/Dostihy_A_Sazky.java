@@ -222,6 +222,7 @@ public class Dostihy_A_Sazky extends JFrame {
 
 
 
+
         //pridani prvku do aplikace
         add(scrollPane);
         add(pocetHracuBtn);
@@ -240,9 +241,11 @@ public class Dostihy_A_Sazky extends JFrame {
 
         repaint();
 
+      
     }
 
     public static void main(String[] args) {
         new Dostihy_A_Sazky();
+
     }
 }
