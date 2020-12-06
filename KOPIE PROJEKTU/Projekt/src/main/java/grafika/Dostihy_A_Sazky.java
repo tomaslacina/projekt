@@ -14,6 +14,7 @@ public class Dostihy_A_Sazky extends JFrame {
     JComboBox pocetHracuCombo;
     JLabel popisekLbl;
     JLabel jmenoHraceLbl;
+    JLabel herniPlanLbl;
     JTextField jmenoTf;
     JButton vytvorHraceBtn;
 
@@ -35,7 +36,7 @@ public class Dostihy_A_Sazky extends JFrame {
         super.setTitle("Dostihy a sazky");
         //nastaveni okna
         setLayout(null);
-        setSize(1000,800); //velikost aplikace
+        setSize(1250,800); //velikost aplikace
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //zmackunim krizku se to zavre a ukonci
         setLocationRelativeTo(null);
         setVisible(true);
@@ -214,8 +215,7 @@ public class Dostihy_A_Sazky extends JFrame {
             }
         });
 
-
-
+        
         //pridani prvku do aplikace
         add(scrollPane);
         add(pocetHracuBtn);
@@ -230,6 +230,7 @@ public class Dostihy_A_Sazky extends JFrame {
         add(dalsiHracBtn);
         add(zobrazAktualnihoHraceBtn);
         add(zobrazInformacePolickoBtn);
+        add(herniPlanLbl);
 
         repaint();
 
