@@ -1,41 +1,50 @@
-Cíl hry:
-Koupovat koně, stavět je do dostihů, vyhrávat dostihy, poskytovat služby spojené s dostihovým sportem a dosáhnout co největšího zisku.
+Cil hry:
+Kupovat kone, stavet je do dostihu, vyhravat dostihy, poskytovat sluzby spojene s dostihy
+Dosahnout co nejvetsiho zisku!
 ================================================================
-Výchozí situace
-Balíčky karet Finance a Náhoda se zamíchají a umístí doprostřed desky, oba rubem navrch.
-Každý hráč dostane 30.000,- do začátku (1×10.000, 6×2.000, 4×1.000, 3×400, 10×200, 7×100, 5×20).
-Hráči si mezi sebou zvolí bankéře, který se rovněž může zůčastnit hry jako jeden z hráčů.
-Kameny stojí na poli Start.
+Vychozi situace:
+Kazdy hrac dostane 30.000 kc do zacatku
+Hraci si mezi sebou zvoli bankere, ktery se take ucastni hry
+Vsichni hraci se nachazi na pozici start policko cislo [0]
 ================================================================
 Hra:
-Hráči se v tazích pravidelně střídají.
-Hráči postupují po hrací desce ve směru hodinových ručiček o tolik polí, kolik jim padlo na kostce, stále dokola.
-Padne-li hráči číslo 6, má právo na hod navíc, hody se sčítají.
-Každé pole má určitý význam a hráč musí ihned provést to, co z tohoto pole vyplývá.
-Na startovním poli před prvním tahem a později v průběhu hry pokaždé, když se tu kámen zastaví nebo přes startovní pole přejde, hráč obdrží od bankéře 4.000.
-Když se kámen zastaví na poli s koněm a tento kůň je dosud volný, hráč má právo ho koupit od banky za cenu, která je na poli uvedená. Zůstane-li kámen stát na poli s dosud volnou přepravou, stájemi nebo trenéry, může hráč tento druh podniku převzít od banky za vyznačenou cenu. Bankéř po zaplacení příslušné částky vydá vlastnickou kartičku a nový majitel si ji položí na stůl před sebe lícem vzhůru.
-Hráč, jehož kámen se zastaví na poli koně, který patří některému ze soupeřů, musí zaplatit prohlídku stáje za cenu uvedenou na vlastnické kartě. Je-li tento kůň obsazen do jednoho nebo více dostihů, či hlavního dostihu sezóny, cena se zvyšuje (taxy jsou uvedeny na každé kartičce).
-Hráč, který se zastavil na poli Stáje nebo Přeprava, které patří některému ze soupeřů, zaplatí majiteli 80tinásobek hodu kostkou. Jestliže majitel vlastní obě karty, cena se zvyšuje na 200násobek.
-Hráč, který se zastavil na poli Trenér, zaplatí jeho majiteli poplatek podle následujících sazeb:
-Vlastní-li majitel pouze tuto jednu trenérskou licenci, hráč mu zaplatí 1.000.
-Vlastní-li majitel celkem 2 trenérské licence, hráč mu zaplatí 2.000.
-Vlastní-li majitel celkem 3 trenérské licence, hráč mu zaplatí 3.000.
-Vlastní-li majitel všechny 4 trenérské licence, hráč mu zaplatí 4.000.
-Když se kámen zastaví na polích Obecní fond a Náhoda, musí hráč odebrat ze stejně pojmenované hromádky horní kartu a vykonat, co je na ní napsáno.
-Při zastavení na poli Veterinární vyšetření zaplatí hráč uvedený obnos.
-Když se kámen zastaví na poli Podezření z dopingu, hráč jednou nehází a v tomto vynechaném hodu se neúčastní žádného dostihu, tj. soupeři mu neplatí žádné poplatky za dostihy, vyjma poplatku za prohlídku stáje.
-Kámen, který se zastaví na poli Distanc nebo se na něj dostal použitím katy Náhoda, nebo hodí-li hráč v průběhu hry dvakrát po sobě 6, se po dobu distance nezúčastňuje dostihů. Nikdo za spoluhráčů mu po dobu distance neplatí žádné poplatky za dostihy, pouze za prohlídku stájí. Distancovaný hráč se účastní házení kostkou ve svém pořadí. Po hození čísla 6 distanc končí a hráč hází ještě jednou. Teprve po druhém hodu postupuje na další pole.
-Na poli Parkoviště se neplatí žádné poplatky.
-Vlastní-li hráč všechny koně jedné stáje (tj. jedné barvy) a zastaví-li při opětném postupu po hrací desce na kterémkoli koni této stáje, smí si koupit od banky podle své finanční situace 1 až 4 žluté žetony představující dostihy. Zakoupené žetony položí na pole koně, pro kterého dostih koupil. Zastaví-li protihráč na poli s položenými žetony, platí jejich majiteli částku, která je uvedena na kartičce.
-Hráč, který získal všechny koně jedné stáje a má postaveného některého z těchto koní již do 4 dostihů, smí ho postavit do hlavního dostihu sezóny zakoupením červeného žetonu a vrácením žlutých. Každý kůň smí být postaven jen do jednoho hlavního dostihu sezóny.
-Nákupy a obchodní jednání mohou probíhat i mezi jednotlivými hráči, nejen mezi hráčem a bankou. Rozhoduje pouze nabídka a poptávka. Obchodní jednání uzavírá hráč po hodu kostkou a po postoupení o odpovídající počet polí. Do jeho skončení žádný další hráč nehází, i když není účastníkem jednání.
-Každý vlastník služeb nebo koně je povinen se sám přihlásit o své nároky vůči ostatním hráčům i vůči bance. V případě, že tak neučiní, dalším následujícím hodem jiného hráče jeho nároky zanikají.
-Riziko, které pro hráče vyplývá ze soupeřových koní postavených do dostihů nebo do hlavního dostihu, lze snížit sázením. Před hodem položí hráč libovolné množství peněz na jednoho či více soupeřových koní, ovšem pouze na ta pole, která jsou obsazena minimálně třemi dostihy nebo hlavním dostihem. Sázky platí jen pro jeden hod. V případě, že po tomto hodu hráč skutečně zastaví na některém z koní na něhož vsadil, vyplatí mu majitel koně desetinásobek vsazené částky. I když hráč sázku vyhraje, musí zaplatit majiteli koně zisk z počtu dostihů. Nevstoupí-li na sázkou označené pole, získává sázku majitel koně. Sázek na koně se smí účastnit pouze ten hráč, který sám vlastní aspoň 1 koně s minimálně třemi dostihy.
-Nemá-li hráč dostatek financí na plnění finančních závazků, je povinen odprodat část svého majetku na jejich uhrazení. Služby (stáje, přepravu, trenérské licence) může podle své úvahy odprodat buď bance za pořizovací cenu nebo ostatním hráčům za cenu libovolnou. Prodej koní probíhá následovně:
-Jestliže vlastní celou stáj s aspoň jedním obsazeným dostihem, prodá jednomu soupeři tuto celou stáj i s dostihy za libovolnou cenu. Nelze prodávat část stáje, pokud je obsazen aspoň 1 dostih.
-Vrátí bance libovolný počet dostihů. Banka vyplatí hráči za vrácené dostihy poloviční pořizovací cenu.
-Není-li žádný kůň ze stáje obsazen do žádného dostihu, může prodat soupeřům koně za libovolnou cenu nebo bance za pořizovací cenu.
-================================================================
-Konec hry
-Vítězem se stává hráč, který zůstane jako poslední ve hře.
-Hra pro hráče končí, nemá-li další prostředky na vyrovnání dluhů. Končí-li hru s dluhem i po odprodání veškerého majetku, dorovná jeho dluh banka.
+Hraci se pravidelne stridaji na tahu.
+Hraci postupuji po hraci desce ve smeru hodinovych rucicek o tolik poli, kolik jim padlo na kostce.
+Padne-li hraci cislo 6, ma pravo hazet jeste jednou, v tomto pripade se hody scitaji.
+Kazde pole ma urcity vyznam a hraci musi provest to, co je na nich napsane (viz. popis Policka)
+Po kazdem projiti startu (policko cislo [0]) obrzi hrac navic 4.000 kc.
+Pokud hrac zastavi na poli kde je kun, ma pravo ho koupit za cenu, ktera se zobrazi v popisu hraci karty.
+Toto pravo ma hrac i v pripade ze zastavi na jinem typu policka:
+	->Preprava
+	->Staj
+	->Trener
+Hrac, ktery zastavi na poli s konem, ktery uz patri jinemu hraci, musi mu zaplatit prohlidku staje.
+Cena prohlidky je uvedena v popisu hraci karticky
+Pokud tento kun je obsazen do jednoho nebo vice dostihu nebo dokonce do hlavniho dostihu, pak se sazby zvysuji.
+Opet ceny budou zobrazeny v popisu hraci karticky
+Hrac, ktery zastavil na policku STAJE nebo PREPRAVA, ktere patri jinemu hraci, tak zaplati 80ti nasobek hodnoty hodu!
+Jestlize majitel vlastni obe karty zaroven, pak se cena zvysuje na 200 nasobek hodnoty hodu.
+Hrac, ktery zastavil na policku TRENER, zaplati jeho majiteli poplatek podle nasledujich sazeb:
+	->1 licence = 1.000 Kc
+	->2 licence = 2.000 Kc
+	->3 licence = 3.000 Kc
+	->4 licence = 4.000 Kc
+Kdyz kamen zastavi na poli OBECNI FOND nebo NAHODA, zobrazi se hraci v poli informace o tom co v danem kole musi udelat
+Karticky nahoda obsahuji:........
+Pokud hrac zastavi na policku VETERINARNI PROHLIDKA, zaplati castku uvedenou na karticce
+*
+DISTANC?????????
+*
+Na poli PARKOVISTE se neplati zadne poplatky
+Pokud hrac vlastni VSECHNY kone jedne staje (stejne barvy), pak si muze koupit od banky pri opetovnem vkroceni na policko tohoto kone zetony (1-4)
+Koupi zetonu zvysuje cenu svych koni - hraci mu musi zaplatit vice penez podle hodnot uvedenych na karticce.
+---
+SAZKA?
+---
+Hrac muze bance prodat zpet kone ovsem za polovicni hodnotu
+Hrac take muze prodat bance svuj majetek opet za polovicni porizovaci cenu
+---
+KONEC HRY:
+Vitezem se stava ten hrac, ktery zustane jako posledni ve hre
+Hra pro hrace konci, nema-li dostatek penez na uhrazeni svych zavazku.
+
