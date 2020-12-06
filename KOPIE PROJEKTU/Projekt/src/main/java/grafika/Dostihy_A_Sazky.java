@@ -47,10 +47,10 @@ public class Dostihy_A_Sazky extends JFrame {
         //prvky aplikace
 
         textAreaTa = new JTextArea();
-        textAreaTa.setBounds(100,300,750,300); //nastaveni velikosti - musi byt asi stejne jak scrollPane
+        textAreaTa.setBounds(100,300,500,300); //nastaveni velikosti - musi byt asi stejne jak scrollPane
 
         scrollPane = new JScrollPane(); //aby se to dalo posunovat nahoru a dolu (doleva, doprava)
-        scrollPane.setBounds(100,300,750,300);
+        scrollPane.setBounds(100,300,500,300);
         scrollPane.getViewport().setBackground(Color.WHITE); //pozadi
         scrollPane.getViewport().add(textAreaTa); //pridani textArea do scrollPane
 
@@ -215,7 +215,13 @@ public class Dostihy_A_Sazky extends JFrame {
             }
         });
 
-        
+        herniPlanLbl=new JLabel();
+        herniPlanLbl.setIcon(new ImageIcon("dostihysazky.png"));
+        herniPlanLbl.setBounds(750,100,500,500);
+        herniPlanLbl.validate();
+
+
+
         //pridani prvku do aplikace
         add(scrollPane);
         add(pocetHracuBtn);
