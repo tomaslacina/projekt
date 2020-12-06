@@ -71,6 +71,15 @@ public class Hrac {
         return sb.toString();
     }
 
+
+    public String vypisHraca(){
+        String vypis="";
+        vypis+="Meno: "+meno+"\n"+"Stav konta: "+stavKonta+"\n"+"Seznam koni: "+seznamKoni+"\n"+"Sezam treneru: "+seznamTreneru+"\n";
+        return vypis;
+
+
+    }
+
     /**
      * Metoda pripočíta alebo odpocíta určitú sumu z hračovho konta.
      * @param suma hodnota o koľko sa zmeni hračové konto, rozsah: -x; x (-300, 500,...).

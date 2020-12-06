@@ -349,7 +349,7 @@ public class HerniPlan {
         String vypisHracu="";
         Iterator<Hrac> i = hraci.iterator();
         while(i.hasNext()) {
-            vypisHracu+=i.next().toString()+"\n";
+            vypisHracu+=i.next().vypisHraca()+"\n";
         }
         return vypisHracu;
     }
@@ -362,7 +362,7 @@ public class HerniPlan {
         while(i.hasNext()){
             hrac=i.next();
             if((hrac.getId())==idHrace){
-                hracReturn+=hrac.toString();
+                hracReturn+=hrac.vypisHraca();
                 break;
             }
         }
