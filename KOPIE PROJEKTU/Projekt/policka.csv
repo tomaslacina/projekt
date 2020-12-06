@@ -1,40 +1,40 @@
-1;START;Startovací políèko;1;1;false
-2;KUN;Kùò Fantome;1;1;false
-3;FINANCE;Finance;1;1;false
-4;KUN;Kùò Gavora;1;1;false
-5;TREST;Veterinární vyšetøení;1;1;false
-6;TRENER;1. trenér;1;1;false
-7;KUN;Kùò Lady Anne;1;1;false
-8;NAHODA;Náhoda;1;1;false
-9;KUN;Kùò Pasek;1;1;false
-10;KUN;Kùò Koran;1;1;false
-11;DISTANC;Distanc;1;1;false
-12;KUN;Kùò Neklan;1;1;false
-13;NAHODA;Pøeprava ;1;1;false
-14;KUN;Kùò Portlancl;1;1;false
-15;KUN;Kùò Japan;1;1;false
-16;TRENER;2. trenér;1;1;false
-17;KUN;Kùò Kostrava;1;1;false
-18;FINANCE;Finance;1;1;false
-19;KUN;Kùò Lukava;1;1;false
-20;KUN;Kùò Melák;1;1;false
-21;PARKOVISTE;Parkovištì;1;1;false
-22;KUN;Kùò Grifel;1;1;false
-23;NAHODA;Náhoda;1;1;false
-24;KUN;Kùò Mohyla;1;1;false
-25;KUN;Kùò Metál;1;1;false
-26;TRENER;3. trenér;1;1;false
-27;KUN;Kùò Tara;1;1;false
-28;KUN;Kùò Furioso;1;1;false
-29;STAJ;Stáje;1;1;false
-30;KUN;Kùò Genius;1;1;false
-31;TREST;Trest - podezøení z dopingu;1;1;false
-32;KUN;Kùò Shagga;1;1;false
-33;KUN;Kùò Dahoman;1;1;false
-34;FINANCE;Finance;1;1;false
-35;KUN;Kùò Gira;1;1;false
-36;TRENER;4. trenér;1;1;false
-37;NAHODA;Náhoda;1;1;false
-38;KUN;Kùò Narcius;1;1;false
-39;NAHODA;Veterinární vyšetøení;1;1;false
-40;KUN;Kùò Napoli;1;1;false
+1;START;Startovací políèko;1;1;FALSE;415;500
+2;KUN;Kùò Fantome;1;1;FALSE;415;465
+3;FINANCE;Finance;1;1;FALSE;415;430
+4;KUN;Kùò Gavora;1;1;FALSE;415;400
+5;TREST;Veterinární vyšetøení;1;1;FALSE;415;365
+6;TRENER;1. trenér;1;1;FALSE;415;335
+7;KUN;Kùò Lady Anne;1;1;FALSE;415;300
+8;NAHODA;Náhoda;1;1;FALSE;415;270
+9;KUN;Kùò Pasek;1;1;FALSE;415;240
+10;KUN;Kùò Koran;1;1;FALSE;415;205
+11;DISTANC;Distanc;1;1;FALSE;415;170
+12;KUN;Kùò Neklan;1;1;FALSE;495;125
+13;NAHODA;Pøeprava ;1;1;FALSE;530;125
+14;KUN;Kùò Portlancl;1;1;FALSE;560;125
+15;KUN;Kùò Japan;1;1;FALSE;590;125
+16;TRENER;2. trenér;1;1;FALSE;625;125
+17;KUN;Kùò Kostrava;1;1;FALSE;655;125
+18;FINANCE;Finance;1;1;FALSE;690;125
+19;KUN;Kùò Lukava;1;1;FALSE;720;125
+20;KUN;Kùò Melák;1;1;FALSE;755;125
+21;PARKOVISTE;Parkovištì;1;1;FALSE;790;125
+22;KUN;Kùò Grifel;1;1;FALSE;835;205
+23;NAHODA;Náhoda;1;1;FALSE;835;240
+24;KUN;Kùò Mohyla;1;1;FALSE;835;270
+25;KUN;Kùò Metál;1;1;FALSE;835;300
+26;TRENER;3. trenér;1;1;FALSE;835;335
+27;KUN;Kùò Tara;1;1;FALSE;835;365
+28;KUN;Kùò Furioso;1;1;FALSE;835;400
+29;STAJ;Stáje;1;1;FALSE;835;430
+30;KUN;Kùò Genius;1;1;FALSE;835;465
+31;TREST;Trest - podezøení z dopingu;1;1;FALSE;835;505
+32;KUN;Kùò Shagga;1;1;FALSE;755;545
+33;KUN;Kùò Dahoman;1;1;FALSE;720;545
+34;FINANCE;Finance;1;1;FALSE;690;545
+35;KUN;Kùò Gira;1;1;FALSE;655;545
+36;TRENER;4. trenér;1;1;FALSE;625;545
+37;NAHODA;Náhoda;1;1;FALSE;590;545
+38;KUN;Kùò Narcius;1;1;FALSE;560;545
+39;NAHODA;Veterinární vyšetøení;1;1;FALSE;530;545
+40;KUN;Kùò Napoli;1;1;FALSE;500;545

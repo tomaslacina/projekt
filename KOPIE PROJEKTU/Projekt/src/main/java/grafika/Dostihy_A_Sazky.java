@@ -9,12 +9,15 @@ import java.awt.event.ActionListener;
 
 public class Dostihy_A_Sazky extends JFrame {
     JTextArea textAreaTa;
+    JTextArea textAreaHracNaTahuTa;
     JScrollPane scrollPane;
     JButton pocetHracuBtn;
     JComboBox pocetHracuCombo;
     JLabel popisekLbl;
     JLabel jmenoHraceLbl;
     JLabel herniPlanLbl;
+    JLabel hracNaTahuLbl;
+    JLabel markerLbl;
     JTextField jmenoTf;
     JButton vytvorHraceBtn;
 
@@ -47,27 +50,34 @@ public class Dostihy_A_Sazky extends JFrame {
         //prvky aplikace
 
         textAreaTa = new JTextArea();
-        textAreaTa.setBounds(100,300,500,300); //nastaveni velikosti - musi byt asi stejne jak scrollPane
+        textAreaTa.setBounds(10,10,500,60); //nastaveni velikosti - musi byt asi stejne jak scrollPane
 
         scrollPane = new JScrollPane(); //aby se to dalo posunovat nahoru a dolu (doleva, doprava)
-        scrollPane.setBounds(100,300,500,300);
+        scrollPane.setBounds(10,10,500,60);
         scrollPane.getViewport().setBackground(Color.WHITE); //pozadi
         scrollPane.getViewport().add(textAreaTa); //pridani textArea do scrollPane
 
 
         popisekLbl = new JLabel("Poèet hráèù");
-        popisekLbl.setBounds(10,10,100,30);
+        popisekLbl.setBounds(10,80,100,30);
+
+
 
         pocetHracuCombo = new JComboBox();
         for (int i =2;i<=7;i++){
             pocetHracuCombo.addItem(i);
         }
-        pocetHracuCombo.setBounds(100,10,100,30);
+        pocetHracuCombo.setBounds(100,80,100,30);
 
 
+        /**
+         * Button pre potvrdenie poètu hráèov v setup-e.
+         * @author xrepka
+         * @version etapa-4
+         */
 
         pocetHracuBtn=new JButton("Potvrï poèet");
-        pocetHracuBtn.setBounds(200,10,150,30);
+        pocetHracuBtn.setBounds(200,80,150,30);
         pocetHracuBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -83,17 +93,23 @@ public class Dostihy_A_Sazky extends JFrame {
                 vytvorHraceBtn.setVisible(true);
             }
         });
+        /**
+         * Nadis v setup-e.
+         * @author xrepka
+         * @version etapa-4
+         */
 
         jmenoHraceLbl= new JLabel("Jméno hráèe:");
-        jmenoHraceLbl.setBounds(250,10,100,30);
+        jmenoHraceLbl.setBounds(10,80,100,30);
         jmenoHraceLbl.setVisible(false);
 
+
         jmenoTf=new JTextField();
-        jmenoTf.setBounds(350,10,100,30);
+        jmenoTf.setBounds(100,80,100,30);
         jmenoTf.setVisible(false);
 
         vytvorHraceBtn=new JButton("Vytvoø hráèe");
-        vytvorHraceBtn.setBounds(450,10,150,30);
+        vytvorHraceBtn.setBounds(200,80,150,30);
         vytvorHraceBtn.setVisible(false);
         vytvorHraceBtn.addActionListener(new ActionListener() {
             @Override
@@ -109,6 +125,7 @@ public class Dostihy_A_Sazky extends JFrame {
                 else{
                     textAreaTa.setText("NEPLATNÝ VSTUP!!! JMÉNO HRÁÈE MUSÍ OBSAHOVAT ALESPOÒ 3 ZNAKY!");
                     jmenoTf.setText("");
+
                 }
 
                 if(cisloHrace==pocetHracu){
@@ -117,17 +134,25 @@ public class Dostihy_A_Sazky extends JFrame {
                     jmenoHraceLbl.setVisible(false);
                     vytvorHraceBtn.setVisible(false);
 
+
+                    textAreaHracNaTahuTa.setVisible(true);
                     nactiPravidlaBtn.setVisible(true);
                     vypisHraceBtn.setVisible(true);
                     kostkaBtn.setVisible(true);
                     zobrazAktualnihoHraceBtn.setVisible(true);
                     zobrazInformacePolickoBtn.setVisible(true);
+                    herniPlanLbl.setVisible(true);
+                    hracNaTahuLbl.setVisible(true);
+                    markerLbl.setVisible(true);
+
+
+                    textAreaHracNaTahuTa.setText(hp.vypisAktualnihoHrace(aktualniHrac));
                 }
             }
         });
 
         nactiPravidlaBtn = new JButton("Pravidla Hry");
-        nactiPravidlaBtn.setBounds(600,10,150,30);
+        nactiPravidlaBtn.setBounds(1000,10,150,30);
         nactiPravidlaBtn.setVisible(false);
         nactiPravidlaBtn.addActionListener(new ActionListener() {
             @Override
@@ -137,7 +162,7 @@ public class Dostihy_A_Sazky extends JFrame {
         });
 
         vypisHraceBtn = new JButton("Výpis Hráèù");
-        vypisHraceBtn.setBounds(600,50,150,30);
+        vypisHraceBtn.setBounds(1000,50,150,30);
         vypisHraceBtn.setVisible(false);
         vypisHraceBtn.addActionListener(new ActionListener() {
             @Override
@@ -145,9 +170,14 @@ public class Dostihy_A_Sazky extends JFrame {
                 textAreaTa.setText(hp.vypisVsechHracu());
             }
         });
+        /**
+         * Vytvorenie tlaèidla pre hod kockou.
+         * @author xrepka
+         * @version etapa-4
+         */
 
         kostkaBtn = new JButton("Kostka");
-        kostkaBtn.setBounds(600,90,150,30);
+        kostkaBtn.setBounds(1000,90,150,30);
         kostkaBtn.setVisible(false);
         kostkaBtn.addActionListener(new ActionListener() {
             @Override
@@ -178,7 +208,7 @@ public class Dostihy_A_Sazky extends JFrame {
 
 
         dalsiHracBtn = new JButton("Další Hráè");
-        dalsiHracBtn.setBounds(600,130,150,30);
+        dalsiHracBtn.setBounds(1000,130,150,30);
         dalsiHracBtn.setVisible(false);
         dalsiHracBtn.addActionListener(new ActionListener() {
             @Override
@@ -194,7 +224,7 @@ public class Dostihy_A_Sazky extends JFrame {
         });
 
         zobrazAktualnihoHraceBtn = new JButton("Aktuální hráè");
-        zobrazAktualnihoHraceBtn.setBounds(600,170,150,30);
+        zobrazAktualnihoHraceBtn.setBounds(1000,170,150,30);
         zobrazAktualnihoHraceBtn.setVisible(false);
         zobrazAktualnihoHraceBtn.addActionListener(new ActionListener() {
             @Override
@@ -205,7 +235,7 @@ public class Dostihy_A_Sazky extends JFrame {
         });
 
         zobrazInformacePolickoBtn = new JButton("Informace o políèku");
-        zobrazInformacePolickoBtn.setBounds(600,210,150,30);
+        zobrazInformacePolickoBtn.setBounds(1000,210,150,30);
         zobrazInformacePolickoBtn.setVisible(false);
         zobrazInformacePolickoBtn.addActionListener(new ActionListener() {
             @Override
@@ -215,10 +245,53 @@ public class Dostihy_A_Sazky extends JFrame {
             }
         });
 
+        /**
+         * Naèítanie obrázku plánu do hry.
+         * @author xrepka
+         * @version etapa-4
+         */
+
         herniPlanLbl=new JLabel();
         herniPlanLbl.setIcon(new ImageIcon("dostihysazky.png"));
-        herniPlanLbl.setBounds(750,100,500,500);
+        herniPlanLbl.setBounds(450,100,500,500);
         herniPlanLbl.validate();
+        herniPlanLbl.setVisible(false);
+
+
+        /**
+         * Nadpis, kotrý sa zobrazí po prvotnom setup-e.
+         * @author xrepka
+         * @version etapa-4
+         */
+
+
+        hracNaTahuLbl = new JLabel("Hráè na tahu:");
+        hracNaTahuLbl.setBounds(10,120,150,30);
+        hracNaTahuLbl.setFont(new Font("Thimes",Font.BOLD,20));
+        hracNaTahuLbl.setVisible(false);
+
+        /**
+         * Vypis text area pre výpis informácií o hráèovi, ktorý je prave na ahu.
+         * @author xrepka
+         * @version etapa-4
+         */
+
+        textAreaHracNaTahuTa = new JTextArea();
+        textAreaHracNaTahuTa.setBounds(10,180,300,200);
+        textAreaHracNaTahuTa.setFont(new Font("Thimes",Font.BOLD,12));
+        textAreaHracNaTahuTa.setVisible(false);
+
+        /**
+         * Marker pre zobrazenie pozície aktuálneho hráèa
+         * @author xrepka
+         * @version etapa-4
+         */
+
+        markerLbl = new JLabel();
+        markerLbl.setIcon(new ImageIcon("x.png"));
+        markerLbl.setBounds(415,500,30,30);
+        markerLbl.validate();
+        markerLbl.setVisible(false);
 
 
 
@@ -238,6 +311,11 @@ public class Dostihy_A_Sazky extends JFrame {
         add(zobrazAktualnihoHraceBtn);
         add(zobrazInformacePolickoBtn);
         add(herniPlanLbl);
+        add(hracNaTahuLbl);
+        add(textAreaHracNaTahuTa);
+        add(markerLbl);
+
+
 
         repaint();
 
