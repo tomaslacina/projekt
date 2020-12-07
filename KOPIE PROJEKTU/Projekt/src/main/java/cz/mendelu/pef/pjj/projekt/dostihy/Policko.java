@@ -66,6 +66,14 @@ public class Policko {
     }*/
 
 
+    public int getPoziceX() {
+        return poziceX;
+    }
+
+    public int getPoziceY() {
+        return poziceY;
+    }
+
     /**
      * toString - policko - vypis informaci o policku
      * @return

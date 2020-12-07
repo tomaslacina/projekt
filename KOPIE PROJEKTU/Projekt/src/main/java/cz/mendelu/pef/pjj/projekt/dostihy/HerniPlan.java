@@ -1,5 +1,6 @@
 package cz.mendelu.pef.pjj.projekt.dostihy;
 
+import javax.swing.text.html.HTMLDocument;
 import java.awt.image.Kernel;
 import java.io.*;
 import java.util.*;
@@ -14,6 +15,7 @@ public class HerniPlan {
     private final int pocetPolicek = 40;
 
     private Set<Kun> kone = new HashSet<>();
+
 
 
 
@@ -78,7 +80,9 @@ public class HerniPlan {
 
     }
 
-    /**
+
+
+        /**
      * Metoda vypise hracovi kone, ktere vlastni
      *
      * @author xlacina5
@@ -374,6 +378,31 @@ public class HerniPlan {
     public int hodKostkou(){
         return kostka.getHodnotaHodu();
     }
+
+
+    public int getXPolicka(int cisloPolicka){
+        int x = 0;
+        for (Map.Entry<Integer,Policko> entry : mapaPolicek.entrySet()) {
+            if (cisloPolicka == entry.getKey()) {
+                x = entry.getValue().getPoziceX();
+            }
+        }
+        return x;
+    }
+
+
+    public int getYPolicka(int cisloPolicka){
+        int y = 0;
+        for (Map.Entry<Integer,Policko> entry : mapaPolicek.entrySet()) {
+            if (cisloPolicka == entry.getKey()) {
+                y = entry.getValue().getPoziceY();
+            }
+        }
+        return y;
+    }
+
+
+
 
     /*public static void main(String[] args) {
         HerniPlan hp = new HerniPlan();
