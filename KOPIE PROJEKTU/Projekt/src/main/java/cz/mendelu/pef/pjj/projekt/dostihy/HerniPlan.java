@@ -237,7 +237,7 @@ public class HerniPlan {
 
 
     public void akce(int cisloPolicka) {
-        throw new UnsupportedOperationException("Not implemented yet.");
+
     }
 
 
@@ -393,6 +393,7 @@ public class HerniPlan {
 
     public int getYPolicka(int cisloPolicka){
         int y = 0;
+
         for (Map.Entry<Integer,Policko> entry : mapaPolicek.entrySet()) {
             if (cisloPolicka == entry.getKey()) {
                 y = entry.getValue().getPoziceY();
@@ -400,6 +401,18 @@ public class HerniPlan {
         }
         return y;
     }
+
+    public TypPolicka getTypPolicka(int cisloPolicka){
+        TypPolicka typPolicka = null;
+        for (Map.Entry<Integer,Policko> entry : mapaPolicek.entrySet()) {
+            if (cisloPolicka == entry.getKey()) {
+                typPolicka = entry.getValue().getTypPolicka();
+            }
+        }
+        return typPolicka;
+    }
+
+
 
 
 
