@@ -1,6 +1,7 @@
 package grafika;
 
 import cz.mendelu.pef.pjj.projekt.dostihy.HerniPlan;
+import cz.mendelu.pef.pjj.projekt.dostihy.TypPolicka;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,18 +22,23 @@ public class Dostihy_A_Sazky extends JFrame {
     JTextField jmenoTf;
     JButton vytvorHraceBtn;
 
+
     JButton nactiPravidlaBtn;
     JButton vypisHraceBtn;
     JButton kostkaBtn;
     JButton dalsiHracBtn;
     JButton zobrazAktualnihoHraceBtn;
     JButton zobrazInformacePolickoBtn;
+    JButton zahrajTahBtn;
 
-
+    TypPolicka typPolicka;
     int pocetHracu;
     int cisloHrace=0;
     int hodnotaHodu=0;
     int aktualniHrac=1;
+    int xPozice=0;
+    int yPozice=0;
+
 
     public Dostihy_A_Sazky(){
         HerniPlan hp = new HerniPlan();
@@ -236,12 +242,20 @@ public class Dostihy_A_Sazky extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //zatim
-                kostkaBtn.setVisible(true);
                 dalsiHracBtn.setVisible(false);
+
                 aktualniHrac++; //kdyz prekrocim, tak vynuluj - nastav na 1
-                if(aktualniHrac>pocetHracu){
+                xPozice=hp.getXPolicka(hp.vratHrace(aktualniHrac).getPozice());
+                yPozice=hp.getYPolicka(hp.vratHrace(aktualniHrac).getPozice());
+                markerLbl.setBounds(xPozice,yPozice,30,30);
+                System.out.println(xPozice+" "+yPozice);
+                if(aktualniHrac>=pocetHracu){
                     aktualniHrac=1;
                 }
+
+
+
+
             }
         });
 
@@ -332,6 +346,40 @@ public class Dostihy_A_Sazky extends JFrame {
 
 
 
+
+        zahrajTahBtn=new JButton("Zahraj tah");
+        zahrajTahBtn.setBounds(50,700,150,30);
+        zahrajTahBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                hodnotaHodu=hp.hodKostkou();
+                hp.posunPoPlane(aktualniHrac,hodnotaHodu);
+                xPozice=hp.getXPolicka(hp.vratHrace(aktualniHrac).getPozice());
+                yPozice=hp.getYPolicka(hp.vratHrace(aktualniHrac).getPozice());
+                markerLbl.setBounds(xPozice,yPozice,30,30);
+                typPolicka=hp.getTypPolicka(hp.vratHrace(aktualniHrac).getPozice());
+                textAreaTa.append("Hodna hodu: "+hodnotaHodu);
+                switch (typPolicka){
+                    case KUN -> {
+                        textAreaTa.append("Stojis na koni");
+
+                        break;
+                    }default -> textAreaTa.append("Not implemented yet!");
+
+
+                }
+                System.out.println(xPozice+" "+yPozice);
+                dalsiHracBtn.setVisible(true);
+
+
+
+
+
+            }
+        });
+
+
+
         //pridani prvku do aplikace
         add(scrollPane);
         add(pocetHracuBtn);
@@ -350,7 +398,7 @@ public class Dostihy_A_Sazky extends JFrame {
         add(hracNaTahuLbl);
         add(textAreaHracNaTahuTa);
         add(markerLbl);
-
+        add(zahrajTahBtn);
 
 
         repaint();
