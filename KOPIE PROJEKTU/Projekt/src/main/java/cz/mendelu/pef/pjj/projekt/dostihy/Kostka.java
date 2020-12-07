@@ -20,6 +20,7 @@ public class Kostka {
         if(hodnotaHodu==0){
             hodnotaHodu=1;
         }
+
         return hodnotaHodu;
     }
 

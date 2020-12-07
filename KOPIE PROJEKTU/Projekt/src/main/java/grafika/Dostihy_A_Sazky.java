@@ -35,7 +35,7 @@ public class Dostihy_A_Sazky extends JFrame {
     int pocetHracu;
     int cisloHrace=0;
     int hodnotaHodu=0;
-    int aktualniHrac=1;
+    int aktualniHrac=2;
     int xPozice=0;
     int yPozice=0;
 
@@ -156,7 +156,7 @@ public class Dostihy_A_Sazky extends JFrame {
                     herniPlanLbl.setVisible(true);
                     hracNaTahuLbl.setVisible(true);
                     markerLbl.setVisible(true);
-
+                    zahrajTahBtn.setVisible(true);
 
                     textAreaHracNaTahuTa.setText(hp.vypisAktualnihoHrace(aktualniHrac));
                 }
@@ -243,15 +243,17 @@ public class Dostihy_A_Sazky extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 //zatim
                 dalsiHracBtn.setVisible(false);
-
+                zahrajTahBtn.setVisible(true);
                 aktualniHrac++; //kdyz prekrocim, tak vynuluj - nastav na 1
-                xPozice=hp.getXPolicka(hp.vratHrace(aktualniHrac).getPozice());
-                yPozice=hp.getYPolicka(hp.vratHrace(aktualniHrac).getPozice());
-                markerLbl.setBounds(xPozice,yPozice,30,30);
-                System.out.println(xPozice+" "+yPozice);
+
                 if(aktualniHrac>=pocetHracu){
                     aktualniHrac=1;
                 }
+                xPozice=hp.getXPolicka(hp.vratHrace(aktualniHrac).getPozice());
+                yPozice=hp.getYPolicka(hp.vratHrace(aktualniHrac).getPozice());
+                markerLbl.setBounds(xPozice,yPozice,30,30);
+                System.out.println(aktualniHrac);
+                System.out.println(xPozice+" "+yPozice);
 
 
 
@@ -349,9 +351,14 @@ public class Dostihy_A_Sazky extends JFrame {
 
         zahrajTahBtn=new JButton("Zahraj tah");
         zahrajTahBtn.setBounds(50,700,150,30);
+        zahrajTahBtn.setVisible(false);
         zahrajTahBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                dalsiHracBtn.setVisible(true);
+                zahrajTahBtn.setVisible(false);
+                System.out.println(aktualniHrac);
                 hodnotaHodu=hp.hodKostkou();
                 hp.posunPoPlane(aktualniHrac,hodnotaHodu);
                 xPozice=hp.getXPolicka(hp.vratHrace(aktualniHrac).getPozice());
@@ -361,18 +368,22 @@ public class Dostihy_A_Sazky extends JFrame {
                 textAreaTa.append("Hodna hodu: "+hodnotaHodu);
                 switch (typPolicka){
                     case KUN -> {
-                        textAreaTa.append("Stojis na koni");
+                        textAreaTa.append("Stojis na koni s názvom: ");
 
                         break;
                     }default -> textAreaTa.append("Not implemented yet!");
 
 
                 }
+
+
+                System.out.println(aktualniHrac);
+
+                xPozice=hp.getXPolicka(hp.vratHrace(aktualniHrac).getPozice());
+                yPozice=hp.getYPolicka(hp.vratHrace(aktualniHrac).getPozice());
+                markerLbl.setBounds(xPozice,yPozice,30,30);
+
                 System.out.println(xPozice+" "+yPozice);
-                dalsiHracBtn.setVisible(true);
-
-
-
 
 
             }
