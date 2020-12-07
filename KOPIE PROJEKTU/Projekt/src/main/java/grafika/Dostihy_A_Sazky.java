@@ -31,6 +31,7 @@ public class Dostihy_A_Sazky extends JFrame {
 
     int pocetHracu;
     int cisloHrace=0;
+
     int hodnotaHodu=0;
     int aktualniHrac=1;
 
@@ -123,6 +124,7 @@ public class Dostihy_A_Sazky extends JFrame {
                 //overeniVstupu
                 if(jmenoTf.getText().length()>=3){
                     cisloHrace++;
+                    System.out.println(cisloHrace);
                     textAreaTa.setText("Jmeno hráèe èíslo:"+cisloHrace+" je:"+jmenoTf.getText()+"\n");
                     hp.vytvorAPridejHrace(jmenoTf.getText(),cisloHrace);
                     textAreaTa.append("Hráè byl úspìšnì vytvoøen");
