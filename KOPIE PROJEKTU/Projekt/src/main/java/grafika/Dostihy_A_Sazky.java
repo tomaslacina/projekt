@@ -36,7 +36,7 @@ public class Dostihy_A_Sazky extends JFrame {
     int cisloHrace=0;
 
     int hodnotaHodu=0;
-    int aktualniHrac=2;
+    int aktualniHrac=1;
     int xPozice=0;
     int yPozice=0;
 
@@ -248,13 +248,14 @@ public class Dostihy_A_Sazky extends JFrame {
                 zahrajTahBtn.setVisible(true);
                 aktualniHrac++; //kdyz prekrocim, tak vynuluj - nastav na 1
 
-                if(aktualniHrac>=pocetHracu){
+                
+                if(aktualniHrac>pocetHracu){
                     aktualniHrac=1;
                 }
                 xPozice=hp.getXPolicka(hp.vratHrace(aktualniHrac).getPozice());
                 yPozice=hp.getYPolicka(hp.vratHrace(aktualniHrac).getPozice());
                 markerLbl.setBounds(xPozice,yPozice,30,30);
-                System.out.println(aktualniHrac);
+                //System.out.println(aktualniHrac);
                 System.out.println(xPozice+" "+yPozice);
 
 
@@ -360,7 +361,7 @@ public class Dostihy_A_Sazky extends JFrame {
 
                 dalsiHracBtn.setVisible(true);
                 zahrajTahBtn.setVisible(false);
-                System.out.println(aktualniHrac);
+                System.out.println("Aktualni hrac zahrajBtn:"+aktualniHrac);
                 hodnotaHodu=hp.hodKostkou();
                 hp.posunPoPlane(aktualniHrac,hodnotaHodu);
                 xPozice=hp.getXPolicka(hp.vratHrace(aktualniHrac).getPozice());
