@@ -16,14 +16,52 @@ public class HerniPlan {
 
     private Set<Kun> kone = new HashSet<>();
 
+    private Set<Finance> finance =new HashSet<>();
+
+    private final int hodnotaTrestu=-1000;
+
 
 
 
     public HerniPlan() {
         nactiPolicka();
+        nactiFinance();
 
 
     }
+
+    /**
+     * Nacte ze souboru informace o kartach finance
+     */
+
+    public void nactiFinance(){
+        int castka;
+        String text;
+
+        finance.clear();
+
+        try (BufferedReader br = new BufferedReader(new FileReader("finance.csv"))) {
+            String radek;
+
+            while((radek=br.readLine())!=null){
+                String[] rozdeleneRadky = radek.split(";");
+                castka=Integer.parseInt(rozdeleneRadky[0]);
+                text=rozdeleneRadky[1];
+                finance.add(new Finance(castka,text));
+            }
+
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Soubor s financemi nenalezen");
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("Soubor s financemi se nepodarilo nacist");
+            e.printStackTrace();
+        }
+
+    }
+
+
 
 
     /**
@@ -197,6 +235,13 @@ public class HerniPlan {
         return pocetPolicek;
     }
 
+    /**
+     * Vrati hodnotu trestu
+     * @return
+     */
+    public int getHodnotaTrestu(){
+        return hodnotaTrestu;
+    }
 
     /**
      * Predelani cele metody
@@ -225,20 +270,6 @@ public class HerniPlan {
         hraci.add(hrac);
     }
 
-
-    /**
-     * Na základě políčka, na které hráč vstoupil se vyvolá příslušná akce - zobrazí se hráči co je možno v tomto tahu udělat
-     * (např. koupit koně, prodat koně, koupit trenéra atd.) a hráč poté hráč rozhodne co se dané kolo stane.
-     *
-     * @param cisloPolicka - označení políčka, na které hráč vstoupil
-     * @author xlacina5
-     * @version etapa-1
-     */
-
-
-    public void akce(int cisloPolicka) {
-
-    }
 
 
     /**
@@ -413,28 +444,40 @@ public class HerniPlan {
     }
 
 
-
-
-
-
-    /*public static void main(String[] args) {
-        HerniPlan hp = new HerniPlan();
-        //Kostka kostka = new Kostka();
-        Hrac stano = new Hrac("Stano",500);
-        Hrac tomas = new Hrac ("Tomáš", 1000);
-        hp.pridajHraca(stano);
-        hp.pridajHraca(tomas);
-        hp.pridajHraca(tomas);
-        hp.zapisVysledky();
-        hp.prectiZeSouboruPravidla();
-
-        hp.nactiPolicka();
-        for (int i=1;i<=hp.getPocetPolicek();i++){
-            hp.zobrazInformaceOPolicku(i);
+    public int nahodneCislo(int rozsahNahodnehoCisla){
+        Random random = new Random();
+        int nahodneCislo;
+        nahodneCislo=random.nextInt(rozsahNahodnehoCisla);
+        if(nahodneCislo==0){
+            return 1;
         }
-        hp.ulozStavPolicek();
+        else {
+            return nahodneCislo;
+        }
 
-    }*/
+    }
+
+    public Finance getKartaFinance(){
+        int pocetFinanciVKolekci = finance.size();
+        int cisloFinance = nahodneCislo(pocetFinanciVKolekci);
+        int pocet=0;
+        Finance financeVracene;
+
+        Iterator<Finance> i = finance.iterator();
+        while(i.hasNext()){
+            financeVracene=i.next();
+            pocet++;
+            if((pocet==cisloFinance)){
+               return financeVracene;
+            }
+        }
+        return null;
+
+
+    }
+
+
+
 
 }
 
