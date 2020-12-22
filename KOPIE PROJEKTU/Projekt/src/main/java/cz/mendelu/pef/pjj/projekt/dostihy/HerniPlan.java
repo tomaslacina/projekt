@@ -1,9 +1,11 @@
 package cz.mendelu.pef.pjj.projekt.dostihy;
 
 import javax.swing.text.html.HTMLDocument;
+import java.awt.*;
 import java.awt.image.Kernel;
 import java.io.*;
 import java.util.*;
+import java.util.List;
 
 public class HerniPlan {
     private Set<Hrac> hraci = new HashSet<>();
@@ -26,6 +28,7 @@ public class HerniPlan {
     public HerniPlan() {
         nactiPolicka();
         nactiFinance();
+        nactiNahody();
 
 
     }
@@ -56,6 +59,34 @@ public class HerniPlan {
             e.printStackTrace();
         } catch (IOException e) {
             System.out.println("Soubor s financemi se nepodarilo nacist");
+            e.printStackTrace();
+        }
+
+    }
+
+
+    public void nactiNahody(){
+       int posun;
+       String text;
+
+        nahody.clear();
+
+        try (BufferedReader br = new BufferedReader(new FileReader("nahody.csv"))) {
+            String radek;
+
+            while((radek=br.readLine())!=null){
+                String[] rozdeleneRadky = radek.split(";");
+                posun=Integer.parseInt(rozdeleneRadky[0]);
+                text=rozdeleneRadky[1];
+                nahody.add(new Nahoda(posun,text));
+            }
+
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Soubor s nahodami nenalezen");
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("Soubor s nahodami se nepodarilo nacist");
             e.printStackTrace();
         }
 
@@ -443,17 +474,24 @@ public class HerniPlan {
         return typPolicka;
     }
 
+    /**
+     * Funkce na vraceni nahodneho cisla v projektu, v parametru se zada z kolika cisel se ma vybirat
+     * @param rozsahNahodnehoCisla
+     * @return vrati nahodne cislo z rozsahu - pozor muze vratit i 0!
+     */
 
     public int nahodneCislo(int rozsahNahodnehoCisla){
         Random random = new Random();
         int nahodneCislo;
         nahodneCislo=random.nextInt(rozsahNahodnehoCisla);
-        if(nahodneCislo==0){
+        /*if(nahodneCislo==0){
             return 1;
         }
         else {
             return nahodneCislo;
-        }
+        }*/
+
+        return nahodneCislo;
 
     }
 
@@ -466,14 +504,39 @@ public class HerniPlan {
         Iterator<Finance> i = finance.iterator();
         while(i.hasNext()){
             financeVracene=i.next();
-            pocet++;
+
             if((pocet==cisloFinance)){
                return financeVracene;
             }
+            pocet++;
         }
         return null;
 
 
+    }
+
+    /**
+     * Vylosuje nahodnou kartu nahody a vrati ji
+     * @return
+     */
+
+    public Nahoda getKartaNahody(){
+        int pocetNahodVKolekci = nahody.size();
+        int cisloNahody = nahodneCislo(pocetNahodVKolekci);
+        int pocet=0;
+        Nahoda kartaNahody;
+
+
+        Iterator<Nahoda> i = nahody.iterator();
+        while(i.hasNext()){
+            kartaNahody=i.next();
+
+            if((pocet==cisloNahody)){
+                return kartaNahody;
+            }
+            pocet++;
+        }
+        return null;
     }
 
 

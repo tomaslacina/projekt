@@ -1,9 +1,6 @@
 package grafika;
 
-import cz.mendelu.pef.pjj.projekt.dostihy.Finance;
-import cz.mendelu.pef.pjj.projekt.dostihy.HerniPlan;
-import cz.mendelu.pef.pjj.projekt.dostihy.Hrac;
-import cz.mendelu.pef.pjj.projekt.dostihy.TypPolicka;
+import cz.mendelu.pef.pjj.projekt.dostihy.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -34,6 +31,7 @@ public class Dostihy_A_Sazky extends JFrame {
     JButton zahrajTahBtn;
     JButton zaplatTrestBtn;
     JButton financeBtn;
+    JButton nahodaBtn;
 
     TypPolicka typPolicka;
     int pocetHracu;
@@ -436,6 +434,31 @@ public class Dostihy_A_Sazky extends JFrame {
         });
 
 
+        nahodaBtn=new JButton("Nahoda");
+        nahodaBtn.setBounds(300,700,150,30);
+        nahodaBtn.setVisible(false);
+        nahodaBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                hrac = hp.vratHrace(aktualniHrac);
+                Nahoda nahoda = hp.getKartaNahody();
+                textAreaTa.append(nahoda.getTextNahody()+"\n");
+                textAreaTa.append("Stara pozice:"+hrac.getPozice()+"\n");
+                if((hrac.getPozice()+nahoda.getHodnotaNahody())<0){
+                    textAreaTa.append("Nahoda te posunula na startovaci policko");
+                    hrac.setPoziceStart();
+                }
+                else{
+                    hp.posunPoPlane(aktualniHrac,nahoda.getHodnotaNahody());
+                }
+
+                textAreaTa.append("Nova pozice:"+hrac.getPozice()+"\n");
+                nahodaBtn.setVisible(false);
+                dalsiHracBtn.setVisible(true);
+
+            }
+        });
+
 
 
 
@@ -455,7 +478,7 @@ public class Dostihy_A_Sazky extends JFrame {
                 yPozice=hp.getYPolicka(hp.vratHrace(aktualniHrac).getPozice());
                 markerLbl.setBounds(xPozice,yPozice,30,30);
                 typPolicka=hp.getTypPolicka(hp.vratHrace(aktualniHrac).getPozice());
-                //typPolicka=TypPolicka.FINANCE; Pro testovani - abys nemusel klikat tak si zvolis typ policka a pak testujes
+                //typPolicka=TypPolicka.NAHODA; //Pro testovani - abys nemusel klikat tak si zvolis typ policka a pak testujes
                 textAreaTa.append("Hodna hodu: "+hodnotaHodu);
 
                 switch (typPolicka){
@@ -485,7 +508,14 @@ public class Dostihy_A_Sazky extends JFrame {
                         textAreaTa.setText("Stojis na policku FINANCE: \n");
                         financeBtn.setVisible(true);
                         dalsiHracBtn.setVisible(false);
+                    }
+                    /**
+                     * Otestovano
+                     */
 
+                    case NAHODA -> {
+                        textAreaTa.setText("Stojis na policku NAHODA: \n");
+                        nahodaBtn.setVisible(true);
 
                     }
 
@@ -531,6 +561,7 @@ public class Dostihy_A_Sazky extends JFrame {
         add(zahrajTahBtn);
         add(zaplatTrestBtn);
         add(financeBtn);
+        add(nahodaBtn);
 
 
         repaint();
