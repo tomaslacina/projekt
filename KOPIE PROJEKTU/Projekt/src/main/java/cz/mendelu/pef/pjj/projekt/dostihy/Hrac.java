@@ -14,6 +14,7 @@ public class Hrac {
     private int pozice;
     private static final int konto = 30000; //staticka promenna stav konta
     private static final int pocetPolicek=40;
+    private boolean staj;
 
 
 
@@ -27,6 +28,7 @@ public class Hrac {
         this.stavKonta=konto;
         this.id=id;
         this.pozice=1;
+        this.staj=false;
     }
 
     /**
@@ -129,6 +131,23 @@ public class Hrac {
     public void pridejTrenera(Trener trener){
         seznamTreneru.add(trener);
         //throw new UnsupportedOperationException("Not impleneted yet.");
+    }
+
+    /**
+     * Vrati jestli hrac vlastni staj
+     * @return true/false
+     */
+
+    public boolean vlastniStaj() {
+        return staj;
+    }
+
+    /**
+     * Metoda pro nastaveni hodnoty staje (true/false)
+     * @param staj
+     */
+    public void setStaj(boolean staj) {
+        this.staj = staj;
     }
 
     /**
