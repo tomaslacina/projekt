@@ -44,6 +44,7 @@ public class Dostihy_A_Sazky extends JFrame {
     int yPozice=0;
 
     Hrac hrac;
+    Policko policko;
 
 
 
@@ -201,6 +202,7 @@ public class Dostihy_A_Sazky extends JFrame {
                 textAreaTa.setText(hp.vypisVsechHracu());
             }
         });
+
         /**
          * Vytvorenie tlaèidla pre hod kockou.
          * @author xrepka
@@ -466,9 +468,19 @@ public class Dostihy_A_Sazky extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 hrac = hp.vratHrace(aktualniHrac);
+                policko=hp.getPolicko(hrac.getPozice());
 
+                if(policko.getObsazenoHracem()==0){
+                    textAreaTa.setText("Policko staj neni obsazeno zadnym hracem\n");
+                    textAreaTa.append("Muzes si policko koupit kliknutim na tlacitko koupit");
+                    //TODO dodelat tlacitko koupit staj
+                    //overeni
+                    //vypis
+                }
+                else{
+                    //TODO dodelat...
 
-
+                }
 
 
             }

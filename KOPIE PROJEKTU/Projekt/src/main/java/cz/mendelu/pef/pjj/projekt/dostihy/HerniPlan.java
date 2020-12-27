@@ -540,6 +540,14 @@ public class HerniPlan {
     }
 
 
+    public Policko getPolicko(int cisloPolicka){
+        Policko policko=null;
+        policko=mapaPolicek.get(cisloPolicka);
+        return policko;
+
+    }
+
+
 
 
 }

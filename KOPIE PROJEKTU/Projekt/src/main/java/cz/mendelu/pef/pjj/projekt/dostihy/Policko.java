@@ -59,10 +59,10 @@ public class Policko {
 
     /**
      * Vrati int hrace, ktery vlastni policko
-     * @param obsazenoHracem
+     * @param idHrace
      */
-    public void setObsazenoHracem(int obsazenoHracem) {
-        this.obsazenoHracem = obsazenoHracem;
+    public void setObsazenoHracem(int idHrace) {
+        this.obsazenoHracem = idHrace;
     }
 
     public TypPolicka getTypPolicka() {
