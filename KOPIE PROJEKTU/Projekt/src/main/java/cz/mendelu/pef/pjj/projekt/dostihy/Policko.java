@@ -14,7 +14,7 @@ public class Policko {
     private String informacePolicko;
     private int poziceX;
     private int poziceY;
-    private boolean obsazeno;
+    private int obsazenoHracem;
 
    
     /**
@@ -24,16 +24,16 @@ public class Policko {
      * @param informacePolicko
      * @param poziceX
      * @param poziceY
-     * @param obsazeno - zda-li je policko jiz obsazeno nejakym hracem nebo ne
+     * @param obsazenoHracem - zda-li je policko jiz obsazeno nejakym hracem nebo ne - ulozi se id hrace
      * @atuhor xlacina5
      */
-    public Policko(int cisloPolicka, TypPolicka typPolicka,String informacePolicko, int poziceX, int poziceY,boolean obsazeno){
+    public Policko(int cisloPolicka, TypPolicka typPolicka,String informacePolicko, int poziceX, int poziceY,int obsazenoHracem){
         this.cisloPolicka=cisloPolicka;
         this.typPolicka=typPolicka;
         this.informacePolicko=informacePolicko;
         this.poziceX=poziceX;
         this.poziceY=poziceY;
-        this.obsazeno=obsazeno;
+        this.obsazenoHracem=obsazenoHracem;
     }
 
     /**
@@ -47,6 +47,22 @@ public class Policko {
         System.out.println("Typ policka:"+this.typPolicka);
         System.out.println("Cislo policka:"+this.cisloPolicka);
         System.out.println("Informace o policku:"+this.informacePolicko);
+    }
+
+    /**
+     * Metoda na zjisteni jestli je policko obsazene
+     * @return
+     */
+    public int getObsazenoHracem() {
+        return obsazenoHracem;
+    }
+
+    /**
+     * Vrati int hrace, ktery vlastni policko
+     * @param obsazenoHracem
+     */
+    public void setObsazenoHracem(int obsazenoHracem) {
+        this.obsazenoHracem = obsazenoHracem;
     }
 
     public TypPolicka getTypPolicka() {
@@ -90,7 +106,7 @@ public class Policko {
     }
 
     public String toStringCSV(){
-        return cisloPolicka+";"+typPolicka+";"+informacePolicko+";"+poziceX+";"+poziceY+";"+obsazeno;
+        return cisloPolicka+";"+typPolicka+";"+informacePolicko+";"+poziceX+";"+poziceY+";"+obsazenoHracem;
     }
 
 

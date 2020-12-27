@@ -32,6 +32,7 @@ public class Dostihy_A_Sazky extends JFrame {
     JButton zaplatTrestBtn;
     JButton financeBtn;
     JButton nahodaBtn;
+    JButton stajBtn;
 
     TypPolicka typPolicka;
     int pocetHracu;
@@ -429,7 +430,6 @@ public class Dostihy_A_Sazky extends JFrame {
                         dalsiHracBtn.setVisible(true);
                     }
                 }
-
             }
         });
 
@@ -459,6 +459,21 @@ public class Dostihy_A_Sazky extends JFrame {
             }
         });
 
+        stajBtn = new JButton("Staj");
+        stajBtn.setBounds(300,700,150,30);
+        stajBtn.setVisible(false);
+        stajBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                hrac = hp.vratHrace(aktualniHrac);
+
+
+
+
+
+            }
+        });
+
 
 
 
@@ -484,14 +499,13 @@ public class Dostihy_A_Sazky extends JFrame {
                 switch (typPolicka){
                     case KUN -> {
                         textAreaTa.setText("Stojis na koni s názvom: \n");
-
-
                         break;
                     }
 
                     /**
                      * Otestovano
                      */
+
                     case TREST -> {
                         textAreaTa.setText("Stojis na policku trest:\n");
                         textAreaTa.append(hp.zobrazInformaceOPolicku(aktualniHrac)+"\n");
@@ -509,6 +523,7 @@ public class Dostihy_A_Sazky extends JFrame {
                         financeBtn.setVisible(true);
                         dalsiHracBtn.setVisible(false);
                     }
+
                     /**
                      * Otestovano
                      */
@@ -518,6 +533,14 @@ public class Dostihy_A_Sazky extends JFrame {
                         nahodaBtn.setVisible(true);
 
                     }
+
+
+                    case STAJ -> {
+                        textAreaTa.setText("Stojis na policku STAJ");
+                        stajBtn.setVisible(true);
+                    }
+
+
 
 
                     default -> textAreaTa.append("Not implemented yet!");
@@ -562,6 +585,7 @@ public class Dostihy_A_Sazky extends JFrame {
         add(zaplatTrestBtn);
         add(financeBtn);
         add(nahodaBtn);
+        add(stajBtn);
 
 
         repaint();
