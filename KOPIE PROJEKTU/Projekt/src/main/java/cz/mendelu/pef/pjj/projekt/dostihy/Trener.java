@@ -20,6 +20,10 @@ public class Trener {
         return obsadenost;
     }
 
+    public void setObsadenost(boolean obsadenost) {
+        this.obsadenost = obsadenost;
+    }
+
     @Override
     public String toString() {
         return "Trener{" +
