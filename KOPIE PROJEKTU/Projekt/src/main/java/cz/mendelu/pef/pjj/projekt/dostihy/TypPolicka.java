@@ -10,7 +10,7 @@ public enum TypPolicka {
     FINANCE,
     START,
     PARKOVISTE,
-    DISTANC,
+    PREPRAVA,
     TRENER;
 
     /**

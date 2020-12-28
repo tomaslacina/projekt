@@ -21,6 +21,8 @@ public class HerniPlan {
     private Set<Finance> finance =new HashSet<>();
 
     private final int hodnotaTrestu=-1000;
+    private final int cenaStaje=3000;
+    private final int cenaPrepravy=3000;
 
 
 
@@ -545,6 +547,13 @@ public class HerniPlan {
         policko=mapaPolicek.get(cisloPolicka);
         return policko;
 
+    }
+
+    public int getCenaStaje(){
+        return cenaStaje;
+    }
+    public int getCenaPrepravy(){
+        return cenaPrepravy;
     }
 
 

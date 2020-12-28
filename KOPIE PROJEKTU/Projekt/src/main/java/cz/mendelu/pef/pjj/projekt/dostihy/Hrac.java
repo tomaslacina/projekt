@@ -15,6 +15,7 @@ public class Hrac {
     private static final int konto = 30000; //staticka promenna stav konta
     private static final int pocetPolicek=40;
     private boolean staj;
+    private boolean preprava;
 
 
 
@@ -29,6 +30,7 @@ public class Hrac {
         this.id=id;
         this.pozice=1;
         this.staj=false;
+        this.preprava=false;
     }
 
     /**
@@ -148,6 +150,34 @@ public class Hrac {
      */
     public void setStaj(boolean staj) {
         this.staj = staj;
+    }
+
+    public boolean vlastniPrepravu(){
+        return preprava;
+    }
+    public void setPreprava(boolean preprava){
+        this.preprava=preprava;
+    }
+
+    /**
+     * Kdyz hrac vlastni jak staj tak prepravu dostane od protihracu 200 nasobek hodnoty hodu
+     * Kdyz hrac vlastni bude staj nebo prepravu dostane 80 nasobek hodnoty hodu
+     * Jinak dostane 0 nasobek
+     * @return
+     */
+    public int getNasobek(){
+
+        if (this.staj == true && this.preprava==true){
+            return 200;
+        }
+        else if (this.staj==true || this.preprava==true){
+            return 80;
+
+        }
+        else {
+            return 0;
+        }
+
     }
 
     /**

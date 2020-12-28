@@ -33,6 +33,11 @@ public class Dostihy_A_Sazky extends JFrame {
     JButton financeBtn;
     JButton nahodaBtn;
     JButton stajBtn;
+    JButton koupitStajBtn;
+    JButton zaplatProhlidkuStajeBtn;
+    JButton prepravaBtn;
+    JButton koupitPrepravuBtn;
+    JButton zaplatPouzitiPrepravyBtn;
 
     TypPolicka typPolicka;
     int pocetHracu;
@@ -254,6 +259,7 @@ public class Dostihy_A_Sazky extends JFrame {
                 //zatim
                 dalsiHracBtn.setVisible(false);
                 zahrajTahBtn.setVisible(true);
+
                 aktualniHrac++; //kdyz prekrocim, tak vynuluj - nastav na 1
 
 
@@ -461,6 +467,68 @@ public class Dostihy_A_Sazky extends JFrame {
             }
         });
 
+        koupitStajBtn = new JButton("Koupit staj");
+        koupitStajBtn.setBounds(500,700,150,30);
+        koupitStajBtn.setVisible(false);
+        koupitStajBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                hrac = hp.vratHrace(aktualniHrac);
+                policko=hp.getPolicko(hrac.getPozice());
+
+                if(hrac.getKonto()>=hp.getCenaStaje()){
+                    textAreaTa.append("Gratulujeme koupil jsi staj!\n");
+                    textAreaTa.append("Stav pred transakci:"+hrac.getKonto()+"\n");
+                    hrac.transakce((-1)*hp.getCenaStaje());
+                    textAreaTa.append("Stav po transakci:"+hrac.getKonto()+"\n");
+                    policko.setObsazenoHracem(hrac.getId()); //nastavim vlastnictvi policka hraci na tahu
+                    hrac.setStaj(true);
+                    koupitStajBtn.setVisible(false);
+                    dalsiHracBtn.setVisible(true);
+                }
+                else{
+                    textAreaTa.append("Na konte nemas dostatek financi\n");
+                    textAreaTa.append("Bud prodas majetek nebo klikni na tlacitko dalsi hrac.\n");
+                    dalsiHracBtn.setVisible(true);
+                    //TODO tlacitko prodejMajetek
+                }
+
+            }
+        });
+
+        zaplatProhlidkuStajeBtn = new JButton("Zaplat pøepravu");
+        zaplatProhlidkuStajeBtn.setBounds(500,700,150,30);
+        zaplatProhlidkuStajeBtn.setVisible(false);
+        zaplatProhlidkuStajeBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                hrac=hp.vratHrace(aktualniHrac);
+                policko=hp.getPolicko(hrac.getPozice()); //vrati pozici policka staje
+                int idVlastnika = policko.getObsazenoHracem();
+                Hrac vlastnikStaje = hp.vratHrace(idVlastnika);
+                int cenaProhlidky = hodnotaHodu*vlastnikStaje.getNasobek();
+                textAreaTa.append("Cena prohlidky staje je:"+cenaProhlidky+"\n");
+
+                if(hrac.getId()==idVlastnika){
+                    textAreaTa.append("Jsi vlastnikem policka, neplatis nic ani nic nedostanes\n");
+                    dalsiHracBtn.setVisible(true);
+                    zaplatProhlidkuStajeBtn.setVisible(false);
+                }
+                else if(hrac.getKonto()>=cenaProhlidky){
+                    hrac.transakce((-1)*cenaProhlidky);
+                    vlastnikStaje.transakce(cenaProhlidky);
+                    textAreaTa.append("Hrac:"+hrac.vypisHraca()+" zaplatil za prohildku staje hraci:\n"+vlastnikStaje.vypisHraca()+"\n");
+                    zaplatProhlidkuStajeBtn.setVisible(false);
+                    dalsiHracBtn.setVisible(true);
+                }
+                else{
+                    textAreaTa.append("Na konte nemas dostatek financi k zaplaceni prohlidky:\n");
+                    //TODO prodejMajetekBtn
+                }
+            }
+        });
+
+
         stajBtn = new JButton("Staj");
         stajBtn.setBounds(300,700,150,30);
         stajBtn.setVisible(false);
@@ -472,19 +540,114 @@ public class Dostihy_A_Sazky extends JFrame {
 
                 if(policko.getObsazenoHracem()==0){
                     textAreaTa.setText("Policko staj neni obsazeno zadnym hracem\n");
-                    textAreaTa.append("Muzes si policko koupit kliknutim na tlacitko koupit");
-                    //TODO dodelat tlacitko koupit staj
-                    //overeni
-                    //vypis
+                    textAreaTa.append("Muzes si policko koupit kliknutim na tlacitko koupit staj \n");
+                    textAreaTa.append("Pokud nechces kupovat staj, klikni na tlacitko dalsi hrac\n");
+                    koupitStajBtn.setVisible(true);
+                    stajBtn.setVisible(false);
+                    dalsiHracBtn.setVisible(true);
                 }
                 else{
-                    //TODO dodelat...
-
+                    textAreaTa.setText("Policko staj jiz vlastni jiny hrac:"+hrac.toString()+"\n");
+                    textAreaTa.append("Budes muset zaplatit za prepravu \n");
+                    zaplatProhlidkuStajeBtn.setVisible(true);
+                    stajBtn.setVisible(false);
                 }
 
 
             }
         });
+
+        zaplatPouzitiPrepravyBtn = new JButton("Použít pøepravu");
+        zaplatPouzitiPrepravyBtn.setBounds(500,700,150,30);
+        zaplatPouzitiPrepravyBtn.setVisible(false);
+        zaplatPouzitiPrepravyBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                hrac=hp.vratHrace(aktualniHrac);
+                policko=hp.getPolicko(hrac.getPozice()); //vrati pozici policka prepravy
+                int idVlastnika = policko.getObsazenoHracem();
+                Hrac vlastnikPrepravy = hp.vratHrace(idVlastnika);
+                int cenaPrepravy = hodnotaHodu*vlastnikPrepravy.getNasobek();
+                textAreaTa.append("Cena prepravy staje je:"+cenaPrepravy+"\n");
+
+                if(hrac.getId()==idVlastnika){
+                    textAreaTa.append("Jsi vlastnikem policka, neplatis nic ani nic nedostanes\n");
+                    dalsiHracBtn.setVisible(true);
+                    zaplatPouzitiPrepravyBtn.setVisible(false);
+                }
+                else if(hrac.getKonto()>=cenaPrepravy){
+                    hrac.transakce((-1)*cenaPrepravy);
+                    vlastnikPrepravy.transakce(cenaPrepravy);
+                    textAreaTa.append("Hrac:"+hrac.vypisHraca()+" zaplatil za pouziti prepravy hraci:\n"+vlastnikPrepravy.vypisHraca()+"\n");
+                    zaplatPouzitiPrepravyBtn.setVisible(false);
+                    dalsiHracBtn.setVisible(true);
+                }
+                else{
+                    textAreaTa.append("Na konte nemas dostatek financi k zaplaceni prepravy:\n");
+                    //TODO prodejMajetekBtn
+                }
+
+            }
+        });
+
+        koupitPrepravuBtn = new JButton("Koupit pøepravu");
+        koupitPrepravuBtn.setBounds(500,700,150,30);
+        koupitPrepravuBtn.setVisible(false);
+        koupitPrepravuBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                hrac = hp.vratHrace(aktualniHrac);
+                policko=hp.getPolicko(hrac.getPozice());
+
+                if(hrac.getKonto()>=hp.getCenaPrepravy()){
+                    textAreaTa.append("Gratulujeme koupil jsi prepravu!\n");
+                    textAreaTa.append("Stav pred transakci:"+hrac.getKonto()+"\n");
+                    hrac.transakce((-1)*hp.getCenaStaje());
+                    textAreaTa.append("Stav po transakci:"+hrac.getKonto()+"\n");
+                    policko.setObsazenoHracem(hrac.getId()); //nastavim vlastnictvi policka hraci na tahu
+                    hrac.setPreprava(true);
+                    koupitPrepravuBtn.setVisible(false);
+                    dalsiHracBtn.setVisible(true);
+                }
+                else{
+                    textAreaTa.append("Na konte nemas dostatek financi\n");
+                    textAreaTa.append("Bud prodas majetek nebo klikni na tlacitko dalsi hrac.\n");
+                    dalsiHracBtn.setVisible(true);
+                    //TODO tlacitko prodejMajetek
+                }
+
+            }
+        });
+
+
+        prepravaBtn = new JButton("Pøeprava");
+        prepravaBtn.setBounds(300,700,150,30);
+        prepravaBtn.setVisible(false);
+        prepravaBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                hrac = hp.vratHrace(aktualniHrac);
+                policko=hp.getPolicko(hrac.getPozice());
+
+                if(policko.getObsazenoHracem()==0){
+                    textAreaTa.setText("Policko preprava neni obsazeno zadnym hracem\n");
+                    textAreaTa.append("Muzes si policko koupit kliknutim na tlacitko koupit prepravu \n");
+                    textAreaTa.append("Pokud nechces kupovat prepravu, klikni na tlacitko dalsi hrac\n");
+                    koupitPrepravuBtn.setVisible(true);
+                    prepravaBtn.setVisible(false);
+                    dalsiHracBtn.setVisible(true);
+                }
+                else{
+                    textAreaTa.setText("Policko preprava jiz vlastni jiny hrac:"+hrac.vypisHraca()+"\n");
+                    textAreaTa.append("Budes muset zaplatit za prepravu, pokud nejsi jeho vlastnikem \n");
+                    zaplatPouzitiPrepravyBtn.setVisible(true);
+                    prepravaBtn.setVisible(false);
+                }
+            }
+        });
+
+
+
 
 
 
@@ -500,12 +663,13 @@ public class Dostihy_A_Sazky extends JFrame {
                 zahrajTahBtn.setVisible(false);
                 System.out.println("Aktualni hrac zahrajBtn:"+aktualniHrac);
                 hodnotaHodu=hp.hodKostkou();
+                //hodnotaHodu=5 .... pouze pro testovani
                 hp.posunPoPlane(aktualniHrac,hodnotaHodu);
                 xPozice=hp.getXPolicka(hp.vratHrace(aktualniHrac).getPozice());
                 yPozice=hp.getYPolicka(hp.vratHrace(aktualniHrac).getPozice());
                 markerLbl.setBounds(xPozice,yPozice,30,30);
                 typPolicka=hp.getTypPolicka(hp.vratHrace(aktualniHrac).getPozice());
-                //typPolicka=TypPolicka.NAHODA; //Pro testovani - abys nemusel klikat tak si zvolis typ policka a pak testujes
+                //typPolicka=TypPolicka.PREPRAVA; //Pro testovani - abys nemusel klikat tak si zvolis typ policka a pak testujes
                 textAreaTa.append("Hodna hodu: "+hodnotaHodu);
 
                 switch (typPolicka){
@@ -547,9 +711,20 @@ public class Dostihy_A_Sazky extends JFrame {
                     }
 
 
+                    /**
+                     * Otestovano
+                     */
                     case STAJ -> {
                         textAreaTa.setText("Stojis na policku STAJ");
                         stajBtn.setVisible(true);
+                    }
+
+                    /**
+                     * Asi otestovano
+                     */
+                    case PREPRAVA -> {
+                        textAreaTa.setText("Stojis na policku PREPRAVA");
+                        prepravaBtn.setVisible(true);
                     }
 
 
@@ -598,6 +773,11 @@ public class Dostihy_A_Sazky extends JFrame {
         add(financeBtn);
         add(nahodaBtn);
         add(stajBtn);
+        add(koupitStajBtn);
+        add(zaplatProhlidkuStajeBtn);
+        add(prepravaBtn);
+        add(zaplatPouzitiPrepravyBtn);
+        add(koupitPrepravuBtn);
 
 
         repaint();
