@@ -1,40 +1,40 @@
-1;START;Startovací políèko;415;500;0
-2;KUN;Kùò Fantome;415;465;0
-3;FINANCE;Finance;415;430;0
-4;KUN;Kùò Gavora;415;400;0
-5;TREST;Veterinární vyšetøení;415;365;0
-6;TRENER;1. trenér;415;335;0
-7;KUN;Kùò Lady Anne;415;300;0
-8;NAHODA;Náhoda;415;270;0
-9;KUN;Kùò Pasek;415;240;0
-10;KUN;Kùò Koran;415;205;0
-11;PREPRAVA;Preprava;415;170;0
-12;KUN;Kùò Neklan;495;125;0
-13;NAHODA;Pøeprava ;530;125;0
-14;KUN;Kùò Portlancl;560;125;0
-15;KUN;Kùò Japan;590;125;0
-16;TRENER;2. trenér;625;125;0
-17;KUN;Kùò Kostrava;655;125;0
-18;FINANCE;Finance;690;125;0
-19;KUN;Kùò Lukava;720;125;0
-20;KUN;Kùò Melák;755;125;0
-21;PARKOVISTE;Parkovištì;790;125;0
-22;KUN;Kùò Grifel;835;205;0
-23;NAHODA;Náhoda;835;240;0
-24;KUN;Kùò Mohyla;835;270;0
-25;KUN;Kùò Metál;835;300;0
-26;TRENER;3. trenér;835;335;0
-27;KUN;Kùò Tara;835;365;0
-28;KUN;Kùò Furioso;835;400;0
-29;STAJ;Stáje;835;430;0
-30;KUN;Kùò Genius;835;465;0
-31;TREST;Trest - podezøení z dopingu;835;505;0
-32;KUN;Kùò Shagga;755;545;0
-33;KUN;Kùò Dahoman;720;545;0
-34;FINANCE;Finance;690;545;0
-35;KUN;Kùò Gira;655;545;0
-36;TRENER;4. trenér;625;545;0
-37;NAHODA;Náhoda;590;545;0
-38;KUN;Kùò Narcius;560;545;0
-39;NAHODA;Veterinární vyšetøení;530;545;0
-40;KUN;Kùò Napoli;500;545;0
+1;START;Startovací políèko;415;500;0;0
+2;KUN;Kùò Fantome;415;465;0;1200
+3;FINANCE;Finance;415;430;0;0
+4;KUN;Kùò Gavora;415;400;0;1200
+5;TREST;Veterinární vyšetøení;415;365;0;0
+6;TRENER;1. trenér;415;335;0;4000
+7;KUN;Kùò Lady Anne;415;300;0;2000
+8;NAHODA;Náhoda;415;270;0;0
+9;KUN;Kùò Pasek;415;240;0;2000
+10;KUN;Kùò Koran;415;205;0;2400
+11;PREPRAVA;Preprava;415;170;0;3000
+12;KUN;Kùò Neklan;495;125;0;2800
+13;NAHODA;Pøeprava ;530;125;0;0
+14;KUN;Kùò Portlancl;560;125;0;2800
+15;KUN;Kùò Japan;590;125;0;2800
+16;TRENER;2. trenér;625;125;0;4000
+17;KUN;Kùò Kostrava;655;125;0;3600
+18;FINANCE;Finance;690;125;0;0
+19;KUN;Kùò Lukava;720;125;0;3600
+20;KUN;Kùò Melák;755;125;0;4000
+21;PARKOVISTE;Parkovištì;790;125;0;0
+22;KUN;Kùò Grifel;835;205;0;4400
+23;NAHODA;Náhoda;835;240;0;0
+24;KUN;Kùò Mohyla;835;270;0;4400
+25;KUN;Kùò Metál;835;300;0;4800
+26;TRENER;3. trenér;835;335;0;4000
+27;KUN;Kùò Tara;835;365;0;5200
+28;KUN;Kùò Furioso;835;400;0;5200
+29;STAJ;Stáje;835;430;0;3000
+30;KUN;Kùò Genius;835;465;0;5600
+31;TREST;Trest - podezøení z dopingu;835;505;0;0
+32;KUN;Kùò Shagga;755;545;0;6000
+33;KUN;Kùò Dahoman;720;545;0;6000
+34;FINANCE;Finance;690;545;0;0
+35;KUN;Kùò Gira;655;545;0;6400
+36;TRENER;4. trenér;625;545;0;4000
+37;NAHODA;Náhoda;590;545;0;0
+38;KUN;Kùò Narcius;560;545;0;7000
+39;NAHODA;Veterinární vyšetøení;530;545;0;0
+40;KUN;Kùò Napoli;500;545;0;8000

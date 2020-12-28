@@ -42,6 +42,9 @@ public class Dostihy_A_Sazky extends JFrame {
     JButton trenerBtn;
     JButton kupitTreneraBtn;
 
+    JTextField cisloPolickaTf;
+    JButton prodejMajetekBtn;
+
 
     TypPolicka typPolicka;
     int pocetHracu;
@@ -780,7 +783,7 @@ public class Dostihy_A_Sazky extends JFrame {
                      * Otestovano
                      */
                     case STAJ -> {
-                        textAreaTa.setText("Stojis na policku STAJ");
+                        textAreaTa.setText("Stojis na policku STAJ\n");
                         stajBtn.setVisible(true);
                     }
 
@@ -788,7 +791,7 @@ public class Dostihy_A_Sazky extends JFrame {
                      * Asi otestovano
                      */
                     case PREPRAVA -> {
-                        textAreaTa.setText("Stojis na policku PREPRAVA");
+                        textAreaTa.setText("Stojis na policku PREPRAVA\n");
                         prepravaBtn.setVisible(true);
                     }
 
@@ -796,9 +799,15 @@ public class Dostihy_A_Sazky extends JFrame {
                      * Otestované
                      */
                     case TRENER -> {
-                        textAreaTa.setText("Stojis na policku TRENER");
+                        textAreaTa.setText("Stojis na policku TRENER\n");
                         trenerBtn.setVisible(true);
                         dalsiHracBtn.setVisible(false);
+                    }
+
+                    case PARKOVISTE -> {
+                        textAreaTa.setText("Stojis na policku PARKOVISTE\n");
+                        textAreaTa.append("Na tomto policku neni zadna akce, pokracuj kliknutim na tlacitko dalsi hrac\n");
+                        dalsiHracBtn.setVisible(true);
                     }
 
 

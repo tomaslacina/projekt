@@ -15,6 +15,7 @@ public class Policko {
     private int poziceX;
     private int poziceY;
     private int obsazenoHracem;
+    private int prodejniCena;
 
    
     /**
@@ -25,15 +26,17 @@ public class Policko {
      * @param poziceX
      * @param poziceY
      * @param obsazenoHracem - zda-li je policko jiz obsazeno nejakym hracem nebo ne - ulozi se id hrace
+     * @param prodejniCena - prodejni cena policka - jako "majetek hrace"
      * @atuhor xlacina5
      */
-    public Policko(int cisloPolicka, TypPolicka typPolicka,String informacePolicko, int poziceX, int poziceY,int obsazenoHracem){
+    public Policko(int cisloPolicka, TypPolicka typPolicka,String informacePolicko, int poziceX, int poziceY,int obsazenoHracem, int prodejniCena){
         this.cisloPolicka=cisloPolicka;
         this.typPolicka=typPolicka;
         this.informacePolicko=informacePolicko;
         this.poziceX=poziceX;
         this.poziceY=poziceY;
         this.obsazenoHracem=obsazenoHracem;
+        this.prodejniCena=prodejniCena;
     }
 
     /**

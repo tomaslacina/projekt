@@ -187,6 +187,7 @@ public class HerniPlan {
         int souradniceX;
         int souradniceY;
         int obsazenoHracem;
+        int prodejniCena;
 
         mapaPolicek.clear(); //vymazu puvodni hodnoty, kdyby tam nahodou nejake byly
 
@@ -204,8 +205,9 @@ public class HerniPlan {
                 souradniceX=Integer.parseInt(rozdeleneRadky[3]);
                 souradniceY=Integer.parseInt(rozdeleneRadky[4]);
                 obsazenoHracem = Integer.parseInt(rozdeleneRadky[5]);
+                prodejniCena = Integer.parseInt(rozdeleneRadky[6]);
 
-                Policko policko = new Policko(cisloPolicka,typPolicka,informacePolicko,souradniceX,souradniceY,obsazenoHracem);
+                Policko policko = new Policko(cisloPolicka,typPolicka,informacePolicko,souradniceX,souradniceY,obsazenoHracem,prodejniCena);
                 mapaPolicek.put(cisloPolicka,policko);
 
 
