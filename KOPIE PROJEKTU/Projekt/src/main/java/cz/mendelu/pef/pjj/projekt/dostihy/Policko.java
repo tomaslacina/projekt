@@ -80,9 +80,6 @@ public class Policko {
         return informacePolicko;
     }
 
-    /*public int getCena(){
-        throw new UnsupportedOperationException("Not implemented yet");
-    }*/
 
 
     public int getPoziceX() {
@@ -92,6 +89,13 @@ public class Policko {
     public int getPoziceY() {
         return poziceY;
     }
+
+    public int getProdejniCena(){
+        return prodejniCena;
+    }
+
+
+
 
     /**
      * toString - policko - vypis informaci o policku

@@ -42,6 +42,7 @@ public class Dostihy_A_Sazky extends JFrame {
     JButton trenerBtn;
     JButton kupitTreneraBtn;
 
+    JLabel cisloPolickaLbl;
     JTextField cisloPolickaTf;
     JButton prodejMajetekBtn;
 
@@ -392,9 +393,11 @@ public class Dostihy_A_Sazky extends JFrame {
                 }
                 else{
                     textAreaTa.append("Nemas dostatek penez na uctu...");
-                    //TODO - doimplementovat, co se stane, kdyd hraci dojdou penize :O asi zobrazi ze muzes prodat majetek,...
-                    //TODO - napr ze zada cislo policka majetku (kone) a tlacikem potvrdi, prictou se penize a dokonci se tah
-                    //TODO - jinak by kdyby nemel zadny majetek tak by prohral a ukoncil by tak hru
+
+                    cisloPolickaLbl.setVisible(true);
+                    cisloPolickaTf.setVisible(true);
+                    prodejMajetekBtn.setVisible(true);
+
                     dalsiHracBtn.setVisible(true);
                 }
 
@@ -440,9 +443,11 @@ public class Dostihy_A_Sazky extends JFrame {
                     }
                     else{
                         textAreaTa.append("Nemas dostatek penez na uctu...\n");
-                        //TODO - doimplementovat, co se stane, kdyd hraci dojdou penize :O asi zobrazi ze muzes prodat majetek,...
-                        //TODO - napr ze zada cislo policka majetku (kone) a tlacikem potvrdi, prictou se penize a dokonci se tah
-                        //TODO - jinak by kdyby nemel zadny majetek tak by prohral a ukoncil by tak hru
+
+                        cisloPolickaLbl.setVisible(true);
+                        cisloPolickaTf.setVisible(true);
+                        prodejMajetekBtn.setVisible(true);
+
                         dalsiHracBtn.setVisible(true);
                     }
                 }
@@ -491,6 +496,7 @@ public class Dostihy_A_Sazky extends JFrame {
                     textAreaTa.append("Stav po transakci:"+hrac.getKonto()+"\n");
                     policko.setObsazenoHracem(hrac.getId()); //nastavim vlastnictvi policka hraci na tahu
                     hrac.setStaj(true);
+                    hrac.pridejMajetekHraci(hp.getPolicko(hrac.getPozice()));
                     koupitStajBtn.setVisible(false);
                     dalsiHracBtn.setVisible(true);
                 }
@@ -498,7 +504,10 @@ public class Dostihy_A_Sazky extends JFrame {
                     textAreaTa.append("Na konte nemas dostatek financi\n");
                     textAreaTa.append("Bud prodas majetek nebo klikni na tlacitko dalsi hrac.\n");
                     dalsiHracBtn.setVisible(true);
-                    //TODO tlacitko prodejMajetek
+
+                    cisloPolickaLbl.setVisible(true);
+                    cisloPolickaTf.setVisible(true);
+                    prodejMajetekBtn.setVisible(true);
                 }
 
             }
@@ -531,7 +540,10 @@ public class Dostihy_A_Sazky extends JFrame {
                 }
                 else{
                     textAreaTa.append("Na konte nemas dostatek financi k zaplaceni prohlidky:\n");
-                    //TODO prodejMajetekBtn
+
+                    cisloPolickaLbl.setVisible(true);
+                    cisloPolickaTf.setVisible(true);
+                    prodejMajetekBtn.setVisible(true);
                 }
             }
         });
@@ -592,7 +604,10 @@ public class Dostihy_A_Sazky extends JFrame {
                 }
                 else{
                     textAreaTa.append("Na konte nemas dostatek financi k zaplaceni prepravy:\n");
-                    //TODO prodejMajetekBtn
+
+                    cisloPolickaLbl.setVisible(true);
+                    cisloPolickaTf.setVisible(true);
+                    prodejMajetekBtn.setVisible(true);
                 }
 
             }
@@ -615,13 +630,17 @@ public class Dostihy_A_Sazky extends JFrame {
                     policko.setObsazenoHracem(hrac.getId()); //nastavim vlastnictvi policka hraci na tahu
                     hrac.setPreprava(true);
                     koupitPrepravuBtn.setVisible(false);
+                    hrac.pridejMajetekHraci(hp.getPolicko(hrac.getPozice()));
                     dalsiHracBtn.setVisible(true);
                 }
                 else{
                     textAreaTa.append("Na konte nemas dostatek financi\n");
                     textAreaTa.append("Bud prodas majetek nebo klikni na tlacitko dalsi hrac.\n");
                     dalsiHracBtn.setVisible(true);
-                    //TODO tlacitko prodejMajetek
+
+                    cisloPolickaLbl.setVisible(true);
+                    cisloPolickaTf.setVisible(true);
+                    prodejMajetekBtn.setVisible(true);
                 }
 
             }
@@ -662,11 +681,13 @@ public class Dostihy_A_Sazky extends JFrame {
         kupitTreneraBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                hp.vratHrace(aktualniHrac).transakce(-4000);
-                policko.setObsazenoHracem(hp.vratHrace(aktualniHrac).getId());
+                Hrac hrac = hp.vratHrace(aktualniHrac);
+                hrac.transakce(-4000);
+                policko.setObsazenoHracem(hrac.getId());
                 textAreaTa.append("Blahoželáme! Kupil si si trénera za 4000. \n");
-                textAreaTa.append("Zostatok na tvojom konte je "+hp.vratHrace(aktualniHrac).getKonto()+ "\n");
+                textAreaTa.append("Zostatok na tvojom konte je "+hrac.getKonto()+ "\n");
                 kupitTreneraBtn.setVisible(false);
+                hrac.pridejMajetekHraci(hp.getPolicko(hrac.getPozice()));
             }
         });
 
@@ -705,7 +726,10 @@ public class Dostihy_A_Sazky extends JFrame {
                         textAreaTa.append("Nemáš dostatoèný zostatok na tvojom konte. \n");
                         textAreaTa.append("Bud prodas majetek nebo klikni na tlacitko dalsi hrac.\n");
                         dalsiHracBtn.setVisible(true);
-                        //TODO tlacitko prodejMajetek
+                        //prodej majetek
+                        cisloPolickaLbl.setVisible(true);
+                        cisloPolickaTf.setVisible(true);
+                        prodejMajetekBtn.setVisible(true);
                     }
 
                 }
@@ -714,6 +738,51 @@ public class Dostihy_A_Sazky extends JFrame {
 
         });
 
+        /**
+         * Prodej majetku
+         */
+
+
+        cisloPolickaLbl = new JLabel("Èíslo políèka:");
+        cisloPolickaLbl.setBounds(450,600,100,30);
+        cisloPolickaLbl.setVisible(true);
+
+        cisloPolickaTf = new JTextField();
+        cisloPolickaTf.setBounds(550,600,150,30);
+        cisloPolickaTf.setVisible(true);
+
+        prodejMajetekBtn = new JButton("Prodej majetek");
+        prodejMajetekBtn.setBounds(700,600,150,30);
+        prodejMajetekBtn.setVisible(true);
+        prodejMajetekBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Hrac hrac = hp.vratHrace(aktualniHrac);
+                int cisloPolicka = Integer.parseInt(cisloPolickaTf.getText());
+                Policko policko = hp.getPolicko(cisloPolicka);
+
+                if(hrac.vlastniHracMajetek(policko)==true){
+                    cisloPolickaLbl.setVisible(false);
+                    cisloPolickaTf.setVisible(false);
+                    //TODO overeni jestli opravdu chce prodat - kdyz zbude cas
+                    if(hrac.prodejMajetekBance(policko,hrac)==true){
+                        textAreaTa.append("Uspesne si prodal majetek bance:\n");
+                        textAreaTa.append("Tvuj novy stav konta je:"+hrac.getKonto()+"\n");
+                    }
+                    else{
+                        textAreaTa.append("NECO SE NEPOVEDLO \n");
+                    }
+
+
+                }
+                else{
+                    textAreaTa.append("Bohužel toto polièko nevlastniš\n");
+                    textAreaTa.append("Zadej znovu nebo ukonci svuj tah\n");
+                }
+
+
+            }
+        });
 
 
 
@@ -731,7 +800,7 @@ public class Dostihy_A_Sazky extends JFrame {
                 zahrajTahBtn.setVisible(false);
                 System.out.println("Aktualni hrac zahrajBtn:"+aktualniHrac);
                 hodnotaHodu=hp.hodKostkou();
-                //hodnotaHodu=5 .... pouze pro testovani
+                hodnotaHodu=5 ;//.... pouze pro testovani
                 hp.posunPoPlane(aktualniHrac,hodnotaHodu);
                 xPozice=hp.getXPolicka(hp.vratHrace(aktualniHrac).getPozice());
                 yPozice=hp.getYPolicka(hp.vratHrace(aktualniHrac).getPozice());
@@ -739,6 +808,9 @@ public class Dostihy_A_Sazky extends JFrame {
                 typPolicka=hp.getTypPolicka(hp.vratHrace(aktualniHrac).getPozice());
                 //typPolicka=TypPolicka.PREPRAVA; //Pro testovani - abys nemusel klikat tak si zvolis typ policka a pak testujes
                 textAreaTa.append("Hodna hodu: "+hodnotaHodu);
+
+
+
 
                 switch (typPolicka){
                     case KUN -> {
@@ -866,6 +938,9 @@ public class Dostihy_A_Sazky extends JFrame {
         add(koupitPrepravuBtn);
         add(trenerBtn);
         add(kupitTreneraBtn);
+        add(prodejMajetekBtn);
+        add(cisloPolickaLbl);
+        add(cisloPolickaTf);
 
 
 

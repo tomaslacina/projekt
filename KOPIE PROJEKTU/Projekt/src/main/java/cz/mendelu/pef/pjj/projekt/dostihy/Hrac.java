@@ -8,6 +8,7 @@ public class Hrac {
 
     private List<Trener> seznamTreneru = new ArrayList<>();
     private List<Kun> seznamKoni = new ArrayList<>();
+    private List<Policko> seznamMajetkuHrace = new ArrayList<>();
     private int stavKonta;
     private String meno;
     private int id; //pridani id
@@ -267,4 +268,77 @@ public class Hrac {
     public String getMeno() {
         return meno;
     }
+
+    /**
+     * Prida majetek do hracova seznamu
+     * @param policko
+     */
+    public void pridejMajetekHraci (Policko policko){
+        seznamMajetkuHrace.add(policko);
+        System.out.println("Pridano policko:"+policko.toString());
+    }
+
+    /**
+     * Vrati jestli hrac vubec vlastni policko ktere zadal
+     * @param policko
+     * @return
+     */
+
+    public boolean vlastniHracMajetek(Policko policko){
+
+        if(seznamMajetkuHrace.contains(policko)==true){
+            System.out.println("Vlastnis policko");
+            return true;
+        }
+        else {
+            System.out.println("NEvlastnis policko");
+            return false;
+        }
+    }
+
+    /**
+     * Proda a odebere majetek ze seznamu hrace, provede transakci
+     *
+     */
+    public boolean prodejMajetekBance(Policko policko, Hrac hrac){
+        int prodejniCena;
+
+        if (seznamMajetkuHrace.contains(policko)==true){
+            System.out.println("Vlastnis policko");
+            prodejniCena=policko.getProdejniCena();
+            hrac.transakce(prodejniCena);
+            policko.setObsazenoHracem(0); //odeberu vlastnika
+            seznamMajetkuHrace.remove(policko); //odeberu z hracovy kolekce policek
+            return true;
+        }
+        else{
+            return false;
+        }
+
+
+    }
+
+    //testovaci main
+    /*public static void main(String[] args) {
+        Policko policko = new Policko(1,TypPolicka.NAHODA,"AAAA",0,0,0,1000);
+        Policko policko1 = new Policko(2,TypPolicka.NAHODA,"AAAA",0,0,0,1000);
+        Policko policko2 = new Policko(3,TypPolicka.NAHODA,"AAAA",0,0,0,1000);
+        Policko policko3 = new Policko(4,TypPolicka.NAHODA,"AAAA",0,0,0,1000);
+
+
+        Hrac hrac = new Hrac("MareK",1);
+        hrac.pridejMajetekHraci(policko);
+        hrac.pridejMajetekHraci(policko2);
+
+        System.out.println(hrac.vlastniHracMajetek(policko));
+        System.out.println(hrac.vlastniHracMajetek(policko3));
+        System.out.println("Konto pred:"+hrac.getKonto());
+        hrac.prodejMajetekBance(policko,hrac);
+        System.out.println("Konto po:"+hrac.getKonto());
+        System.out.println(hrac.vlastniHracMajetek(policko));
+
+    }*/
+
 }
+
+
