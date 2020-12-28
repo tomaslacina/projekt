@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ListIterator;
 
 public class Dostihy_A_Sazky extends JFrame {
     JTextArea textAreaTa;
@@ -38,6 +39,9 @@ public class Dostihy_A_Sazky extends JFrame {
     JButton prepravaBtn;
     JButton koupitPrepravuBtn;
     JButton zaplatPouzitiPrepravyBtn;
+    JButton trenerBtn;
+    JButton kupitTreneraBtn;
+
 
     TypPolicka typPolicka;
     int pocetHracu;
@@ -47,7 +51,7 @@ public class Dostihy_A_Sazky extends JFrame {
     int aktualniHrac=1;
     int xPozice=0;
     int yPozice=0;
-
+    boolean rozhodnutie;
     Hrac hrac;
     Policko policko;
 
@@ -259,6 +263,7 @@ public class Dostihy_A_Sazky extends JFrame {
                 //zatim
                 dalsiHracBtn.setVisible(false);
                 zahrajTahBtn.setVisible(true);
+                kupitTreneraBtn.setVisible(false);
 
                 aktualniHrac++; //kdyz prekrocim, tak vynuluj - nastav na 1
 
@@ -648,6 +653,66 @@ public class Dostihy_A_Sazky extends JFrame {
 
 
 
+        kupitTreneraBtn = new JButton("Kupit trenera");
+        kupitTreneraBtn.setBounds(500,700,150,30);
+        kupitTreneraBtn.setVisible(false);
+        kupitTreneraBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                hp.vratHrace(aktualniHrac).transakce(-4000);
+                policko.setObsazenoHracem(hp.vratHrace(aktualniHrac).getId());
+                textAreaTa.append("Blahoželáme! Kupil si si trénera za 4000. \n");
+                textAreaTa.append("Zostatok na tvojom konte je "+hp.vratHrace(aktualniHrac).getKonto()+ "\n");
+                kupitTreneraBtn.setVisible(false);
+            }
+        });
+
+
+
+        trenerBtn=new JButton("Trener");
+        trenerBtn.setBounds(300,700,150,30);
+        trenerBtn.setVisible(false);
+        trenerBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                trenerBtn.setVisible(false);
+                hrac = hp.vratHrace(aktualniHrac);
+                policko = hp.getPolicko(hrac.getPozice());
+                boolean narokNaKupu = false;
+                if (policko.getObsazenoHracem() == 0) {
+                    //hrac si trenera moze kupit
+                    dalsiHracBtn.setVisible(true);
+                    kupitTreneraBtn.setVisible(true);
+                    textAreaTa.append("\nMáš možnos si kúpi trenéra na tomto políèku. \n");
+                    textAreaTa.append("Ak chceš kupit trenera, klikni na kupit trenera. \n");
+                    textAreaTa.append("Ak trenera kupit nechceš, klikni na další hráè. \n");
+
+                } else {
+                    textAreaTa.append("Trénera vlastní iný hráè, musíš mu zaplati. \n");
+                    int idVlastnika = policko.getObsazenoHracem();
+                    Hrac vlastnikTrenera = hp.vratHrace(idVlastnika);
+                    int cenaZaPronajati = -vlastnikTrenera.getPoplatekZaTrenera();
+                    if (hrac.getKonto() >= cenaZaPronajati) {
+                        hrac.transakce((-1) * cenaZaPronajati);
+                        vlastnikTrenera.transakce(cenaZaPronajati);
+                        textAreaTa.append("Zaplatil si hracovi " + vlastnikTrenera.getMeno() + " sumu " + vlastnikTrenera.getPoplatekZaTrenera() + "\n");
+                        textAreaTa.append("Zostatok na tvojom konte je " + hp.vratHrace(aktualniHrac).getKonto() + "\n");
+                        dalsiHracBtn.setVisible(true);
+                    } else {
+                        textAreaTa.append("Nemáš dostatoèný zostatok na tvojom konte. \n");
+                        textAreaTa.append("Bud prodas majetek nebo klikni na tlacitko dalsi hrac.\n");
+                        dalsiHracBtn.setVisible(true);
+                        //TODO tlacitko prodejMajetek
+                    }
+
+                }
+            }
+
+
+        });
+
+
+
 
 
 
@@ -727,6 +792,18 @@ public class Dostihy_A_Sazky extends JFrame {
                         prepravaBtn.setVisible(true);
                     }
 
+                    /**
+                     * Otestované
+                     */
+                    case TRENER -> {
+                        textAreaTa.setText("Stojis na policku TRENER");
+                        trenerBtn.setVisible(true);
+                        dalsiHracBtn.setVisible(false);
+                    }
+
+
+
+
 
 
 
@@ -778,6 +855,9 @@ public class Dostihy_A_Sazky extends JFrame {
         add(prepravaBtn);
         add(zaplatPouzitiPrepravyBtn);
         add(koupitPrepravuBtn);
+        add(trenerBtn);
+        add(kupitTreneraBtn);
+
 
 
         repaint();

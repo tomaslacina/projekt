@@ -33,6 +33,7 @@ public class Hrac {
         this.preprava=false;
     }
 
+
     /**
      * @version - etapa-3
      * @author - xlacina5
@@ -258,5 +259,12 @@ public class Hrac {
     }
 
 
+    public int getPoplatekZaTrenera(){
+        int pocetTreneru = seznamTreneru.size();
+        return pocetTreneru*1000;
+    }
 
+    public String getMeno() {
+        return meno;
+    }
 }

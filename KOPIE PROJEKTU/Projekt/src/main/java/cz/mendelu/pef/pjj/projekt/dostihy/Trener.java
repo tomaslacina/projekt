@@ -27,4 +27,8 @@ public class Trener {
                 ", text='" + text + '\'' +
                 '}';
     }
+
+    public void setObsadenost(boolean obsadenost) {
+        this.obsadenost = obsadenost;
+    }
 }
