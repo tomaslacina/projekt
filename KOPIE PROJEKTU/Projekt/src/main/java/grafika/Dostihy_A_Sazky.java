@@ -6,7 +6,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ListIterator;
 
 public class Dostihy_A_Sazky extends JFrame {
     JTextArea textAreaTa;
@@ -34,9 +33,6 @@ public class Dostihy_A_Sazky extends JFrame {
     JButton financeBtn;
     JButton nahodaBtn;
     JButton stajBtn;
-    JButton trenerBtn;
-    JButton kupitTreneraBtn;
-    JButton nekupitTreneraBtn;
 
     TypPolicka typPolicka;
     int pocetHracu;
@@ -49,7 +45,6 @@ public class Dostihy_A_Sazky extends JFrame {
 
     Hrac hrac;
     Policko policko;
-    boolean rozhodnutie;
 
 
 
@@ -492,85 +487,6 @@ public class Dostihy_A_Sazky extends JFrame {
         });
 
 
-        kupitTreneraBtn = new JButton("Kupit trenera");
-        kupitTreneraBtn.setBounds(500,700,150,30);
-        kupitTreneraBtn.setVisible(false);
-        kupitTreneraBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                rozhodnutie = true;
-            }
-        });
-
-
-        nekupitTreneraBtn = new JButton("Nekupit trenera");
-        nekupitTreneraBtn.setBounds(600,700,150,30);
-        nekupitTreneraBtn.setVisible(false);
-        nekupitTreneraBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                rozhodnutie = false;
-            }
-        });
-
-
-
-        trenerBtn=new JButton("Trener");
-        trenerBtn.setBounds(300,700,150,30);
-        trenerBtn.setVisible(false);
-        trenerBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                boolean narokNaKupu = false;
-                hrac = hp.vratHrace(aktualniHrac);
-                ListIterator<Trener> treneri = hp.vratHrace(aktualniHrac).getTreneri().listIterator();
-                while(treneri.hasNext()){
-                    if(hrac.getPozice()==treneri.next().getCisloPolicka() && treneri.next().isObsadenost()==false){
-                        narokNaKupu = true;
-                    }
-                }
-                if(narokNaKupu){
-                    trenerBtn.setVisible(false);
-                    kupitTreneraBtn.setVisible(true);
-                    nekupitTreneraBtn.setVisible(true);
-                    //Hrac si moze kupit trenera na danom policku
-                    textAreaTa.setText("M·ö moûnosù si k˙più trenÈra na tomto polÌËku. \n");
-                    textAreaTa.setText("PotrvÔ svoje rozhodnutie. \n");
-                    if(rozhodnutie) {
-                        //hrac sa rozhodol ûe trenera k˙pi
-                        hp.vratHrace(aktualniHrac).transakce(-4000);
-                        ListIterator<Trener> trener = hp.vratHrace(aktualniHrac).getTreneri().listIterator();
-                        while(trener.hasNext()){
-                            if(hrac.getPozice()==trener.next().getCisloPolicka() && trener.next().isObsadenost()==false){
-                                trener.next().setObsadenost(true);
-                            }
-                        }
-                        textAreaTa.setText("Blahoûel·me! Kupil si si trÈnera. \n");
-                    }
-                    else{
-                        //hrac sa rozhodol ûe trenera nek˙pi
-                        textAreaTa.setText("TrenÈra si nek˙pil. \n");
-
-                    }
-
-
-                }
-
-                else{
-                    //hrac musÌ zaplatit druhemu hracovi
-                    //TODO - musÌm n·jsù hr·Ëov z pomedzi vöetk˝ch hraËov ktor˝ niesu aktualne na tahu, a ktor˝ toto polÌËko vlastÌ a spoËÌtaù vöetkych jeho trÈnerov pre urËenie v˝öky platby.
-                    //TODO - najlepöie to bude asi
-
-
-                }
-
-            }
-
-
-        });
-
-
 
 
         zahrajTahBtn=new JButton("Zahraj tah");
@@ -637,13 +553,6 @@ public class Dostihy_A_Sazky extends JFrame {
                     }
 
 
-                    case TRENER -> {
-                        textAreaTa.setText("Stojis na policku TRENER");
-                        trenerBtn.setVisible(true);
-                    }
-
-
-
 
 
                     default -> textAreaTa.append("Not implemented yet!");
@@ -689,9 +598,7 @@ public class Dostihy_A_Sazky extends JFrame {
         add(financeBtn);
         add(nahodaBtn);
         add(stajBtn);
-        add(trenerBtn);
-        add(kupitTreneraBtn);
-        add(nekupitTreneraBtn);
+
 
         repaint();
 

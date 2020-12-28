@@ -64,9 +64,6 @@ public class HerniPlan {
 
     }
 
-    public Set<Hrac> getHraci() {
-        return hraci;
-    }
 
     public void nactiNahody(){
        int posun;
