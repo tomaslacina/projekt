@@ -7,7 +7,7 @@ public class Trener {
     private boolean obsadenost;
 
 
-    Trener(int cisloPolicka, String text){
+    public Trener(int cisloPolicka, String text){
         this.cisloPolicka=cisloPolicka;
         this.text=text;
     }

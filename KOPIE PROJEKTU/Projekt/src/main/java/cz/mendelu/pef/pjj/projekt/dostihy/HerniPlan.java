@@ -561,6 +561,62 @@ public class HerniPlan {
 
 
 
+    public int getCenaZetonuKone(int cisloPolicka){
+        Iterator <Kun> i = kone.iterator();
+        while (i.hasNext()){
+            if(i.next().getCisloPolicka()==cisloPolicka){
+                return i.next().getCenaZaPrepravu();
+            }
+        }
+        return 0;
+    }
+
+    public void zvysPocetZetonu(int cisloPolicka){
+        Iterator <Kun> i = kone.iterator();
+        while (i.hasNext()){
+            if(i.next().getCisloPolicka()==cisloPolicka){
+                i.next().zvysPocetZetonu();
+            }
+        }
+    }
+
+    public int getPoplatekZaKone(int cisloPolicka){
+        Iterator <Kun> i = kone.iterator();
+        while (i.hasNext()){
+            if(i.next().getCisloPolicka()==cisloPolicka){
+                return i.next().getPoplatekZaPronajemKone();
+            }
+        }
+        return 0;
+
+
+    }
+
+    public int getNakupniCenaKone(int cisloPolicka){
+        Iterator <Kun> i = kone.iterator();
+        while (i.hasNext()){
+            if(i.next().getCisloPolicka()==cisloPolicka){
+                return i.next().getKupniCena();
+            }
+        }
+        return 0;
+    }
+
+
+    public String getNazovKone(int cisloPolicka){
+        String meno = null;
+        Iterator <Kun> i = kone.iterator();
+        while (i.hasNext()){
+            if(i.next().getCisloPolicka()==cisloPolicka){
+                meno = i.next().getMeno();
+            }
+        }
+        return meno;
+    }
+
+
+
+
 }
 
 

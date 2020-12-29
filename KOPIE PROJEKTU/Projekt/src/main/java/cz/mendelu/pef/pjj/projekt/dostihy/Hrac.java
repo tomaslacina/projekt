@@ -1,8 +1,6 @@
 package cz.mendelu.pef.pjj.projekt.dostihy;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class Hrac {
 
@@ -260,8 +258,12 @@ public class Hrac {
     }
 
 
+
+
+
     public int getPoplatekZaTrenera(){
         int pocetTreneru = seznamTreneru.size();
+        System.out.println(pocetTreneru*1000);
         return pocetTreneru*1000;
     }
 
@@ -295,6 +297,14 @@ public class Hrac {
             return false;
         }
     }
+
+
+
+
+
+
+
+
 
     /**
      * Proda a odebere majetek ze seznamu hrace, provede transakci

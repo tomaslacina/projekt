@@ -106,14 +106,52 @@ public class Kun {
 
     /**
      * Metoda ktora zmeni pocet zetonov, teda zvacsi vybavu kona.
-     * @param mnozstvi mnozstvo zetonov
      * @author xrepka
      * @version etapa-1
      */
 
 
-    public void zmenPocetZetonu(int mnozstvi){
-        pocetZetonu += mnozstvi;
+    public void zvysPocetZetonu(){
+        pocetZetonu ++;
+    }
+
+
+    public int getCisloPolicka() {
+        return cisloPolicka;
+    }
+
+    public int getCenaZaPrepravu() {
+        return cenaZaPrepravu;
+    }
+
+    public int getPoplatekZaPronajemKone(){
+        if(pocetZetonu==0){
+            return prohlidkaStaje;
+        }
+        if(pocetZetonu==1){
+            return cenaDostih1;
+        }
+        if(pocetZetonu==2){
+            return cenaDostih2;
+        }
+        if(pocetZetonu==3){
+            return cenaDostih3;
+        }
+        if(pocetZetonu==4){
+            return cenaDostih4;
+        }
+        if(pocetZetonu==5){
+            return cenaHlavniDostih;
+        }
+        return 0;
+    }
+
+    public String getMeno() {
+        return meno;
+    }
+
+    public int getKupniCena() {
+        return kupniCena;
     }
 
     /**
