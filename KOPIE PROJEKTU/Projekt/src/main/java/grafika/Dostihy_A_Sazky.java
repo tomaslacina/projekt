@@ -809,10 +809,12 @@ public class Dostihy_A_Sazky extends JFrame {
                     hrac.pridejMajetekHraci(policko);
                     policko.setObsazenoHracem(aktualniHrac); //priradim vlastnictvi hraci ktery je na tahu a uspesne zaplatil za kone
                     hrac.pridejKone(kun); //prida do hracovych koni kone
+                    kupKone.setVisible(false);
                 }
                 else{
                     textAreaTa.append("\nBohužial, nemáš dostatok peòazí na nákup koòa.\n");
                     //TODO moznost prodeje majetku ????
+                    kupKone.setVisible(false);
                 }
             }
 
@@ -864,9 +866,7 @@ public class Dostihy_A_Sazky extends JFrame {
                 hrac = hp.vratHrace(aktualniHrac);
                 policko = hp.getPolicko(hrac.getPozice());
                 kun = hp.vratObjektKun(hrac.getPozice());
-
-
-                textAreaTa.append(kun.getMeno());
+                textAreaTa.append("Jmeno kone:"+kun.getMeno()+"\n");
                 if (policko.getObsazenoHracem() == 0) {
                     //vlastni niekto tohto kona? - nevlastní
                     textAreaTa.append("Koòa nikto nevlastní.\n");
@@ -883,7 +883,7 @@ public class Dostihy_A_Sazky extends JFrame {
                         //vlastní ho aktualni hráè
 
                         textAreaTa.append("\nChceš dokúpi žetón na zvýšenie nájmu koòa? Stojí: "+kun.getCenaZetonu()+"\n");
-                        textAreaTa.append("Ak chceš kupit tak klikni na kupit žetón, ak nechceš klikni na další hráè");
+                        textAreaTa.append("Ak chceš kupit tak klikni na kupit žetón, ak nechceš klikni na další hráè\n");
                         dalsiHracBtn.setVisible(true);
                         kupZetonBtn.setVisible(true);
 
@@ -949,7 +949,7 @@ public class Dostihy_A_Sazky extends JFrame {
 
                 switch (typPolicka){
                     case KUN -> {
-                        textAreaTa.setText("Stojis na koni s názvom: ");
+                        textAreaTa.setText("Stojis na policku KUN: \n");
                         kunBtn.setVisible(true);
                         dalsiHracBtn.setVisible(false);
                     }
