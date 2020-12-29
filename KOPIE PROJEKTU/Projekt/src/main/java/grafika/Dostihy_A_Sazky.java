@@ -61,6 +61,7 @@ public class Dostihy_A_Sazky extends JFrame {
     boolean rozhodnutie;
     Hrac hrac;
     Policko policko;
+    Kun kun;
 
 
 
@@ -800,15 +801,18 @@ public class Dostihy_A_Sazky extends JFrame {
                 kupZetonBtn.setVisible(false);
                 hrac = hp.vratHrace(aktualniHrac);
                 policko = hp.getPolicko(hrac.getPozice());
-                if(hrac.getKonto()>=hp.getNakupniCenaKone(hrac.getPozice())){
-                    hp.vratHrace(aktualniHrac).transakce(hp.getNakupniCenaKone(hp.vratHrace(aktualniHrac).getPozice()));
+                kun = hp.vratObjektKun(hrac.getPozice());
+
+                if(hrac.getKonto()>=kun.getNakupniCena()){
+                    hrac.transakce((-1)*(kun.getNakupniCena()));
                     textAreaTa.append("\nBlahoželáme! Kúpil si koòa\n");
-                    hp.vratHrace(aktualniHrac).pridejMajetekHraci(policko);
-                    //TODO transakcia sice prebehne ale:
-                    //TODO je potrebné prida kone do hráèovho zoznamu koní (souvisí to asi s tým TODO ktorý je napísaný nižšie ku else r. 874)
+                    hrac.pridejMajetekHraci(policko);
+                    policko.setObsazenoHracem(aktualniHrac); //priradim vlastnictvi hraci ktery je na tahu a uspesne zaplatil za kone
+                    hrac.pridejKone(kun); //prida do hracovych koni kone
                 }
                 else{
                     textAreaTa.append("\nBohužial, nemáš dostatok peòazí na nákup koòa.\n");
+                    //TODO moznost prodeje majetku ????
                 }
             }
 
@@ -824,11 +828,25 @@ public class Dostihy_A_Sazky extends JFrame {
                 kupKone.setVisible(false);
                 hrac = hp.vratHrace(aktualniHrac);
                 policko = hp.getPolicko(hrac.getPozice());
-                //TODO tu sa snažím dosta cenu žetonu (cena vylepšenia ktorý ma každy kôò iné) zo súboru a urobi tranakciu, no toto je asi najmenej podstatné
-                if(hrac.getKonto()>=hp.getCenaZetonuKone(hrac.getPozice())){
-                    hp.vratHrace(aktualniHrac).transakce((-1)*hp.getCenaZetonuKone(hp.vratHrace(aktualniHrac).getPozice()));
-                    hp.zvysPocetZetonu( hp.vratHrace(aktualniHrac).getPozice());
+                kun =hp.vratObjektKun(hrac.getPozice());
+
+                //pokud ma penize a zaroven jeste kun nema 5 zetonu tak muze koupit
+                if((hrac.getKonto()>=kun.getCenaZetonu())&&(kun.getPocetZetonu()<5)){
+                    hrac.transakce((-1)*(kun.getCenaZetonu()));
+                    kun.zvysPocetZetonu();
                     textAreaTa.append("\nBlahoželáme! Kúpil si si žetón na tohto koòa.\n");
+                }
+                //jinak proste vypise hlasku
+                else
+                    {
+
+                    if(hrac.getKonto()<kun.getCenaZetonu()){
+                        textAreaTa.append("\n Nemas dostatek financi na provedeni teto transakce\n");
+                    }
+                    else {
+                        textAreaTa.append("\n Dosahl si maximalniho poctu zetonu\n");
+                    }
+
                 }
             }
 
@@ -845,8 +863,10 @@ public class Dostihy_A_Sazky extends JFrame {
                 kunBtn.setVisible(false);
                 hrac = hp.vratHrace(aktualniHrac);
                 policko = hp.getPolicko(hrac.getPozice());
-                //TODO poriešit preèo sa nezobrazuje nazov kone
-                textAreaTa.append(hp.getNazovKone(hrac.getPozice())+"\n");
+                kun = hp.vratObjektKun(hrac.getPozice());
+
+
+                textAreaTa.append(kun.getMeno());
                 if (policko.getObsazenoHracem() == 0) {
                     //vlastni niekto tohto kona? - nevlastní
                     textAreaTa.append("Koòa nikto nevlastní.\n");
@@ -854,8 +874,6 @@ public class Dostihy_A_Sazky extends JFrame {
                     textAreaTa.append("Ak nie stlaè další hráè.\n");
                     kupKone.setVisible(true);
                     dalsiHracBtn.setVisible(true);
-
-
                     }
 
                 else{
@@ -863,28 +881,25 @@ public class Dostihy_A_Sazky extends JFrame {
                     //niekto toto polièko vlastní
                     if(hrac.getId()==policko.getObsazenoHracem()){
                         //vlastní ho aktualni hráè
+
+                        textAreaTa.append("\nChceš dokúpi žetón na zvýšenie nájmu koòa? Stojí: "+kun.getCenaZetonu()+"\n");
+                        textAreaTa.append("Ak chceš kupit tak klikni na kupit žetón, ak nechceš klikni na další hráè");
                         dalsiHracBtn.setVisible(true);
                         kupZetonBtn.setVisible(true);
 
-                        textAreaTa.append("\nChceš dokúpi žetón na zvýšenie nájmu koòa? Stojí: "+hp.
-                                getCenaZetonuKone(policko.getCisloPolicka())+"\n");
-                        textAreaTa.append("Ak chceš kupit tak klikni na kupit žetón, ak nechceš klikni na další hráè");
-
-
                     } else {
-                        //TODO (priklad) prvý hráè kupí koòa, druhý stupi na jeho polièko, no neukaže sa že ten 2. hráè stojí na koni toho prvého
-                        //TODO teda sa nevyvolá ani tento else
+
                         //vlastni ho nejaky iný hraè
                         int idVlastnika = policko.getObsazenoHracem();
                         Hrac vlastnikKone = hp.vratHrace(idVlastnika);
-                        int cenaZaPronajati = hp.getPoplatekZaKone(idVlastnika);
+                        int cenaZaPronajati = kun.getPoplatekZaPronajemKone();
 
                         if (hrac.getKonto() >= cenaZaPronajati) {
                             //hrac ma dostatok penazi na zaplatenie
                             hrac.transakce((-1) * cenaZaPronajati);
                             vlastnikKone.transakce(cenaZaPronajati);
                             textAreaTa.append("Zaplatil si hracovi " + vlastnikKone.getMeno() + " sumu " + cenaZaPronajati + "\n");
-                            textAreaTa.append("Zostatok na tvojom konte je " + hp.vratHrace(aktualniHrac).getKonto() + "\n");
+                            textAreaTa.append("Zostatok na tvojom konte je " + hrac.getKonto() + "\n");
                             dalsiHracBtn.setVisible(true);
 
                         }else{
@@ -905,9 +920,6 @@ public class Dostihy_A_Sazky extends JFrame {
 
             }
         });
-
-
-
 
 
 

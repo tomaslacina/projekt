@@ -27,10 +27,12 @@ public class HerniPlan {
 
 
 
+
     public HerniPlan() {
         nactiPolicka();
         nactiFinance();
         nactiNahody();
+        nactiKone();
 
 
     }
@@ -306,20 +308,6 @@ public class HerniPlan {
     }
 
 
-
-    /**
-     * Metoda zjistí od hráče co chce prodat (podle čísla políčka) a za jakou cenu. Následně provede transakci
-     *
-     * @param cisloPolicka - v rozsahu 1-40
-     * @param cena         nesmí být záporná
-     * @author xlacina5
-     * @version etapa-1
-     */
-    public void prodejMajetek(int cisloPolicka, int cena) {
-        throw new UnsupportedOperationException("Not implemented yet.");
-    }
-
-
     /**
      * @author xrepka
      * @version etapa-3
@@ -559,62 +547,26 @@ public class HerniPlan {
     }
 
 
+    /**
+     * Vrati z herniho planu objekt kone
+     * @param cisloPolicka
+     * @return
+     */
+    public Kun vratObjektKun(int cisloPolicka){
+        Kun kun=null;
 
-
-    public int getCenaZetonuKone(int cisloPolicka){
-        Iterator <Kun> i = kone.iterator();
-        while (i.hasNext()){
-            if(i.next().getCisloPolicka()==cisloPolicka){
-                return i.next().getCenaZaPrepravu();
-            }
+        Iterator<Kun> i = kone.iterator();
+        while(i.hasNext()){
+           kun = i.next();
+           if(kun.getCisloPolicka()==cisloPolicka){
+             return kun;
+           }
+           kun=null;
         }
-        return 0;
-    }
-
-    public void zvysPocetZetonu(int cisloPolicka){
-        Iterator <Kun> i = kone.iterator();
-        while (i.hasNext()){
-            if(i.next().getCisloPolicka()==cisloPolicka){
-                i.next().zvysPocetZetonu();
-            }
-        }
-    }
-
-    public int getPoplatekZaKone(int cisloPolicka){
-        Iterator <Kun> i = kone.iterator();
-        while (i.hasNext()){
-            if(i.next().getCisloPolicka()==cisloPolicka){
-                return i.next().getPoplatekZaPronajemKone();
-            }
-        }
-        return 0;
+        return kun;
 
 
     }
-
-    public int getNakupniCenaKone(int cisloPolicka){
-        Iterator <Kun> i = kone.iterator();
-        while (i.hasNext()){
-            if(i.next().getCisloPolicka()==cisloPolicka){
-                return i.next().getKupniCena();
-            }
-        }
-        return 0;
-    }
-
-
-    public String getNazovKone(int cisloPolicka){
-        String meno = null;
-        Iterator <Kun> i = kone.iterator();
-        while (i.hasNext()){
-            if(i.next().getCisloPolicka()==cisloPolicka){
-                meno = i.next().getMeno();
-            }
-        }
-        return meno;
-    }
-
-
 
 
 }

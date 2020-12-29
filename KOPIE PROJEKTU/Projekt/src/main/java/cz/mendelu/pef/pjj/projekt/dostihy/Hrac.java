@@ -328,27 +328,6 @@ public class Hrac {
 
     }
 
-    //testovaci main
-    /*public static void main(String[] args) {
-        Policko policko = new Policko(1,TypPolicka.NAHODA,"AAAA",0,0,0,1000);
-        Policko policko1 = new Policko(2,TypPolicka.NAHODA,"AAAA",0,0,0,1000);
-        Policko policko2 = new Policko(3,TypPolicka.NAHODA,"AAAA",0,0,0,1000);
-        Policko policko3 = new Policko(4,TypPolicka.NAHODA,"AAAA",0,0,0,1000);
-
-
-        Hrac hrac = new Hrac("MareK",1);
-        hrac.pridejMajetekHraci(policko);
-        hrac.pridejMajetekHraci(policko2);
-
-        System.out.println(hrac.vlastniHracMajetek(policko));
-        System.out.println(hrac.vlastniHracMajetek(policko3));
-        System.out.println("Konto pred:"+hrac.getKonto());
-        hrac.prodejMajetekBance(policko,hrac);
-        System.out.println("Konto po:"+hrac.getKonto());
-        System.out.println(hrac.vlastniHracMajetek(policko));
-
-    }*/
-
 }
 
 

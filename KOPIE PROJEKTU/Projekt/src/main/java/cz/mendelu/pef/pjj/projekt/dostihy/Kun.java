@@ -1,5 +1,6 @@
 package cz.mendelu.pef.pjj.projekt.dostihy;
 
+import java.util.Iterator;
 import java.util.Objects;
 
 public class Kun {
@@ -14,7 +15,7 @@ public class Kun {
     private int cenaDostih3;
     private int cenaDostih4;
     private int cenaHlavniDostih;
-    private int cenaZaPrepravu;
+    private int cenaZetonu;
     private int pocetZetonu;
 
 
@@ -30,12 +31,12 @@ public class Kun {
      * @param cenaDostih3
      * @param cenaDostih4
      * @param cenaHlavniDostih
-     * @param cenaZaPrepravu
+     * @param cenaZetonu
      * @author xrepka
      * @version etapa-4
      */
 
-    public Kun(int cisloPolicka, String meno, String barva, int kupniCena, int prohlidkaStaje, int cenaDostih1, int cenaDostih2, int cenaDostih3, int cenaDostih4, int cenaHlavniDostih, int cenaZaPrepravu) {
+    public Kun(int cisloPolicka, String meno, String barva, int kupniCena, int prohlidkaStaje, int cenaDostih1, int cenaDostih2, int cenaDostih3, int cenaDostih4, int cenaHlavniDostih, int cenaZetonu) {
         this.cisloPolicka = cisloPolicka;
         this.meno = meno;
         this.barva = barva;
@@ -46,7 +47,7 @@ public class Kun {
         this.cenaDostih3 = cenaDostih3;
         this.cenaDostih4 = cenaDostih4;
         this.cenaHlavniDostih = cenaHlavniDostih;
-        this.cenaZaPrepravu = cenaZaPrepravu;
+        this.cenaZetonu = cenaZetonu;
         this.pocetZetonu = 0;
     }
 
@@ -70,7 +71,7 @@ public class Kun {
                 cenaDostih3 == kun.cenaDostih3 &&
                 cenaDostih4 == kun.cenaDostih4 &&
                 cenaHlavniDostih == kun.cenaHlavniDostih &&
-                cenaZaPrepravu == kun.cenaZaPrepravu &&
+                cenaZetonu == kun.cenaZetonu &&
                 pocetZetonu == kun.pocetZetonu &&
                 Objects.equals(meno, kun.meno) &&
                 Objects.equals(barva, kun.barva);
@@ -78,7 +79,7 @@ public class Kun {
 
     @Override
     public int hashCode() {
-        return Objects.hash(cisloPolicka, meno, barva, kupniCena, prohlidkaStaje, cenaDostih1, cenaDostih2, cenaDostih3, cenaDostih4, cenaHlavniDostih, cenaZaPrepravu, pocetZetonu);
+        return Objects.hash(cisloPolicka, meno, barva, kupniCena, prohlidkaStaje, cenaDostih1, cenaDostih2, cenaDostih3, cenaDostih4, cenaHlavniDostih, cenaZetonu, pocetZetonu);
     }
 
     /**
@@ -99,7 +100,7 @@ public class Kun {
                 ", cenaDostih3=" + cenaDostih3 +
                 ", cenaDostih4=" + cenaDostih4 +
                 ", cenaHlavniDostih=" + cenaHlavniDostih +
-                ", cenaZaPrepravu=" + cenaZaPrepravu +
+                ", cenaZaPrepravu=" + cenaZetonu +
                 ", pocetZetonu=" + pocetZetonu +
                 '}';
     }
@@ -120,8 +121,8 @@ public class Kun {
         return cisloPolicka;
     }
 
-    public int getCenaZaPrepravu() {
-        return cenaZaPrepravu;
+    public int getCenaZetonu() {
+        return cenaZetonu;
     }
 
     public int getPoplatekZaPronajemKone(){
@@ -150,7 +151,7 @@ public class Kun {
         return meno;
     }
 
-    public int getKupniCena() {
+    public int getNakupniCena() {
         return kupniCena;
     }
 
