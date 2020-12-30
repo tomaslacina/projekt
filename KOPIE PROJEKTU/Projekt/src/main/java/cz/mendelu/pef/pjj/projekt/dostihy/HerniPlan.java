@@ -569,16 +569,7 @@ public class HerniPlan {
     }
 
 
-    public int vypocitajCelkovyMajetokHraca(int idHraca){
-        int majetok=0;
-        Iterator<Hrac> i = hraci.iterator();
-        while(i.hasNext()) {
-            if (idHraca == i.next().getId()) {
-                majetok = i.next().getKonto() + i.next().vypociajMajetokKone() + i.next().vypocitajMajetokTreneri();
-            }
-        }
-        return majetok;
-    }
+
 
 
 }

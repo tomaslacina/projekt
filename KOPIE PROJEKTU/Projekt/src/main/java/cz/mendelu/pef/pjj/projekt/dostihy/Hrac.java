@@ -11,7 +11,7 @@ public class Hrac {
     private String meno;
     private int id; //pridani id
     private int pozice;
-    private static final int konto = 500; //staticka promenna stav konta
+    private static final int konto = 30000; //staticka promenna stav konta
     private static final int pocetPolicek = 40;
     private boolean staj;
     private boolean preprava;
@@ -78,8 +78,6 @@ public class Hrac {
         String vypis = "";
         vypis += "Meno: " + meno + "\n" + "Stav konta: " + stavKonta + "\n" + "Seznam koni: " + seznamKoni + "\n" + "Sezam treneru: " + seznamTreneru + "\n";
         return vypis;
-
-
     }
 
     /**
@@ -93,6 +91,15 @@ public class Hrac {
     public void transakce(int suma) {
         stavKonta += suma;
 
+    }
+
+    public String vypisMajetekHrace(){
+        String majetek="";
+        Iterator<Policko> i = seznamMajetkuHrace.iterator();
+        while (i.hasNext()) {
+            majetek+=i.toString()+"\n";
+        }
+        return majetek;
     }
 
 
@@ -192,10 +199,9 @@ public class Hrac {
      * @version etapa-1
      */
 
-    //TODO Upravit na unmodifiableCollection
+
     public List<Trener> getTreneri() {
-        //return Collections.unmodifiableCollection(seznamTreneru);
-        return seznamTreneru; //upravit na to unmodifiableCollection - viz cviko
+        return seznamTreneru;
     }
 
     /**
@@ -305,8 +311,9 @@ public class Hrac {
     /**
      * Proda a odebere majetek ze seznamu hrace, provede transakci
      */
-    public boolean prodejMajetekBance(Policko policko, Hrac hrac) {
+    public boolean prodejMajetekBance(Policko policko, Hrac hrac, HerniPlan hp) {
         int prodejniCena;
+
 
         if (seznamMajetkuHrace.contains(policko) == true) {
             System.out.println("Vlastnis policko");
@@ -314,6 +321,10 @@ public class Hrac {
             hrac.transakce(prodejniCena);
             policko.setObsazenoHracem(0); //odeberu vlastnika
             seznamMajetkuHrace.remove(policko); //odeberu z hracovy kolekce policek
+            if(policko.getTypPolicka()==TypPolicka.KUN){
+                seznamKoni.remove(hp.vratObjektKun(policko.getCisloPolicka()));
+            }
+
             return true;
         } else {
             return false;
