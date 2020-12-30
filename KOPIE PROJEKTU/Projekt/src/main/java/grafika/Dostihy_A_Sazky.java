@@ -81,16 +81,16 @@ public class Dostihy_A_Sazky extends JFrame {
         //prvky aplikace
 
         textAreaTa = new JTextArea();
-        textAreaTa.setBounds(10,10,500,60); //nastaveni velikosti - musi byt asi stejne jak scrollPane
+        textAreaTa.setBounds(10,10,700,110); //nastaveni velikosti - musi byt asi stejne jak scrollPane
 
         scrollPane = new JScrollPane(); //aby se to dalo posunovat nahoru a dolu (doleva, doprava)
-        scrollPane.setBounds(10,10,500,60);
+        scrollPane.setBounds(10,10,700,110);
         scrollPane.getViewport().setBackground(Color.WHITE); //pozadi
         scrollPane.getViewport().add(textAreaTa); //pridani textArea do scrollPane
 
 
         popisekLbl = new JLabel("Poèet hráèù");
-        popisekLbl.setBounds(10,80,100,30);
+        popisekLbl.setBounds(10,120,130,30);
 
 
 
@@ -98,7 +98,7 @@ public class Dostihy_A_Sazky extends JFrame {
         for (int i =2;i<=7;i++){
             pocetHracuCombo.addItem(i);
         }
-        pocetHracuCombo.setBounds(100,80,100,30);
+        pocetHracuCombo.setBounds(100,130,100,30);
 
 
         /**
@@ -108,7 +108,7 @@ public class Dostihy_A_Sazky extends JFrame {
          */
 
         pocetHracuBtn=new JButton("Potvrï poèet");
-        pocetHracuBtn.setBounds(200,80,150,30);
+        pocetHracuBtn.setBounds(200,130,150,30);
         pocetHracuBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -131,12 +131,12 @@ public class Dostihy_A_Sazky extends JFrame {
          */
 
         jmenoHraceLbl= new JLabel("Jméno hráèe:");
-        jmenoHraceLbl.setBounds(10,80,100,30);
+        jmenoHraceLbl.setBounds(10,130,100,30);
         jmenoHraceLbl.setVisible(false);
 
 
         jmenoTf=new JTextField();
-        jmenoTf.setBounds(100,80,100,30);
+        jmenoTf.setBounds(100,130,100,30);
         jmenoTf.setVisible(false);
 
         /**
@@ -146,7 +146,7 @@ public class Dostihy_A_Sazky extends JFrame {
          */
 
         vytvorHraceBtn=new JButton("Vytvoø hráèe");
-        vytvorHraceBtn.setBounds(200,80,150,30);
+        vytvorHraceBtn.setBounds(200,130,150,30);
         vytvorHraceBtn.setVisible(false);
         vytvorHraceBtn.addActionListener(new ActionListener() {
             @Override
@@ -183,8 +183,10 @@ public class Dostihy_A_Sazky extends JFrame {
                     hracNaTahuLbl.setVisible(true);
                     markerLbl.setVisible(true);
                     zahrajTahBtn.setVisible(true);
+                    textAreaHracNaTahuTa.setText("");
+                    textAreaHracNaTahuTa.append(hp.vypisVsechHracu());
 
-                    textAreaHracNaTahuTa.setText(hp.vypisAktualnihoHrace(aktualniHrac));
+
                 }
             }
         });
@@ -274,8 +276,11 @@ public class Dostihy_A_Sazky extends JFrame {
                 kupitTreneraBtn.setVisible(false);
                 kupZetonBtn.setVisible(false);
                 kupKone.setVisible(false);
+                kunBtn.setVisible(false);
 
                 aktualniHrac++; //kdyz prekrocim, tak vynuluj - nastav na 1
+                textAreaHracNaTahuTa.setText("");
+                textAreaHracNaTahuTa.append(hp.vypisVsechHracu());
 
 
                 if(aktualniHrac>pocetHracu){
@@ -308,7 +313,9 @@ public class Dostihy_A_Sazky extends JFrame {
                 textAreaTa.setText("Informace o hráèi èíslo:"+aktualniHrac+"\n");
                 textAreaTa.append(hp.vypisAktualnihoHrace(aktualniHrac)+"\n");
                 textAreaHracNaTahuTa.setText("");
-                textAreaHracNaTahuTa.append(hp.vypisAktualnihoHrace(aktualniHrac));
+                for(int i=0;i<pocetHracu;i++) {
+                    textAreaHracNaTahuTa.append(hp.vypisVsechHracu());
+                }
             }
         });
 
@@ -349,8 +356,8 @@ public class Dostihy_A_Sazky extends JFrame {
          */
 
 
-        hracNaTahuLbl = new JLabel("Hráè na tahu:");
-        hracNaTahuLbl.setBounds(10,120,150,30);
+        hracNaTahuLbl = new JLabel("Kontá hráèov");
+        hracNaTahuLbl.setBounds(10,130,150,30);
         hracNaTahuLbl.setFont(new Font("Thimes",Font.BOLD,20));
         hracNaTahuLbl.setVisible(false);
 
@@ -361,7 +368,7 @@ public class Dostihy_A_Sazky extends JFrame {
          */
 
         textAreaHracNaTahuTa = new JTextArea();
-        textAreaHracNaTahuTa.setBounds(10,180,300,200);
+        textAreaHracNaTahuTa.setBounds(10,180,300,520);
         textAreaHracNaTahuTa.setFont(new Font("Thimes",Font.BOLD,12));
         textAreaHracNaTahuTa.setVisible(false);
 
@@ -388,12 +395,12 @@ public class Dostihy_A_Sazky extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 hrac=hp.vratHrace(aktualniHrac); //instance hrace, ktery je na tahu
-                textAreaTa.append("Stav konta pred transakci:"+hrac.getKonto());
-                textAreaTa.append("Hodnota trestu je:"+hp.getHodnotaTrestu());
+                textAreaTa.append("Stav konta pred transakci:"+hrac.getKonto()+"\n");
+                textAreaTa.append("Hodnota trestu je:"+hp.getHodnotaTrestu()+"\n");
                 if(hrac.getKonto()>hp.getHodnotaTrestu()){
-                    textAreaTa.append("Trest byl zaplacen, tvuj tah je u konce");
+                    textAreaTa.append("Trest byl zaplacen, tvuj tah je u konce\n");
                     hrac.transakce(hp.getHodnotaTrestu());
-                    textAreaTa.append("Stav konta po trestu je:"+hrac.getKonto());
+                    textAreaTa.append("Stav konta po trestu je:"+hrac.getKonto()+"\n");
                     dalsiHracBtn.setVisible(true);
                     zaplatTrestBtn.setVisible(false);
                 }
@@ -467,6 +474,7 @@ public class Dostihy_A_Sazky extends JFrame {
         nahodaBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 hrac = hp.vratHrace(aktualniHrac);
                 Nahoda nahoda = hp.getKartaNahody();
                 textAreaTa.append(nahoda.getTextNahody()+"\n");
@@ -810,6 +818,7 @@ public class Dostihy_A_Sazky extends JFrame {
                     policko.setObsazenoHracem(aktualniHrac); //priradim vlastnictvi hraci ktery je na tahu a uspesne zaplatil za kone
                     hrac.pridejKone(kun); //prida do hracovych koni kone
                     kupKone.setVisible(false);
+                    textAreaTa.append("Zostatok na tvojm úète je "+hrac.getKonto()+"\n");
                 }
                 else{
                     textAreaTa.append("\nBohužial, nemáš dostatok peòazí na nákup koòa.\n");
@@ -837,6 +846,9 @@ public class Dostihy_A_Sazky extends JFrame {
                     hrac.transakce((-1)*(kun.getCenaZetonu()));
                     kun.zvysPocetZetonu();
                     textAreaTa.append("\nBlahoželáme! Kúpil si si žetón na tohto koòa.\n");
+                    textAreaTa.append("Zostatok na tvojm úète je "+hrac.getKonto()+"\n");
+
+
                 }
                 //jinak proste vypise hlasku
                 else
@@ -866,10 +878,10 @@ public class Dostihy_A_Sazky extends JFrame {
                 hrac = hp.vratHrace(aktualniHrac);
                 policko = hp.getPolicko(hrac.getPozice());
                 kun = hp.vratObjektKun(hrac.getPozice());
-                textAreaTa.append("Jmeno kone:"+kun.getMeno()+"\n");
+                textAreaTa.append("Jmeno kone: "+kun.getMeno()+"\n");
                 if (policko.getObsazenoHracem() == 0) {
                     //vlastni niekto tohto kona? - nevlastní
-                    textAreaTa.append("Koòa nikto nevlastní.\n");
+                    textAreaTa.append("Koòa nikto nevlastní, stojí "+kun.getNakupniCena()+"\n");
                     textAreaTa.append("Ak chceš si kúpi tohto koòa stlaè Kup kone.\n");
                     textAreaTa.append("Ak nie stlaè další hráè.\n");
                     kupKone.setVisible(true);
@@ -930,12 +942,13 @@ public class Dostihy_A_Sazky extends JFrame {
         zahrajTahBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                int max=0;
+                String vyherca="";
                 dalsiHracBtn.setVisible(true);
                 zahrajTahBtn.setVisible(false);
                 System.out.println("Aktualni hrac zahrajBtn:"+aktualniHrac);
                 hodnotaHodu=hp.hodKostkou();
-                hodnotaHodu=1 ;//.... pouze pro testovani
+                hodnotaHodu=2 ;//.... pouze pro testovani
                 hp.posunPoPlane(aktualniHrac,hodnotaHodu);
                 xPozice=hp.getXPolicka(hp.vratHrace(aktualniHrac).getPozice());
                 yPozice=hp.getYPolicka(hp.vratHrace(aktualniHrac).getPozice());
@@ -943,13 +956,17 @@ public class Dostihy_A_Sazky extends JFrame {
                 typPolicka=hp.getTypPolicka(hp.vratHrace(aktualniHrac).getPozice());
                 //typPolicka=TypPolicka.PREPRAVA; //Pro testovani - abys nemusel klikat tak si zvolis typ policka a pak testujes
                 textAreaTa.append("Hodna hodu: "+hodnotaHodu);
+                textAreaHracNaTahuTa.setText("");
 
+                textAreaHracNaTahuTa.append(hp.vypisVsechHracu());
+                textAreaTa.setText("Hrac na tahu: "+hp.vratHrace(aktualniHrac).getMeno()+" Hodnota hodu: "+hodnotaHodu+"\n");
 
 
 
                 switch (typPolicka){
                     case KUN -> {
-                        textAreaTa.setText("Stojis na policku KUN: \n");
+
+                        textAreaTa.append("Stojis na policku KUN: \n");
                         kunBtn.setVisible(true);
                         dalsiHracBtn.setVisible(false);
                     }
@@ -959,7 +976,7 @@ public class Dostihy_A_Sazky extends JFrame {
                      */
 
                     case TREST -> {
-                        textAreaTa.setText("Stojis na policku trest:\n");
+                        textAreaTa.append("Stojis na policku trest:\n");
                         textAreaTa.append(hp.zobrazInformaceOPolicku(aktualniHrac)+"\n");
                         zaplatTrestBtn.setVisible(true);
                         dalsiHracBtn.setVisible(false);
@@ -971,7 +988,7 @@ public class Dostihy_A_Sazky extends JFrame {
                      */
 
                     case FINANCE -> {
-                        textAreaTa.setText("Stojis na policku FINANCE: \n");
+                        textAreaTa.append("Stojis na policku FINANCE: \n");
                         financeBtn.setVisible(true);
                         dalsiHracBtn.setVisible(false);
                     }
@@ -981,8 +998,9 @@ public class Dostihy_A_Sazky extends JFrame {
                      */
 
                     case NAHODA -> {
-                        textAreaTa.setText("Stojis na policku NAHODA: \n");
+                        textAreaTa.append("Stojis na policku NAHODA: \n");
                         nahodaBtn.setVisible(true);
+                        dalsiHracBtn.setVisible(false);
 
                     }
 
@@ -991,15 +1009,16 @@ public class Dostihy_A_Sazky extends JFrame {
                      * Otestovano
                      */
                     case STAJ -> {
-                        textAreaTa.setText("Stojis na policku STAJ\n");
+                        textAreaTa.append("Stojis na policku STAJ\n");
                         stajBtn.setVisible(true);
+                        dalsiHracBtn.setVisible(false);
                     }
 
                     /**
                      * Asi otestovano
                      */
                     case PREPRAVA -> {
-                        textAreaTa.setText("Stojis na policku PREPRAVA\n");
+                        textAreaTa.append("Stojis na policku PREPRAVA\n");
                         prepravaBtn.setVisible(true);
                     }
 
@@ -1007,20 +1026,16 @@ public class Dostihy_A_Sazky extends JFrame {
                      * Otestované
                      */
                     case TRENER -> {
-                        textAreaTa.setText("Stojis na policku TRENER\n");
+                        textAreaTa.append("Stojis na policku TRENER\n");
                         trenerBtn.setVisible(true);
                         dalsiHracBtn.setVisible(false);
                     }
 
                     case PARKOVISTE -> {
-                        textAreaTa.setText("Stojis na policku PARKOVISTE\n");
+                        textAreaTa.append("Stojis na policku PARKOVISTE\n");
                         textAreaTa.append("Na tomto policku neni zadna akce, pokracuj kliknutim na tlacitko dalsi hrac\n");
                         dalsiHracBtn.setVisible(true);
                     }
-
-
-
-
 
 
 
@@ -1037,6 +1052,20 @@ public class Dostihy_A_Sazky extends JFrame {
                 markerLbl.setBounds(xPozice,yPozice,30,30);
 
                 System.out.println(xPozice+" "+yPozice);
+
+                //TODO pokus o ukonèenie hry, vyhadzuje tam nejake chyby
+                for(int j=1;j<=pocetHracu;j++){
+                    if(max<hp.vypocitajCelkovyMajetokHraca(j)){
+                        max=hp.vypocitajCelkovyMajetokHraca(j);
+                        vyherca=hp.vratHrace(j).getMeno();
+                    }
+                    if(hp.vypocitajCelkovyMajetokHraca(j)<=0){
+                        textAreaTa.setText("Hráè "+hp.vratHrace(j).getMeno()+" nemá už žiaden majetok!!!\n");
+                        textAreaTa.append("Koniec hry!\n");
+                        textAreaTa.append("Vyhral hráè "+vyherca+" s celkovým majetkom "+max+" Gratulujeme!");
+                    }
+
+                }
 
 
             }

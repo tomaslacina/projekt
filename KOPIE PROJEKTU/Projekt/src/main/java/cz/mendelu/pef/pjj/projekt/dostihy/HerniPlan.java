@@ -407,7 +407,7 @@ public class HerniPlan {
         String vypisHracu="";
         Iterator<Hrac> i = hraci.iterator();
         while(i.hasNext()) {
-            vypisHracu+=i.next().vypisHraca()+"\n";
+            vypisHracu+=i.next().vypisHraca()+"\n\n";
         }
         return vypisHracu;
     }
@@ -566,6 +566,18 @@ public class HerniPlan {
         return kun;
 
 
+    }
+
+
+    public int vypocitajCelkovyMajetokHraca(int idHraca){
+        int majetok=0;
+        Iterator<Hrac> i = hraci.iterator();
+        while(i.hasNext()) {
+            if (idHraca == i.next().getId()) {
+                majetok = i.next().getKonto() + i.next().vypociajMajetokKone() + i.next().vypocitajMajetokTreneri();
+            }
+        }
+        return majetok;
     }
 
 
