@@ -751,15 +751,15 @@ public class Dostihy_A_Sazky extends JFrame {
 
         cisloPolickaLbl = new JLabel("Èíslo políèka:");
         cisloPolickaLbl.setBounds(450,600,100,30);
-        cisloPolickaLbl.setVisible(true);
+        cisloPolickaLbl.setVisible(false);
 
         cisloPolickaTf = new JTextField();
         cisloPolickaTf.setBounds(550,600,150,30);
-        cisloPolickaTf.setVisible(true);
+        cisloPolickaTf.setVisible(false);
 
         prodejMajetekBtn = new JButton("Prodej majetek");
         prodejMajetekBtn.setBounds(700,600,150,30);
-        prodejMajetekBtn.setVisible(true);
+        prodejMajetekBtn.setVisible(false);
         prodejMajetekBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
