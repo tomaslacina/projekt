@@ -172,6 +172,9 @@ public class Dostihy_A_Sazky extends JFrame {
                     jmenoTf.setVisible(false);
                     jmenoHraceLbl.setVisible(false);
                     vytvorHraceBtn.setVisible(false);
+                    cisloPolickaLbl.setVisible(false);
+                    cisloPolickaTf.setVisible(false);
+                    prodejMajetekBtn.setVisible(false);
 
 
                    // textAreaHracNaTahuTa.setVisible(true);
@@ -196,7 +199,8 @@ public class Dostihy_A_Sazky extends JFrame {
          *@version: etapa-4
          */
         nactiPravidlaBtn = new JButton("Pravidla Hry");
-        nactiPravidlaBtn.setBounds(1000,10,150,30);
+        nactiPravidlaBtn.setBounds(1000,50,150,70);
+        nactiPravidlaBtn.setBackground(Color.ORANGE);
         nactiPravidlaBtn.setVisible(false);
         nactiPravidlaBtn.addActionListener(new ActionListener() {
             @Override
@@ -212,7 +216,8 @@ public class Dostihy_A_Sazky extends JFrame {
          */
 
         vypisHraceBtn = new JButton("Výpis Hráèù");
-        vypisHraceBtn.setBounds(1000,50,150,30);
+        vypisHraceBtn.setBounds(1000,250,150,70);
+        vypisHraceBtn.setBackground(SystemColor.LIGHT_GRAY);
         vypisHraceBtn.setVisible(false);
         vypisHraceBtn.addActionListener(new ActionListener() {
             @Override
@@ -229,7 +234,8 @@ public class Dostihy_A_Sazky extends JFrame {
          */
 
         dalsiHracBtn = new JButton("Další Hráè");
-        dalsiHracBtn.setBounds(1000,130,150,30);
+        dalsiHracBtn.setBounds(1000,600,150,100);
+        dalsiHracBtn.setBackground(Color.GREEN);
         dalsiHracBtn.setVisible(false);
         dalsiHracBtn.addActionListener(new ActionListener() {
             @Override
@@ -274,7 +280,8 @@ public class Dostihy_A_Sazky extends JFrame {
          */
 
         zobrazAktualnihoHraceBtn = new JButton("Aktuální hráè");
-        zobrazAktualnihoHraceBtn.setBounds(1000,170,150,30);
+        zobrazAktualnihoHraceBtn.setBounds(1000,170,150,70);
+        zobrazAktualnihoHraceBtn.setBackground(Color.LIGHT_GRAY);
         zobrazAktualnihoHraceBtn.setVisible(false);
         zobrazAktualnihoHraceBtn.addActionListener(new ActionListener() {
             @Override
@@ -292,8 +299,9 @@ public class Dostihy_A_Sazky extends JFrame {
          */
 
         zobrazInformacePolickoBtn = new JButton("Informace o políèku");
-        zobrazInformacePolickoBtn.setBounds(1000,210,150,30);
+        zobrazInformacePolickoBtn.setBounds(1000,370,150,70);
         zobrazInformacePolickoBtn.setVisible(false);
+        zobrazInformacePolickoBtn.setBackground(SystemColor.LIGHT_GRAY);
         zobrazInformacePolickoBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -316,7 +324,7 @@ public class Dostihy_A_Sazky extends JFrame {
 
 
         polickoObrazekLbl=new JLabel();
-        polickoObrazekLbl.setBounds(10,300,200,300);
+        polickoObrazekLbl.setBounds(50,200,250,300);
 
 
 
@@ -668,14 +676,25 @@ public class Dostihy_A_Sazky extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 hrac = hp.vratHrace(aktualniHrac);
-                hrac.transakce(-4000);
-                policko.setObsazenoHracem(hrac.getId());
-                textAreaTa.append("Blahoželáme! Kupil si si trénera za 4000. \n");
-                textAreaTa.append("Zostatok na tvojom konte je "+hrac.getKonto()+ "\n");
-                kupitTreneraBtn.setVisible(false);
-                hrac.pridejMajetekHraci(hp.getPolicko(hrac.getPozice()));
-                Trener trener = new Trener(hrac.getPozice(),"");
-                hrac.pridejTrenera(trener);
+
+                if(hrac.getKonto()>=4000){
+                    hrac.transakce(-4000);
+                    policko.setObsazenoHracem(hrac.getId());
+                    textAreaTa.append("Blahoželáme! Kupil si si trénera za 4000. \n");
+                    textAreaTa.append("Zostatok na tvojom konte je "+hrac.getKonto()+ "\n");
+                    kupitTreneraBtn.setVisible(false);
+                    hrac.pridejMajetekHraci(hp.getPolicko(hrac.getPozice()));
+                    Trener trener = new Trener(hrac.getPozice(),"Trener");
+                    hrac.pridejTrenera(trener);
+                    dalsiHracBtn.setVisible(true);
+                }
+                else{
+                    textAreaTa.append("Na hernim uctu neni dostatek penez");
+                    textAreaTa.append("Pokracuj kliknutim na dalsiho hrace");
+                    dalsiHracBtn.setVisible(true);
+                }
+
+
             }
         });
 
@@ -909,7 +928,8 @@ public class Dostihy_A_Sazky extends JFrame {
 
 
         zahrajTahBtn=new JButton("Zahraj tah");
-        zahrajTahBtn.setBounds(50,700,150,30);
+        zahrajTahBtn.setBounds(50,650,150,70);
+        zahrajTahBtn.setBackground(Color.GREEN);
         zahrajTahBtn.setVisible(false);
         zahrajTahBtn.addActionListener(new ActionListener() {
             @Override

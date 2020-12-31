@@ -22,27 +22,26 @@ Hrac, ktery zastavi na poli s konem, ktery uz patri jinemu hraci, musi mu zaplat
 Cena prohlidky je uvedena v popisu hraci karticky
 Pokud tento kun je obsazen do jednoho nebo vice dostihu nebo dokonce do hlavniho dostihu, pak se sazby zvysuji.
 Opet ceny budou zobrazeny v popisu hraci karticky
+*
 Hrac, ktery zastavil na policku STAJE nebo PREPRAVA, ktere patri jinemu hraci, tak zaplati 80ti nasobek hodnoty hodu!
+*
 Jestlize majitel vlastni obe karty zaroven, pak se cena zvysuje na 200 nasobek hodnoty hodu.
+*
 Hrac, ktery zastavil na policku TRENER, zaplati jeho majiteli poplatek podle nasledujich sazeb:
 	->1 licence = 1.000 Kc
 	->2 licence = 2.000 Kc
 	->3 licence = 3.000 Kc
 	->4 licence = 4.000 Kc
 Kdyz kamen zastavi na poli OBECNI FOND nebo NAHODA, zobrazi se hraci v poli informace o tom co v danem kole musi udelat
-Karticky nahoda obsahuji:........
+*
 Pokud hrac zastavi na policku VETERINARNI PROHLIDKA, zaplati castku uvedenou na karticce
 *
-DISTANC?????????
-*
 Na poli PARKOVISTE se neplati zadne poplatky
-Pokud hrac vlastni VSECHNY kone jedne staje (stejne barvy), pak si muze koupit od banky pri opetovnem vkroceni na policko tohoto kone zetony (1-4)
-Koupi zetonu zvysuje cenu svych koni - hraci mu musi zaplatit vice penez podle hodnot uvedenych na karticce.
+*
+Pokud hrac, ktery vlastni pole kone na ktere vkrocil opakovane, muze si od banky koupit zeton a tim zvysit jeho cenu.
 ---
-SAZKA?
----
-Hrac muze bance prodat zpet kone ovsem za polovicni hodnotu
-Hrac take muze prodat bance svuj majetek opet za polovicni porizovaci cenu
+Hrac muze bance prodat zpet kone
+Hrac take muze prodat bance i dalsi vlastneny majetek
 ---
 KONEC HRY:
 Vitezem se stava ten hrac, ktery zustane jako posledni ve hre

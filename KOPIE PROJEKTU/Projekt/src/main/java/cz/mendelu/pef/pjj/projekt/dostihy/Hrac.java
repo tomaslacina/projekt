@@ -77,6 +77,13 @@ public class Hrac {
     public String vypisHraca() {
         String vypis = "";
         vypis += "Meno: " + meno + "\n" + "Stav konta: " + stavKonta + "\n" + "Seznam koni: " + seznamKoni + "\n" + "Sezam treneru: " + seznamTreneru + "\n";
+        if(preprava==true){
+            vypis+="Hrac vlastni prepravu\n";
+        }
+        if(staj==true){
+            vypis+="Hrac vlastni staj\n";
+        }
+        vypis+="Seznam majetku (policek) hrace:"+seznamMajetkuHrace;
         return vypis;
     }
 
@@ -93,14 +100,6 @@ public class Hrac {
 
     }
 
-    public String vypisMajetekHrace(){
-        String majetek="";
-        Iterator<Policko> i = seznamMajetkuHrace.iterator();
-        while (i.hasNext()) {
-            majetek+=i.toString()+"\n";
-        }
-        return majetek;
-    }
 
 
     /**
@@ -235,6 +234,7 @@ public class Hrac {
         if (novaPozice > pocetPolicek) {
             rozdil = novaPozice - pocetPolicek;
             this.pozice = rozdil;
+            this.transakce(4000); //projeti hrace startem podle pravidel + 4000 na konto
         } else {
             this.pozice = novaPozice;
         }

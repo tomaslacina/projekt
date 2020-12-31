@@ -31,4 +31,8 @@ public class Trener {
     public void setObsadenost(boolean obsadenost) {
         this.obsadenost = obsadenost;
     }
+
+    public int getCisloPolickaTrenera(){
+        return cisloPolicka;
+    }
 }
