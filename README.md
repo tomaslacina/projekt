@@ -1,2 +1,2 @@
 # projekt
- projekt-java
+Hra dostihy a sázky pro projekt do předmětu Java aplikace
